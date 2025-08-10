@@ -16,18 +16,17 @@ const LoginForm = () => {
     const userData = await SignInUser(loginValues)
     setFormValues(initialState)
     setUser(userData)
-    // navigate('/feed')
+    navigate('/')
   }
   return (
     <>
       <h1>Login</h1>
-      <form onSubmit={handleChange}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
           type="email"
           placeholder="email@gmail.com"
           onChange={handleChange}
-          value={loginValues.email}
           required
         />
         <label htmlFor="password">Password</label>
@@ -35,7 +34,6 @@ const LoginForm = () => {
           type="password"
           placeholder="password"
           onChange={handleChange}
-          value={loginValues.password}
           required
         />
         <button type="submit">Login</button>
