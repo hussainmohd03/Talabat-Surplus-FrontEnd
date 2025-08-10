@@ -2,3 +2,32 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+
+nav {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  height: 70px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  background-color: white;
+}
+
+#home-header {
+  background-color: #fe5f1e;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 150px;
+}
+#home-header form {
+  margin-bottom: 25px;
+}
+#home-header form input {
+  all: unset;
+  background-color: white;
+  padding: 15px;
+  width: 350px;
+  border-radius: 25px;
+}

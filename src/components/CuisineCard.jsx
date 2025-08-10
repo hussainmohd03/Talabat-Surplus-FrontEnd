@@ -1,7 +1,7 @@
 const CuisineCard = () => {
   return(
     <>
-
+      
     </>
   )
 }
