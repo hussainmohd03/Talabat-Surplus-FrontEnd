@@ -16,7 +16,7 @@ const LoginForm = () => {
     const userData = await SignInUser(loginValues)
     setFormValues(initialState)
     setUser(userData)
-    // navigate('/feed')
+    navigate('/')
   }
   return (
     <>

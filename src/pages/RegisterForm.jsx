@@ -1,11 +1,13 @@
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 const RegisterForm = ({ role }) => {
-
+ const navigate = useNavigate();
   
   const initialState = {
     firstName: '',
     lastName: '',
-    Email: '',
+    email: '',
     Password: ''
   }
 
@@ -22,23 +24,32 @@ const RegisterForm = ({ role }) => {
 
 
   const handleChange = (e) => {
-    setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
-    setResValues({...resValues, [e.target.name]: e.target.value})
-  }
-
-  const handleSubmit = async (e) => {
-    if(role === customerValues){
-    e.preventDefault()
-    await RegisterUser(customerValues)
-    setCustomerValues(initialState)
-    // navigate('/LoginForm')
-   } else {
-      e.preventDefault()
-    await RegisterUser(resValues)
-    setResValues(firstState)
-    // navigate('/LoginForm')
+    if (role === "customer") {
+      setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
+    } else {
+      setResValues({ ...resValues, [e.target.name]: e.target.value })
     }
   }
+
+
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = role === "customer" ? customerValues : resValues;
+
+      const res = await axios.post(`/api/register?role=${role}`, formData);
+
+      //saves token if backend returns one
+      if (res.data.token) {
+        localStorage.setItem("token", res.data.token);
+      }
+
+      //navigates to account
+      navigate("/account");
+    } catch (err) {
+      console.error("Registration failed:", err);
+    }
+  };
   return (
     <div className="Register-Container">
       
@@ -59,6 +70,7 @@ const RegisterForm = ({ role }) => {
           <button type="submit">Create Your Account</button>
         </form>
       ) : (
+        
         <form>
           <label htmlFor="resName">Restaurant Name</label>
           <input type="text" name="resName" placeholder="Restaurant Name" onChange={handleChange} value={resValues.resName} required/>
