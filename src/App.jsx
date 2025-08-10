@@ -1,3 +1,4 @@
+import Register from './pages/Register'
 import './App.css'
 import NavBar from './components/NavBar'
 import { Routes, Route } from 'react-router-dom'
@@ -10,6 +11,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/foods" element={<CuisineFoods />} />
+          <Route path='/auth/register' element={<Register />} />
         </Routes>
       </main>
       <NavBar />
