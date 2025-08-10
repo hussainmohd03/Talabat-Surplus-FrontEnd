@@ -13,9 +13,8 @@ const Register = () => {
           <button onClick={() => setRole('restaurant')}>Restaurant</button>
         </>
       ) : (
-        <RegisterForm role={role}/>
+        <RegisterForm role={role} />
       )}
-
     </div>
   )
 }
