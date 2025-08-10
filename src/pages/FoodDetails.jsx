@@ -1,10 +1,8 @@
 const FoodDetails = () => {
-return(
-  <>
+  return <>
+  
+
   </>
-)
-
-
 }
 
 export default FoodDetails
