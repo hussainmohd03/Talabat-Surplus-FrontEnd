@@ -61,15 +61,15 @@ const RegisterForm = ({ role }) => {
       ) : (
         <form>
           <label htmlFor="resName">Restaurant Name</label>
-          <input type="text" />
+          <input type="text" placeholder="Restaurant Name" onChange={handleChange} value={resValues.resName} required/>
           <label htmlFor="resPhone">Restaurant Telephone</label>
-          <input type="text" />
+          <input type="text" placeholder="Restaurant Telephone" onChange={handleChange} value={resValues.resPhone} required/>
           <label htmlFor="resAddress">Restaurant Address</label>
-          <input type="text" />
+          <input type="text" placeholder="Restaurant Address" onChange={handleChange} value={resValues.resAddress} required/>
           <label htmlFor="resEmail">Restaurant Email</label>
-          <input type="email" />
-          <label>CR</label>
-          <input type="number" />
+          <input type="email" placeholder="Restaurant Email" onChange={handleChange} value={resValues.resEmail} required/>
+          <label htmlFor="resCR">CR</label>
+          <input type="text" placeholder="CR" onChange={handleChange} value={resValues.resCR} required/>
           <br />
           <button type="submit">Continue</button>
 
