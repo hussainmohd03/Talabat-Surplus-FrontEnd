@@ -9,6 +9,7 @@ const LoginForm = () => {
 
   const handleChange = (e) => {
     setLoginValues({ ...loginValues, [e.target.name]: e.target.value })
+    console.log(loginValues)
   }
 
   const handleSubmit = async (e) => {
@@ -16,15 +17,15 @@ const LoginForm = () => {
     const userData = await SignInUser(loginValues)
     setFormValues(initialState)
     setUser(userData)
-    // navigate('/feed')
   }
   return (
     <>
       <h1>Login</h1>
-      <form onSubmit={handleChange}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
           type="email"
+          name="email"
           placeholder="email@gmail.com"
           onChange={handleChange}
           value={loginValues.email}
@@ -33,6 +34,7 @@ const LoginForm = () => {
         <label htmlFor="password">Password</label>
         <input
           type="password"
+          name="password"
           placeholder="password"
           onChange={handleChange}
           value={loginValues.password}

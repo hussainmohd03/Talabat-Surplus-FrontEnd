@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import BASE_URL from '../../globals'
+import { BASE_URL } from '../../globals'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
