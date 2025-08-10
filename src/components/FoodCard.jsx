@@ -14,6 +14,7 @@ const FoodCard = () => {
     const onMount = async () => {
       let food = await axios.get(`${BASE_URL}/foods/${id}`)
       setSelectedFood(food.data)
+      console.log(food)
     }
     onMount()
   }, [id])
@@ -25,21 +26,35 @@ const FoodCard = () => {
         payment_status: 'pending',
         order_status: 'pending'
       })
-      console.log(order)
+    }
+    if (
+      selectOrder &&
+      selectOrder.payment_status === 'pending' &&
+      selectOrder.order_status === 'pending'
+    ) {
+      console.log(selectOrder)
     }
   }
 
   return (
     <>
-      <div className="food-card">
-        <img width="200px" src={selectedFood?.image_url} alt="" />
-        <p>{selectedFood?.restaurant_id.rest_name}</p>
-        <h3>{selectedFood?.name}</h3>
-        <h4>{selectedFood?.description}</h4>
-
-        <button onClick={handleClick}>
-          <div>add item</div>
-          <div>BHD {selectedFood?.price}</div>
+      <div id="food-card">
+        <div id="food-picture">
+          <img id="food-picture" src={selectedFood?.image_url} alt="" />
+        </div>
+        <div id="food-text">
+          <p id="food-text-rest-name">
+            {selectedFood?.restaurant_id.rest_name}
+          </p>
+          <h3 id="food-test-food-name">{selectedFood?.name}</h3>
+          <h4 id="food-test-food-descr">{selectedFood?.description}</h4>
+        </div>
+        
+        <button id="button-cart" onClick={handleClick}>
+          <div id="add-to-cart">
+            <div>Add item </div>
+            <div>BHD {selectedFood?.price.toFixed(3)}</div>
+          </div>
         </button>
       </div>
     </>
