@@ -41,36 +41,38 @@ const RegisterForm = ({ role }) => {
   }
   return (
     <div className="Register-Container">
-      hello
+      
       <h1>Sign Up as A {role}</h1>
 
       {role === 'customer' ? (
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="firstName">First Name</label>
-          <input type="text" placeholder="First Name" onChange={handleChange} value={customerValues.firstName} required/>
+          <input type="text" name="firstName" placeholder="First Name" onChange={handleChange} value={customerValues.firstName} required/>
           <label htmlFor="lastName">Last Name</label>
-          <input type="text" placeholder="Last Name" onChange={handleChange} value={customerValues.lastName} required/>
+          <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} value={customerValues.lastName} required/>
           <label>Email</label>
-          <input type="email" placeholder="Email" onChange={handleChange} value={customerValues.Email} required/>
+          <input type="email" name="email" placeholder="Email" onChange={handleChange} value={customerValues.Email} required/>
           <label>Password</label>
-          <input type="password" placeholder="Password" onChange={handleChange} value={customerValues.Password} required/>
+          <input type="password" name="password" placeholder="Password" onChange={handleChange} value={customerValues.Password} required/>
           <br />
-          <button type="submit">Register</button>
+          <p>By creating an account you agree to the Privacy Policy and to the Terms of Use </p>
+          <button type="submit">Create Your Account</button>
         </form>
       ) : (
         <form>
           <label htmlFor="resName">Restaurant Name</label>
-          <input type="text" placeholder="Restaurant Name" onChange={handleChange} value={resValues.resName} required/>
+          <input type="text" name="restaurantName" placeholder="Restaurant Name" onChange={handleChange} value={resValues.resName} required/>
           <label htmlFor="resPhone">Restaurant Telephone</label>
-          <input type="text" placeholder="Restaurant Telephone" onChange={handleChange} value={resValues.resPhone} required/>
+          <input type="text"  name="restaurantTelephone" placeholder="Restaurant Telephone" onChange={handleChange} value={resValues.resPhone} required/>
           <label htmlFor="resAddress">Restaurant Address</label>
-          <input type="text" placeholder="Restaurant Address" onChange={handleChange} value={resValues.resAddress} required/>
+          <input type="text"  name="restaurantAddress" placeholder="Restaurant Address" onChange={handleChange} value={resValues.resAddress} required/>
           <label htmlFor="resEmail">Restaurant Email</label>
-          <input type="email" placeholder="Restaurant Email" onChange={handleChange} value={resValues.resEmail} required/>
+          <input type="email" name="restaurantEmail" placeholder="Restaurant Email" onChange={handleChange} value={resValues.resEmail} required/>
           <label htmlFor="resCR">CR</label>
-          <input type="text" placeholder="CR" onChange={handleChange} value={resValues.resCR} required/>
+          <input type="text" name="Cr" placeholder="CR" onChange={handleChange} value={resValues.resCR} required/>
           <br />
-          <button type="submit">Continue</button>
+          <p>By creating an account you agree to the Privacy Policy and to the Terms of Use </p>
+          <button type="submit">Create Your Account</button>
 
         </form>
       )}
