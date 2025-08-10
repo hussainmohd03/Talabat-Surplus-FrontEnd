@@ -1,8 +1,6 @@
 import { useState } from "react"
-import { useNavigate } from 'react-router-dom'
 const RegisterForm = ({ role }) => {
 
-    let navigate = useNavigate()
   
   const initialState = {
     firstName: '',
@@ -33,16 +31,17 @@ const RegisterForm = ({ role }) => {
     e.preventDefault()
     await RegisterUser(customerValues)
     setCustomerValues(initialState)
-    navigate('/LoginForm')
+    // navigate('/LoginForm')
    } else {
       e.preventDefault()
     await RegisterUser(resValues)
     setResValues(firstState)
-    navigate('/LoginForm')
+    // navigate('/LoginForm')
     }
-  
+  }
   return (
     <div className="Register-Container">
+      hello
       <h1>Sign Up as A {role}</h1>
 
       {role === 'customer' ? (
@@ -77,7 +76,7 @@ const RegisterForm = ({ role }) => {
       )}
     </div>
   )
-}
+
 }
 
 export default RegisterForm

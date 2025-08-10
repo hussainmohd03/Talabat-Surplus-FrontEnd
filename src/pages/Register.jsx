@@ -15,6 +15,7 @@ const Register = () => {
       ) : (
         <RegisterForm role={role}/>
       )}
+
     </div>
   )
 }
