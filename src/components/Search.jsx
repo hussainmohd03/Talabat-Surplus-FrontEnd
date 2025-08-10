@@ -1,9 +1,11 @@
 const Search = () => {
   return (
     <>
-      <form>
-        <input type="text" placeholder="Search..." />
-      </form>
+      <section id="home-header">
+        <form>
+          <input type="text" placeholder="Search..." />
+        </form>
+      </section>
     </>
   )
 }

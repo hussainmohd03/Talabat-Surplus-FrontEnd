@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 body {
   margin: 0;
   box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
 }
 
 nav {
   position: fixed;
   bottom: 0;
   z-index: 1000;
-  height: 70px;
+  height: 100px;
   display: flex;
+  align-items: center;
   width: 100%;
   justify-content: space-around;
   background-color: white;
@@ -19,7 +22,7 @@ nav {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  height: 150px;
+  height: 177px;
 }
 #home-header form {
   margin-bottom: 25px;
@@ -30,4 +33,36 @@ nav {
   padding: 15px;
   width: 350px;
   border-radius: 25px;
+}
+#cuisine-cards {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  justify-content: space-evenly;
+}
+#cuisine-card {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  background-color: #f4ede3;
+  border-radius: 15px;
+}
+#cust-name {
+  color: #fe5f1e;
+  margin-left: 20px;
+}
+main h1 {
+  font-size: 30px;
+  margin: 30px 0;
+}
+#cuisine-card img {
+  width: 80px;
+  margin-top: 15px;
+}
+#cuisine-card {
+  color: #262626;
+  font-size: 15px;
+}
+#cuisine-foods-link {
+  text-decoration: none;
 }
