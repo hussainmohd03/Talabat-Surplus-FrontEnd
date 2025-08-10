@@ -38,7 +38,7 @@ const LoginForm = () => {
           value={loginValues.password}
           required
         />
-        <button type="submit">Login to Your Account</button>
+        <button type="submit">Login</button>
         <br />
       </form>
     </>
