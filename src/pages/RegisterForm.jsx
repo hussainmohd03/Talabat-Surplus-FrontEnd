@@ -1,19 +1,18 @@
 import { useState } from 'react'
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const RegisterForm = ({ role }) => {
- const navigate = useNavigate();
-  
-const initialState = {
+  const navigate = useNavigate()
+
+  const custInitialState = {
     firstName: '',
     lastName: '',
     email: '',
-    Password: ''
+    password: ''
   }
 
-  const firstState = {
+  const resInitialState = {
     resName: '',
     resPhone: '',
     resAddress: '',
@@ -21,8 +20,8 @@ const initialState = {
     CR: ''
   }
 
-  const [customerValues, setCustomerValues] = useState(initialState)
-  const [resValues, setResValues] = useState(firstState)
+  const [customerValues, setCustomerValues] = useState(custInitialState)
+  const [resValues, setResValues] = useState(resInitialState)
 
   const handleChange = (e) => {
     setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
@@ -49,25 +48,24 @@ const initialState = {
   //   }
   // }
 
-
-const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
-      const formData = role === "customer" ? customerValues : resValues;
+      const formData = role === 'customer' ? customerValues : resValues
 
-      const res = await axios.post(`/api/register?role=${role}`, formData);
+      const res = await axios.post(`/api/register?role=${role}`, formData)
 
       //saves token if backend returns one
       if (res.data.token) {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem('token', res.data.token)
       }
 
       //navigates to account
-      navigate("/account");
+      navigate('/account')
     } catch (err) {
-      console.error("Registration failed:", err);
+      console.error('Registration failed:', err)
     }
-  };
+  }
   return (
     <div className="Register-Container">
       <h1>Sign Up as A {role}</h1>
@@ -118,7 +116,6 @@ const handleSubmit = async (e) => {
           <button type="submit">Create Your Account</button>
         </form>
       ) : (
-        
         <form>
           <label htmlFor="resName">Restaurant Name</label>
           <input
