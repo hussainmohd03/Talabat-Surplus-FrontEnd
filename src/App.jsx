@@ -1,10 +1,12 @@
+import Register from './pages/Register'
 import './App.css'
 
 const App = () => {
 
   return (
     <>
-      <h1>Hello</h1>
+      <Register />
+      
     </>
   )
 }
