@@ -12,13 +12,6 @@ const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems }) => {
     onMount()
   }, [])
   console.log(cartItems)
-  const handleClick = async () => {
-    // const itemDelete = await Client.put(`${BASE_URL}/orders/${selectOrder}`)
-  }
-
-  // const handleAdd = async ()=> {
-  //   const order = await Client.put(`${BASE_URL}/order`)
-  // }
   console.log(selectOrder)
   return (
     <>
@@ -29,14 +22,14 @@ const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems }) => {
             <div>
               <h2>{food.name}</h2>
 
-              <button onClick={handleClick}>remove</button>
+              <button >remove</button>
             </div>
           ))
         )}
 
-      {/* <Link to={'/'}> */}
-        <button onClick={handleAdd}>Add items </button>
-      {/* </Link> */}
+      <Link to={'/'}>
+        <button >Add items </button>
+      </Link>
       <button>Place order </button>
     </>
   )

@@ -21,7 +21,7 @@ const Register = ({ role, choice, setRole, setChoice }) => {
               className="auth-button"
               onClick={() => setChoice('register')}
             >
-              Don't have an account? Sign in
+              Don't have an account? Sign up
             </button>
 
             <button className="auth-button" onClick={() => setChoice('login')}>

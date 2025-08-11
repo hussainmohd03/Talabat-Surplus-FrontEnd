@@ -19,7 +19,7 @@ const RegisterForm = ({ role }) => {
     res_tel: '',
     rest_address: '',
     email: '',
-    CR: '', 
+    CR: '',
     password: ''
   }
 
@@ -30,25 +30,21 @@ const RegisterForm = ({ role }) => {
   const [customerValues, setCustomerValues] = useState(custInitialState)
   const [resValues, setResValues] = useState(resInitialState)
   const [credentials, setCredentials] = useState(credInitial)
-  const [message, setMessage] = useState(null)
-
   const [filled, setFilled] = useState(false)
-  
+
   const handleChange = (e) => {
+    if (
+      customerValues.password === credentials.confirm_password &&
+      customerValues.password.length !== 0
+    ) {
+      setFilled(true)
+    } 
     setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
     setResValues({ ...resValues, [e.target.name]: e.target.value })
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
-    // check if all fields are filled
-      // setMatched(true)
-    if (customerValues.password === credentials.confirm_password) {
-      setMessage(['Passwords Matched', 'valid'])
-    } else {
-      setMessage(['Passwords did not match.', 'invalid'])
-    }
-
     if (role === 'customer') {
       e.preventDefault()
       await RegisterUser(customerValues, role)
@@ -122,7 +118,7 @@ const RegisterForm = ({ role }) => {
             value={customerValues.address}
           />
           <br />
-          <p>{message}</p>
+          <p>Passwords must match.</p>
           <p>
             By creating an account you agree to the Privacy Policy and to the
             Terms of Use{' '}
