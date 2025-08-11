@@ -18,6 +18,7 @@ import Cart from './pages/Cart'
 const App = () => {
   const [role, setRole] = useState(null)
   const [choice, setChoice] = useState(null)
+  const [selectOrder, setSelectOrder] = useState(null)
 
   const navigate = useNavigate()
   const { setUser, user } = useContext(UserContext)
@@ -51,10 +52,23 @@ const App = () => {
             }
           />
           <Route path="/auth/login" element={<LoginForm role={role} />} />
-          <Route path="/foods/:id" element={<FoodCard />} />
+          <Route
+            path="/foods/:id"
+            element={
+              <FoodCard
+                selectOrder={selectOrder}
+                setSelectOrder={setSelectOrder}
+              />
+            }
+          />
           <Route path="/account" element={<Account />} />
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
-          <Route path="cart" element={<Cart />} />
+          <Route
+            path="cart"
+            element={
+              <Cart selectOrder={selectOrder} setSelectOrder={setSelectOrder} />
+            }
+          />
         </Routes>
       </main>
       <NavBar />
