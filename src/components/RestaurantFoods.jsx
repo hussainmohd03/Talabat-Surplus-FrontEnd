@@ -2,6 +2,7 @@ import FoodItem from './FoodItem'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../../globals'
+import { Link } from 'react-router-dom'
 import Client from '../../services/api'
 const RestaurantFood = () => {
   const [restFoods, setRestFoods] = useState(null)
@@ -18,6 +19,7 @@ const RestaurantFood = () => {
   return (
     <>
       <section id="food-list">
+        <button>New Food</button>
         {restFoods &&
           restFoods.map((restFood) => (
             <FoodItem food={restFood} key={restFood._id} />
