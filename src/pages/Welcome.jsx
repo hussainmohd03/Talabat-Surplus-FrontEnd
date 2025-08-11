@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import RegisterForm from './RegisterForm'
+import LoginForm from './LoginForm'
 
 const Register = () => {
   const [role, setRole] = useState(null)
@@ -18,7 +19,7 @@ const Register = () => {
           </button>
         </>
       ) : (
-        <RegisterForm role={role} />
+        <LoginForm role={role} />
       )}
     </div>
   )

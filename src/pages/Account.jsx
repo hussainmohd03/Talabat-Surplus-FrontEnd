@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import BASE_URL from '../../globals'
+import { BASE_URL } from '../../globals'
 
 const Account = () => {
   const [account, setAccount] = useState(null)
