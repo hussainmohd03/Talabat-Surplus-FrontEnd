@@ -9,7 +9,7 @@ const RegisterForm = ({ role }) => {
     firstName: '',
     lastName: '',
     email: '',
-    password: ''
+    assword: ''
   }
 
   const resInitialState = {
@@ -28,47 +28,23 @@ const RegisterForm = ({ role }) => {
     setResValues({ ...resValues, [e.target.name]: e.target.value })
   }
 
-  // const handleSubmit = async (e) => {
-  //   if (role === customerValues) {
-  //     e.preventDefault()
-  //     await RegisterUser(customerValues)
-  //     setCustomerValues(initialState)
-  //     // navigate('/LoginForm')
-  //   } else {
-  //     e.preventDefault()
-  //     await RegisterUser(resValues)
-  //     setResValues(firstState)
-  //     // navigate('/LoginForm')
-
-  //   if (role === "customer") {
-  //     setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
-  //   } else {
-  //     setResValues({ ...resValues, [e.target.name]: e.target.value })
-
-  //   }
-  // }
-
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const formData = role === 'customer' ? customerValues : resValues
-
-      const res = await axios.post(`/api/register?role=${role}`, formData)
-
-      //saves token if backend returns one
-      if (res.data.token) {
-        localStorage.setItem('token', res.data.token)
-      }
-
-      //navigates to account
-      navigate('/account')
-    } catch (err) {
-      console.error('Registration failed:', err)
+    if (role === 'customer') {
+      e.preventDefault()
+      await RegisterUser(customerValues)
+      setCustomerValues(custInitialState)
+      navigate('/auth/login')
+    } else {
+      e.preventDefault()
+      await RegisterUser(resValues)
+      setResValues(resInitialState)
+      navigate('/auth/login')
     }
   }
+
   return (
     <div className="Register-Container">
-      <h1>Sign Up as A {role}</h1>
+      <h1>Create a {role} account</h1>
 
       {role === 'customer' ? (
         <form onSubmit={handleSubmit}>

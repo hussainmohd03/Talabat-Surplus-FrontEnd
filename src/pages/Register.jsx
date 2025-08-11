@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import RegisterForm from './RegisterForm'
 
@@ -9,9 +8,14 @@ const Register = () => {
     <div>
       {!role ? (
         <>
-          <h1>Sign Up As A:</h1>
-          <button onClick={() => setRole('customer')}>Customer</button>
-          <button onClick={() => setRole('restaurant')}>Restaurant</button>
+          <h1>Hey there!</h1>
+          <p>Log in or sign up for a more personalized ordering experience </p>
+          <button onClick={() => setRole('restaurant')}>
+            Continue as a restaurant
+          </button>
+          <button onClick={() => setRole('customer')}>
+            Continue as a customer
+          </button>
         </>
       ) : (
         <RegisterForm role={role} />

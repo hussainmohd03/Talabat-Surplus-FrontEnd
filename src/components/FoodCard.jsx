@@ -26,6 +26,7 @@ const FoodCard = () => {
         payment_status: 'pending',
         order_status: 'pending'
       })
+      console.log(order)
     }
     if (
       selectOrder &&
