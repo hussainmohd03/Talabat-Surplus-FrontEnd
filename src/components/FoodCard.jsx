@@ -10,6 +10,7 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
   const [selectedFood, setSelectedFood] = useState(null)
 
   console.log(selectOrder, 'this is it in food')
+  
   useEffect(() => {
     const onMount = async () => {
       let food = await Client.get(`${BASE_URL}/foods/${id}`)
@@ -18,6 +19,8 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
     }
     onMount()
   }, [id])
+
+  
 
   const handleClick = async () => {
     if (!selectOrder) {

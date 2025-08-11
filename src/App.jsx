@@ -46,10 +46,15 @@ const App = () => {
       console.log(userOrder)
     }
     order()
-  },[])
+  }, [])
   userOrder && console.log(userOrder)
   const [selectOrder, setSelectOrder] = useState(userOrder ? userOrder : null)
   console.log(selectOrder)
+
+  const handleLogOut = () => {
+    setUser(null)
+    localStorage.clear()
+  }
   return (
     <>
       <main>
@@ -77,7 +82,7 @@ const App = () => {
               />
             }
           />
-          <Route path="/account" element={<Account />} />
+          <Route path="/account" element={<Account handleLogOut={handleLogOut}/>}/>
 
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
           <Route

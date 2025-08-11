@@ -38,7 +38,7 @@ const RegisterForm = ({ role }) => {
       customerValues.password.length !== 0
     ) {
       setFilled(true)
-    } 
+    }
     setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
     setResValues({ ...resValues, [e.target.name]: e.target.value })
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
@@ -172,6 +172,24 @@ const RegisterForm = ({ role }) => {
             placeholder="CR"
             onChange={handleChange}
             value={resValues.CR}
+            required
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={handleChange}
+            value={customerValues.password}
+            required
+          />
+          <label htmlFor="confirm_password">Confirm Password</label>
+          <input
+            type="password"
+            name="confirm_password"
+            placeholder="Password"
+            onChange={handleChange}
+            value={credentials.confirm_password}
             required
           />
           <br />
