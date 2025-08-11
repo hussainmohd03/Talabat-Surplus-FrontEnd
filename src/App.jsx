@@ -18,7 +18,6 @@ import Cart from './pages/Cart'
 const App = () => {
   const [role, setRole] = useState(null)
   const [choice, setChoice] = useState(null)
-
   const navigate = useNavigate()
   const location = useLocation()
   const { setUser } = useContext(UserContext)

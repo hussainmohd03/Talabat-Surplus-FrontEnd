@@ -22,18 +22,32 @@ const RegisterForm = ({ role }) => {
     CR: ''
   }
 
-  const [credentials, setCredentials]=useState('')
+  const credInitial = {
+    confirm_password: ''
+  }
+
   const [customerValues, setCustomerValues] = useState(custInitialState)
   const [resValues, setResValues] = useState(resInitialState)
+  const [credentials, setCredentials] = useState(credInitial)
+  const [message, setMessage] = useState(null)
 
+  const [filled, setFilled] = useState(false)
+  
   const handleChange = (e) => {
     setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
     setResValues({ ...resValues, [e.target.name]: e.target.value })
-
+    setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
 
-
   const handleSubmit = async (e) => {
+    // check if all fields are filled
+      // setMatched(true)
+    if (customerValues.password === credentials.confirm_password) {
+      setMessage(['Passwords Matched', 'valid'])
+    } else {
+      setMessage(['Passwords did not match.', 'invalid'])
+    }
+
     if (role === 'customer') {
       e.preventDefault()
       await RegisterUser(customerValues, role)
@@ -89,15 +103,15 @@ const RegisterForm = ({ role }) => {
             value={customerValues.password}
             required
           />
-          {/* <label htmlFor="password">Confirm Password</label>
+          <label htmlFor="confirm_password">Confirm Password</label>
           <input
             type="password"
             name="confirm_password"
             placeholder="Password"
             onChange={handleChange}
-            value={creds.confirm_password}
+            value={credentials.confirm_password}
             required
-          /> */}
+          />
           <label htmlFor="address">Address</label>
           <input
             type="text"
@@ -107,11 +121,14 @@ const RegisterForm = ({ role }) => {
             value={customerValues.address}
           />
           <br />
+          <p>{message}</p>
           <p>
             By creating an account you agree to the Privacy Policy and to the
             Terms of Use{' '}
           </p>
-          <button type="submit">Create Your Account</button>
+          <button disabled={!filled} type="submit">
+            Create Your Account
+          </button>
         </form>
       ) : (
         <form>
@@ -165,7 +182,10 @@ const RegisterForm = ({ role }) => {
             By creating an account you agree to the Privacy Policy and to the
             Terms of Use{' '}
           </p>
-          <button type="submit">Create Your Account</button>
+
+          <button disabled={!filled} type="submit">
+            Create Your Account
+          </button>
         </form>
       )}
     </div>
