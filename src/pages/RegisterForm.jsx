@@ -2,6 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../../services/Auth'
+import "../../public/styleSheets/RegisterStyle.css"
 
 const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
@@ -52,6 +53,7 @@ const RegisterForm = ({ role }) => {
       <h1>Create a {role} account</h1>
 
       {role === 'customer' ? (
+        <div className='Customer-Register'>
         <form onSubmit={handleSubmit}>
           <label htmlFor="first_name">First Name</label>
           <input
@@ -108,13 +110,18 @@ const RegisterForm = ({ role }) => {
           />
           <br />
           <p>
-            By creating an account you agree to the Privacy Policy and to the
-            Terms of Use{' '}
+             By creating an account you agree to the 
+  <a href="#" className="privacy"> Privacy Policy </a> 
+  and to the 
+  <a href="#" className="terms"> terms of use</a>
           </p>
           <button type="submit">Create Your Account</button>
+          
         </form>
+        </div>
       ) : (
-        <form>
+        <div>
+        <form className='Res-Register'>
           <label htmlFor="resName">Restaurant Name</label>
           <input
             type="text"
@@ -162,11 +169,15 @@ const RegisterForm = ({ role }) => {
           />
           <br />
           <p>
-            By creating an account you agree to the Privacy Policy and to the
-            Terms of Use{' '}
+             By creating an account you agree to the 
+  <a href="#" className="privacy"> Privacy Policy </a> 
+  and to the 
+  <a href="#" className="terms"> terms of use</a>
           </p>
           <button type="submit">Create Your Account</button>
+          
         </form>
+        </div>
       )}
     </div>
   )

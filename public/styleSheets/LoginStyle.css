@@ -1,4 +1,4 @@
-.Register-Container {
+.login-container {
   background: #fff;
   font-family: Arial, sans-serif;
   min-height: 100vh;
@@ -8,26 +8,14 @@
   padding-top: 4rem; 
 }
 
-.Register-Container h1 {
+.login-container h1 {
   font-size: 1.25rem;
   font-weight: 540;
   margin-bottom: 2rem;
   color: #000;
 }
 
-
-.Customer-Register label[for],
-.Res-Register label[for] {
-  position: relative;
-}
-
-.Customer-Register label[for]::after,
-.Res-Register label[for]::after {
-  content: " *";
-  color: red;
-}
-
-form {
+.login-container form {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.5rem 0.75rem;
@@ -35,15 +23,27 @@ form {
   max-width: 400px; 
 }
 
-form label {
-  margin-bottom: 0.2rem; 
+
+.login-container label[for] {
+  position: relative;
 }
 
-form input {
-  margin-bottom: 1rem; 
+.login-container label[for]::after {
+  content: " *";
+  color: red;
 }
 
-label {
+
+.login-container form label {
+  margin-bottom: 0.2rem;
+}
+
+.login-container form input {
+  margin-bottom: 1rem;
+}
+
+
+.login-container label {
   display: flex;
   align-items: center;
   font-size: 0.9rem;
@@ -51,36 +51,16 @@ label {
   color: #000;
 }
 
-label .required {
-  color: red;
-  margin-left: 3px;
-}
 
-input {
+.login-container input {
   padding: 0.4rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9rem;
 }
 
-p {
-  grid-column: 1 / -1;
-  font-size: 0.75rem;
-  text-align: center;
-  margin: 0.75rem 0;
-}
 
-p .privacy {
-  color: green;
-  text-decoration: none;
-}
-
-p .terms {
-  color: orangered;
-  text-decoration: none;
-}
-
-button {
+.login-container button {
   grid-column: 1 / -1;
   padding: 0.5rem;
   font-size: 0.85rem;
@@ -91,6 +71,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.login-container button:hover {
   background-color: #e85c00;
 }
