@@ -12,11 +12,15 @@ const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems }) => {
     onMount()
   }, [])
 
-  console.log(cartItems[0].food_id[0].name)
+  // console.log(cartItems[0].food_id[0].name)
   return (
     <>
       <h3>Cart</h3>
-      {cartItems && cartItems.map((item) => <h2>{item.food_id.name}</h2>)}
+      {/* {cartItems && cartItems.map((item) => <h2>{item.food_id.name}</h2>)} */}
+
+            {cartItems && cartItems.map((item) => {item.food_id.map(food => (
+<h2>{food.name}</h2>
+      ))})}
 
       <Link to={'/'}>
         <button>Add items </button>
