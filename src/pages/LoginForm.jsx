@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 
 const LoginForm = ({ role }) => {
   const initialState = { email: '', password: '' }
-
   const [loginValues, setLoginValues] = useState(initialState)
   const { setUser } = useContext(UserContext)
   const navigate = useNavigate()
@@ -43,7 +42,6 @@ const LoginForm = ({ role }) => {
         />
         <button type="submit">Log in</button>
         <br />
-        <Link to={'/auth/register'}>Create an account</Link>
       </form>
     </>
   )

@@ -12,8 +12,12 @@ import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Account from './pages/Account'
 import RegisterForm from './pages/RegisterForm'
+import { useState } from 'react'
 
 const App = () => {
+  const [role, setRole] = useState(null)
+  const [choice, setChoice] = useState(null)
+
   const navigate = useNavigate()
   const { setUser, user } = useContext(UserContext)
   const checkToken = async () => {
@@ -34,11 +38,21 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/foods" element={<CuisineFoods />} />
-          <Route path="/welcome" element={<Register />} />
-          <Route path="/auth/login" element={<LoginForm />} />
+          <Route
+            path="/welcome"
+            element={
+              <Register
+                choice={choice}
+                setChoice={setChoice}
+                role={role}
+                setRole={setRole}
+              />
+            }
+          />
+          <Route path="/auth/login" element={<LoginForm  role={role}/>} />
           <Route path="/foods/:id" element={<FoodCard />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/auth/register" element={<RegisterForm />} />
+          <Route path="/auth/register" element={<RegisterForm role={role} />} />
         </Routes>
       </main>
       <NavBar />

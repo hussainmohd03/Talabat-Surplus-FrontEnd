@@ -7,10 +7,11 @@ const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
 
   const custInitialState = {
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
-    assword: ''
+    password: '',
+    address: ''
   }
 
   const resInitialState = {
@@ -32,12 +33,12 @@ const RegisterForm = ({ role }) => {
   const handleSubmit = async (e) => {
     if (role === 'customer') {
       e.preventDefault()
-      await RegisterUser(customerValues)
+      await RegisterUser(customerValues, role)
       setCustomerValues(custInitialState)
       navigate('/auth/login')
     } else {
       e.preventDefault()
-      await RegisterUser(resValues)
+      await RegisterUser(resValues, role)
       setResValues(resInitialState)
       navigate('/auth/login')
     }
@@ -49,41 +50,49 @@ const RegisterForm = ({ role }) => {
 
       {role === 'customer' ? (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="first_name">First Name</label>
           <input
             type="text"
-            name="firstName"
+            name="first_name"
             placeholder="First Name"
             onChange={handleChange}
-            value={customerValues.firstName}
+            value={customerValues.first_name}
             required
           />
-          <label htmlFor="lastName">Last Name</label>
+          <label htmlFor="last_name">Last Name</label>
           <input
             type="text"
-            name="lastName"
+            name="last_name"
             placeholder="Last Name"
             onChange={handleChange}
-            value={customerValues.lastName}
+            value={customerValues.last_name}
             required
           />
-          <label htmlFor="eMail">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             name="email"
             placeholder="Email"
             onChange={handleChange}
-            value={customerValues.eMail}
+            value={customerValues.email}
             required
           />
-          <label htmlFor="passWord">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
             placeholder="Password"
             onChange={handleChange}
-            value={customerValues.passWord}
+            value={customerValues.password}
             required
+          />
+          <label htmlFor="address">Address</label>
+          <input
+            type="text"
+            name="address"
+            placeholder="street 123"
+            onChange={handleChange}
+            value={customerValues.address}
           />
           <br />
           <p>
