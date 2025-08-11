@@ -1,9 +1,10 @@
 import { useState, useContext } from 'react'
-import { SignInUser } from '../../services/Auth'
+import { RegisterUser, SignInUser } from '../../services/Auth'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
+import { Link } from 'react-router-dom'
 
-const LoginForm = () => {
+const LoginForm = ({ role }) => {
   const initialState = { email: '', password: '' }
   const [loginValues, setLoginValues] = useState(initialState)
   const { setUser } = useContext(UserContext)
@@ -15,7 +16,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const userData = await SignInUser(loginValues)
+    const userData = await SignInUser(loginValues, role)
     setLoginValues(initialState)
     setUser(userData)
     navigate('/')
@@ -23,7 +24,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <h1>Login</h1>
+      <h1>Log in</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
@@ -31,7 +32,6 @@ const LoginForm = () => {
           name="email"
           placeholder="email@gmail.com"
           onChange={handleChange}
-          required
         />
         <label htmlFor="password">Password</label>
         <input
@@ -39,9 +39,8 @@ const LoginForm = () => {
           name="password"
           placeholder="password"
           onChange={handleChange}
-          required
         />
-        <button type="submit">Login</button>
+        <button type="submit">Log in</button>
         <br />
       </form>
     </>
