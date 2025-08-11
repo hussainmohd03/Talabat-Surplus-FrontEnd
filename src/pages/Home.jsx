@@ -1,9 +1,9 @@
 import Search from '../components/Search'
-import CuisineCard from '../components/CuisineCard'
-import { cuisines } from '../../globals'
-import { useContext } from 'react'
 
+import { useContext } from 'react'
+import CustomerCuisines from '../components/CustomerCuisines'
 import { UserContext } from '../context/UserContext'
+import RestaurantFood from '../components/RestaurantFoods'
 const Home = () => {
   const { user } = useContext(UserContext)
   return (
@@ -11,15 +11,8 @@ const Home = () => {
       <main>
         <Search />
 
-        {/* conditionally render different components for cust and rest */}
-        <h1>
-          <span id="cust-name">{user.name}</span>, ready to order?
-        </h1>
-        <section id="cuisine-cards">
-          {cuisines.map((cuisine) => (
-            <CuisineCard cuisine={cuisine} key={cuisine.id} />
-          ))}
-        </section>
+        {(user && user.role === 'customer' && <CustomerCuisines />) ||
+          (user && user.role === 'restaurant' && <RestaurantFood />)}
       </main>
     </>
   )
