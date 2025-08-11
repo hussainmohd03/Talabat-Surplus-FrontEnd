@@ -21,7 +21,7 @@ const App = () => {
   const [selectOrder, setSelectOrder] = useState(null)
 
   const navigate = useNavigate()
-  const { setUser, user } = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
@@ -31,7 +31,7 @@ const App = () => {
     if (token) {
       checkToken()
     } else {
-      // navigate('/auth/register')
+      navigate('/welcome')
     }
   }, [])
   return (
@@ -71,6 +71,7 @@ const App = () => {
           />
         </Routes>
       </main>
+
       <NavBar />
     </>
   )
