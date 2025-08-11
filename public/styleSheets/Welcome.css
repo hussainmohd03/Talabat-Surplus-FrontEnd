@@ -1,4 +1,67 @@
-.welcome-container{
-background-color: #f9f6f0;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+.welcome-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
+.top-section {
+  background-color: #f9f6f0;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-section img {
+  max-width: 200px;
+  height: auto;
+}
+
+.bottom-section {
+  background-color: white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.bottom-section h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.bottom-section p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.auth-button,
+.role-button {
+  width: 100%;
+  max-width: 300px;
+  background-color: white;
+  color: #000000;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+    font-family: 'DM Sans', sans-serif;
+
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); */
+}
+
+.auth-button:hover,
+.role-button:hover {
+  background-color: #F200A0;
+  color:white;
 }

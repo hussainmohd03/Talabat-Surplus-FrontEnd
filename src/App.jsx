@@ -55,8 +55,10 @@ const App = () => {
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
         </Routes>
       </main>
-
+{
+  
       <NavBar />
+}     
     </>
   )
 }
