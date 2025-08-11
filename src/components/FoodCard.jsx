@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom'
 import { BASE_URL } from '../../globals'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import Client from '../../services/api'
 
 const FoodCard = () => {
+  const navigate = useNavigate()
   let { id } = useParams()
 
   const [selectedFood, setSelectedFood] = useState(null)
@@ -12,7 +13,7 @@ const FoodCard = () => {
 
   useEffect(() => {
     const onMount = async () => {
-      let food = await axios.get(`${BASE_URL}/foods/${id}`)
+      let food = await Client.get(`${BASE_URL}/foods/${id}`)
       setSelectedFood(food.data)
       console.log(food)
     }
@@ -21,12 +22,13 @@ const FoodCard = () => {
 
   const handleClick = async () => {
     if (!selectOrder) {
-      const order = await axios.post(`${BASE_URL}/orders`, {
-        selectedFood,
+      const order = await Client.post(`${BASE_URL}/orders`, {
+        food_id: selectedFood._id,
         payment_status: 'pending',
-        order_status: 'pending'
+        order_status: 'pending',
+        total_price: selectedFood.price
       })
-      console.log(order)
+      navigate('/cart')
     }
     if (
       selectOrder &&
@@ -50,7 +52,7 @@ const FoodCard = () => {
           <h3 id="food-test-food-name">{selectedFood?.name}</h3>
           <h4 id="food-test-food-descr">{selectedFood?.description}</h4>
         </div>
-        
+
         <button id="button-cart" onClick={handleClick}>
           <div id="add-to-cart">
             <div>Add item </div>

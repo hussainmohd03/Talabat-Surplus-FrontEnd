@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom'
 import Account from './pages/Account'
 import RegisterForm from './pages/RegisterForm'
 import { useState } from 'react'
+import Cart from './pages/Cart'
 
 const App = () => {
   const [role, setRole] = useState(null)
@@ -49,10 +50,11 @@ const App = () => {
               />
             }
           />
-          <Route path="/auth/login" element={<LoginForm  role={role}/>} />
+          <Route path="/auth/login" element={<LoginForm role={role} />} />
           <Route path="/foods/:id" element={<FoodCard />} />
           <Route path="/account" element={<Account />} />
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
+          <Route path="cart" element={<Cart />} />
         </Routes>
       </main>
       <NavBar />
