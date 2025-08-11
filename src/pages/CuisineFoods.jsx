@@ -1,6 +1,6 @@
 import Search from '../components/Search'
 import { useSearchParams } from 'react-router-dom'
-import FoodCard from '../components/FoodCard'
+import FoodItem from '../components/FoodItem'
 import { useEffect, useState } from 'react'
 
 const CuisineFoods = () => {
@@ -9,7 +9,9 @@ const CuisineFoods = () => {
   const [cuisineFoods, setCuisineFoods] = useState(null)
 
   useEffect(() => {
-
+    const getCuisineFood = async () => {
+      
+    }
   }, [cuisine])
 
   return (

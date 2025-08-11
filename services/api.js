@@ -1,6 +1,5 @@
 import Axios from 'axios'
-import BASE_URL from '../globals'
-export const BASE_URL = BASE_URL
+import { BASE_URL } from '../globals'
 
 const Client = Axios.create({ baseURL: BASE_URL })
 
