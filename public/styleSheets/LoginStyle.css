@@ -74,3 +74,20 @@
 .login-container button:hover {
   background-color: #e85c00;
 }
+
+p {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  text-align: center;
+  margin: 0.75rem 0;
+}
+
+p .privacy {
+  color: green;
+  text-decoration: none;
+}
+
+p .terms {
+  color: orangered;
+  text-decoration: none;
+}
