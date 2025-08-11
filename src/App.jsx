@@ -34,6 +34,29 @@ const App = () => {
       navigate('/welcome')
     }
   }, [])
+
+  const initialCreds = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    address: ''
+  }
+
+  const firstCreds = {
+    resName: '',
+    resPhone: '',
+    resAddress: '',
+    resEmail: '',
+    CR: ''
+  }
+
+  const [creds, setCreds] = useState(initialCreds)
+
+  const handleChange = (e) => {
+    setCreds({ ...creds, [e.target.id]: e.target.value })
+  }
+
   return (
     <>
       <main>
@@ -54,12 +77,18 @@ const App = () => {
           <Route path="/auth/login" element={<LoginForm role={role} />} />
           <Route path="/foods/:id" element={<FoodCard />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/auth/register" element={<RegisterForm role={role} />} />
+          <Route
+            path="/auth/register"
+            element={
+              <RegisterForm
+                role={role}
+              />
+            }
+          />
           <Route path="cart" element={<Cart />} />
         </Routes>
       </main>
       {location.pathname !== '/welcome' && <NavBar />}
-
     </>
   )
 }

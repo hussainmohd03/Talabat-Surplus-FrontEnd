@@ -25,6 +25,7 @@ const LoginForm = ({ role }) => {
 
   return (
     <>
+    <div className='login-container'>
       <h1>Log in</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
@@ -44,6 +45,7 @@ const LoginForm = ({ role }) => {
         <button type="submit">Log in</button>
         <br />
       </form>
+      </div>
     </>
   )
 }

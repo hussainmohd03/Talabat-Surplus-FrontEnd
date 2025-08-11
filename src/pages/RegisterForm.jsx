@@ -22,13 +22,16 @@ const RegisterForm = ({ role }) => {
     CR: ''
   }
 
+  const [credentials, setCredentials]=useState('')
   const [customerValues, setCustomerValues] = useState(custInitialState)
   const [resValues, setResValues] = useState(resInitialState)
 
   const handleChange = (e) => {
     setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
     setResValues({ ...resValues, [e.target.name]: e.target.value })
+
   }
+
 
   const handleSubmit = async (e) => {
     if (role === 'customer') {
@@ -86,6 +89,15 @@ const RegisterForm = ({ role }) => {
             value={customerValues.password}
             required
           />
+          {/* <label htmlFor="password">Confirm Password</label>
+          <input
+            type="password"
+            name="confirm_password"
+            placeholder="Password"
+            onChange={handleChange}
+            value={creds.confirm_password}
+            required
+          /> */}
           <label htmlFor="address">Address</label>
           <input
             type="text"
