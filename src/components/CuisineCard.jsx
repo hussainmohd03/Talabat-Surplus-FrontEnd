@@ -1,5 +1,6 @@
-import img from '../../public/image-removebg-preview.png'
+import img from '../../public/image 13.png'
 import { Link } from 'react-router-dom'
+import img2 from '../../public/pizza.png'
 
 const CuisineCard = ({ cuisine }) => {
   return (

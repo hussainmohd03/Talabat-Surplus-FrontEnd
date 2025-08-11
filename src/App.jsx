@@ -19,6 +19,7 @@ const App = () => {
   const [role, setRole] = useState(null)
   const [choice, setChoice] = useState(null)
   const [selectOrder, setSelectOrder] = useState(null)
+  const [cartItems, setCartItems] = useState([])
 
   const navigate = useNavigate()
   const { setUser } = useContext(UserContext)
@@ -66,7 +67,12 @@ const App = () => {
           <Route
             path="cart"
             element={
-              <Cart selectOrder={selectOrder} setSelectOrder={setSelectOrder} />
+              <Cart
+                selectOrder={selectOrder}
+                setSelectOrder={setSelectOrder}
+                cartItems={cartItems}
+                setCartItems={setCartItems}
+              />
             }
           />
         </Routes>
