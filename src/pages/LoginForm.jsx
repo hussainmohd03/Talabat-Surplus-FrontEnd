@@ -31,7 +31,6 @@ const LoginForm = () => {
           name="email"
           placeholder="email@gmail.com"
           onChange={handleChange}
-          value={loginValues.email}
           required
         />
         <label htmlFor="password">Password</label>
@@ -40,7 +39,6 @@ const LoginForm = () => {
           name="password"
           placeholder="password"
           onChange={handleChange}
-          value={loginValues.password}
           required
         />
         <button type="submit">Login</button>

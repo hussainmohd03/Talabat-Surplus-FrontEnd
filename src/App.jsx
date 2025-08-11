@@ -10,6 +10,10 @@ import { CheckSession } from '../services/Auth'
 import { UserContext } from './context/UserContext'
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+import Account from './pages/Account'
+import LoginForm from './pages/LoginForm'
+
 const App = () => {
   const navigate = useNavigate()
   const { setUser, user } = useContext(UserContext)
@@ -34,6 +38,7 @@ const App = () => {
           <Route path="/auth/register" element={<Register />} />
           <Route path="/auth/login" element={<LoginForm />} />
           <Route path="/foods/:id" element={<FoodCard />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </main>
       <NavBar />

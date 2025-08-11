@@ -71,3 +71,64 @@ main h1 {
 #cuisine-foods-link {
   text-decoration: none;
 }
+
+#food-card {
+  margin: 30px;
+  margin-top: 60px;
+  background: #d9d9d9;
+  height: 700px;
+  border-radius: 25px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#food-picture {
+  max-width: 320px;
+  height: 320px;
+  margin-top: 15px;
+  border-radius: 13px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  padding-left: 3px;
+}
+
+#food-text {
+  padding-left: 5px;
+}
+
+#button-cart {
+  background-color: #fe5f1e;
+  border: none;
+  position: absolute;
+  width: 214px;
+  height: 53px;
+  left: calc(50% - 214px / 2);
+  top: 612px;
+  background: #f55905;
+  border-radius: 26.5px;
+  margin-top: 30px;
+}
+
+#add-to-cart {
+  font-family: 'DM Sans';
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  color: #f4ede3;
+  font-weight: 600;
+}
+
+#food-test-food-descr {
+  margin-top: 5px;
+  font-weight: 400;
+}
+
+
+#food-test-food-name {
+  margin: 0px
+}

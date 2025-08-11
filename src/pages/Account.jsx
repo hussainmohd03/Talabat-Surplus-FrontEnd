@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import BASE_URL from '../../globals'
 
 const Account = () => {
   const [account, setAccount] = useState(null)
@@ -9,7 +10,7 @@ const Account = () => {
     const getAccount = async () => {
       try {
         const token = localStorage.getItem('token') //storing
-        const res = await axios.get('http://localhost:3010/auth/profile', {
+        const res = await axios.get(`${BASE_URL}/auth/profile`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
