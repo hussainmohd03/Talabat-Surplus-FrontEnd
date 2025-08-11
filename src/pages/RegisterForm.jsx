@@ -1,13 +1,20 @@
 import { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { RegisterUser } from '../../services/Auth'
+
 const RegisterForm = ({ role }) => {
-  const initialState = {
-    firstName: '',
-    lastName: '',
-    Email: '',
-    Password: ''
+  const navigate = useNavigate()
+
+  const custInitialState = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    address: ''
   }
 
-  const firstState = {
+  const resInitialState = {
     resName: '',
     resPhone: '',
     resAddress: '',
@@ -15,8 +22,8 @@ const RegisterForm = ({ role }) => {
     CR: ''
   }
 
-  const [customerValues, setCustomerValues] = useState(initialState)
-  const [resValues, setResValues] = useState(firstState)
+  const [customerValues, setCustomerValues] = useState(custInitialState)
+  const [resValues, setResValues] = useState(resInitialState)
 
   const handleChange = (e) => {
     setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
@@ -24,59 +31,68 @@ const RegisterForm = ({ role }) => {
   }
 
   const handleSubmit = async (e) => {
-    if (role === customerValues) {
+    if (role === 'customer') {
       e.preventDefault()
-      await RegisterUser(customerValues)
-      setCustomerValues(initialState)
-      // navigate('/LoginForm')
+      await RegisterUser(customerValues, role)
+      setCustomerValues(custInitialState)
+      navigate('/auth/login')
     } else {
       e.preventDefault()
-      await RegisterUser(resValues)
-      setResValues(firstState)
-      // navigate('/LoginForm')
+      await RegisterUser(resValues, role)
+      setResValues(resInitialState)
+      navigate('/auth/login')
     }
   }
+
   return (
     <div className="Register-Container">
-      <h1>Sign Up as A {role}</h1>
+      <h1>Create a {role} account</h1>
 
       {role === 'customer' ? (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="first_name">First Name</label>
           <input
             type="text"
-            name="firstName"
+            name="first_name"
             placeholder="First Name"
             onChange={handleChange}
-            value={customerValues.firstName}
+            value={customerValues.first_name}
             required
           />
-          <label htmlFor="lastName">Last Name</label>
+          <label htmlFor="last_name">Last Name</label>
           <input
             type="text"
-            name="lastName"
+            name="last_name"
             placeholder="Last Name"
             onChange={handleChange}
-            value={customerValues.lastName}
+            value={customerValues.last_name}
             required
           />
-          <label htmlFor="eMail">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             name="email"
             placeholder="Email"
             onChange={handleChange}
-            value={customerValues.eMail}
+            value={customerValues.email}
             required
           />
-          <label htmlFor="passWord">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
             placeholder="Password"
             onChange={handleChange}
-            value={customerValues.passWord}
+            value={customerValues.password}
             required
+          />
+          <label htmlFor="address">Address</label>
+          <input
+            type="text"
+            name="address"
+            placeholder="street 123"
+            onChange={handleChange}
+            value={customerValues.address}
           />
           <br />
           <p>
