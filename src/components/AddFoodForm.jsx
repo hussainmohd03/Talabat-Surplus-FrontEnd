@@ -8,8 +8,6 @@ const AddFoodForm = ({ cuisine, setCuisineFoods, cuisineFoods }) => {
     image_url: '',
     cuisine: cuisine || ''
   })
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -17,13 +15,9 @@ const AddFoodForm = ({ cuisine, setCuisineFoods, cuisineFoods }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setLoading(true)
-    setError('')
     try {
       const token = localStorage.getItem('token')
-      const res = await Client.post('/foods', form, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      const res = await Client.post('/foods', form)
       setCuisineFoods([res.data, ...cuisineFoods])
       setForm({ name: '', price: '', image_url: '', cuisine: cuisine || '' })
     } catch (err) {
@@ -60,10 +54,7 @@ const AddFoodForm = ({ cuisine, setCuisineFoods, cuisineFoods }) => {
         onChange={handleChange}
         required
       />
-      <button type="submit" disabled={loading}>
-        {loading ? 'Adding...' : 'Add Food'}
-      </button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <button type="submit">Add Food</button>
     </form>
   )
 }

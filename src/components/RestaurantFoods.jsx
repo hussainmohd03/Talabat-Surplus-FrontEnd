@@ -18,15 +18,26 @@ const RestaurantFood = () => {
   return (
     <>
       <section id="food-list">
-        <button onClick={() => setShowAddForm((prev) => !prev)}>
+        <button
+          onClick={() => setShowAddForm((prev) => !prev)}
+          className="add-food-btn"
+        >
           {showAddForm ? 'Close' : 'New Food'}
         </button>
         {showAddForm && (
-          <AddFoodForm setCuisineFoods={setRestFoods} cuisineFoods={restFoods || []} />
+          <AddFoodForm
+            setCuisineFoods={setRestFoods}
+            cuisineFoods={restFoods || []}
+          />
         )}
         {restFoods &&
           restFoods.map((restFood) => (
-            <FoodItem food={restFood} key={restFood._id} setCuisineFoods={setRestFoods} cuisineFoods={restFoods} />
+            <FoodItem
+              food={restFood}
+              key={restFood._id}
+              setCuisineFoods={setRestFoods}
+              cuisineFoods={restFoods}
+            />
           ))}
       </section>
     </>

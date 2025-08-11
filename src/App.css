@@ -187,3 +187,13 @@ main h1 {
   min-width: 320px;
   max-width: 90v;
 }
+.add-food-btn {
+  all: unset;
+  width: 342px;
+  height: 53px;
+  border-radius: 26.5px;
+  color: white;
+  text-align: center;
+  margin: 25px 45px;
+  background-color: #f55905;
+}
