@@ -20,7 +20,7 @@ const App = () => {
   const [choice, setChoice] = useState(null)
 
   const navigate = useNavigate()
-  const { setUser, user } = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
@@ -30,7 +30,7 @@ const App = () => {
     if (token) {
       checkToken()
     } else {
-      // navigate('/auth/register')
+      navigate('/welcome')
     }
   }, [])
   return (
@@ -57,6 +57,7 @@ const App = () => {
           <Route path="cart" element={<Cart />} />
         </Routes>
       </main>
+
       <NavBar />
     </>
   )

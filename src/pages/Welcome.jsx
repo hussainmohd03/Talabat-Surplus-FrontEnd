@@ -13,6 +13,7 @@ const Register = ({ role, choice, setRole, setChoice }) => {
           <button onClick={() => setChoice('register')}>
             {choice && console.log(choice)}
             Don't have an account? Sign up
+
           </button>
 
           <button onClick={() => setChoice('login')}>
