@@ -13,4 +13,5 @@ const CuisineCard = ({ cuisine }) => {
     </>
   )
 }
+
 export default CuisineCard

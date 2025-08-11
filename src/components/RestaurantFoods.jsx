@@ -1,16 +1,15 @@
 import FoodItem from './FoodItem'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { BASE_URL } from '../../globals'
-import { Link } from 'react-router-dom'
 import Client from '../../services/api'
+import AddFoodForm from './AddFoodForm'
+
 const RestaurantFood = () => {
   const [restFoods, setRestFoods] = useState(null)
+  const [showAddForm, setShowAddForm] = useState(false)
 
   useEffect(() => {
     const getRestFood = async () => {
       const res = await Client.get('/foods')
-      console.log(res.data)
       setRestFoods(res.data)
     }
     getRestFood()
@@ -19,10 +18,15 @@ const RestaurantFood = () => {
   return (
     <>
       <section id="food-list">
-        <button>New Food</button>
+        <button onClick={() => setShowAddForm((prev) => !prev)}>
+          {showAddForm ? 'Close' : 'New Food'}
+        </button>
+        {showAddForm && (
+          <AddFoodForm setCuisineFoods={setRestFoods} cuisineFoods={restFoods || []} />
+        )}
         {restFoods &&
           restFoods.map((restFood) => (
-            <FoodItem food={restFood} key={restFood._id} />
+            <FoodItem food={restFood} key={restFood._id} setCuisineFoods={setRestFoods} cuisineFoods={restFoods} />
           ))}
       </section>
     </>
