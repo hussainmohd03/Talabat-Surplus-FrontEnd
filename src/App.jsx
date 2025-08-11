@@ -46,7 +46,7 @@ const App = () => {
       console.log(userOrder)
     }
     order()
-  },[])
+  }, [])
   userOrder && console.log(userOrder)
   const [selectOrder, setSelectOrder] = useState(userOrder ? userOrder : null)
   console.log(selectOrder)
@@ -93,7 +93,9 @@ const App = () => {
           />
         </Routes>
       </main>
-      {location.pathname !== '/welcome' && <NavBar />}
+      {location.pathname !== '/welcome' &&
+        location.pathname !== '/auth/login' &&
+        location.pathname !== '/auth/register' && <NavBar />}
     </>
   )
 }
