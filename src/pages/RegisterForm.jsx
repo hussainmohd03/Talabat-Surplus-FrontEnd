@@ -15,11 +15,12 @@ const RegisterForm = ({ role }) => {
   }
 
   const resInitialState = {
-    resName: '',
-    resPhone: '',
-    resAddress: '',
-    resEmail: '',
-    CR: ''
+    rest_name: '',
+    res_tel: '',
+    rest_address: '',
+    email: '',
+    CR: '', 
+    password: ''
   }
 
   const [customerValues, setCustomerValues] = useState(custInitialState)
@@ -103,49 +104,49 @@ const RegisterForm = ({ role }) => {
         </form>
       ) : (
         <form>
-          <label htmlFor="resName">Restaurant Name</label>
+          <label htmlFor="rest_name">Restaurant Name</label>
           <input
             type="text"
-            name="resName"
+            name="rest_name"
             placeholder="Restaurant Name"
             onChange={handleChange}
-            value={resValues.resName}
+            value={resValues.rest_name}
             required
           />
-          <label htmlFor="resPhone">Restaurant Telephone</label>
+          <label htmlFor="res_tel">Restaurant Telephone</label>
           <input
             type="text"
-            name="resTelephone"
+            name="res_tel"
             placeholder="Restaurant Telephone"
             onChange={handleChange}
-            value={resValues.resTelephone}
+            value={resValues.res_tel}
             required
           />
-          <label htmlFor="resAddress">Restaurant Address</label>
+          <label htmlFor="rest_address">Restaurant Address</label>
           <input
             type="text"
-            name="resAddress"
+            name="rest_address"
             placeholder="Restaurant Address"
             onChange={handleChange}
-            value={resValues.resAddress}
+            value={resValues.rest_address}
             required
           />
-          <label htmlFor="resEmail">Restaurant Email</label>
+          <label htmlFor="email">Restaurant Email</label>
           <input
             type="email"
-            name="resEmail"
+            name="email"
             placeholder="Restaurant Email"
             onChange={handleChange}
-            value={resValues.resEmail}
+            value={resValues.email}
             required
           />
-          <label htmlFor="resCR">CR</label>
+          <label htmlFor="CR">CR</label>
           <input
             type="text"
-            name="resCR"
+            name="CR"
             placeholder="CR"
             onChange={handleChange}
-            value={resValues.resCR}
+            value={resValues.CR}
             required
           />
           <br />

@@ -9,6 +9,7 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
   let { id } = useParams()
   const [selectedFood, setSelectedFood] = useState(null)
 
+  
   useEffect(() => {
     const onMount = async () => {
       let food = await Client.get(`${BASE_URL}/foods/${id}`)

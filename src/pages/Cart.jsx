@@ -11,20 +11,32 @@ const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems }) => {
     }
     onMount()
   }, [])
+  console.log(cartItems)
+  const handleClick = async () => {
+    // const itemDelete = await Client.put(`${BASE_URL}/orders/${selectOrder}`)
+  }
 
-  // console.log(cartItems[0].food_id[0].name)
+  // const handleAdd = async ()=> {
+  //   const order = await Client.put(`${BASE_URL}/order`)
+  // }
+  console.log(selectOrder)
   return (
     <>
       <h3>Cart</h3>
-      {/* {cartItems && cartItems.map((item) => <h2>{item.food_id.name}</h2>)} */}
+      {cartItems &&
+        cartItems.map((item) =>
+          item.food_id.map((food) => (
+            <div>
+              <h2>{food.name}</h2>
 
-            {cartItems && cartItems.map((item) => {item.food_id.map(food => (
-<h2>{food.name}</h2>
-      ))})}
+              <button onClick={handleClick}>remove</button>
+            </div>
+          ))
+        )}
 
-      <Link to={'/'}>
-        <button>Add items </button>
-      </Link>
+      {/* <Link to={'/'}> */}
+        <button onClick={handleAdd}>Add items </button>
+      {/* </Link> */}
       <button>Place order </button>
     </>
   )
