@@ -1,9 +1,10 @@
+import CuisineList from './CuisineList'
 const CustomerCuisines = () => {
-return(
-  <>
-  </>
-)
-
+  return (
+    <>
+      <CuisineList />
+    </>
+  )
 }
 
 export default CustomerCuisines

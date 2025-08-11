@@ -17,6 +17,7 @@ const LoginForm = ({ role }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const userData = await SignInUser(loginValues, role)
+
     setLoginValues(initialState)
     setUser(userData)
     navigate('/')

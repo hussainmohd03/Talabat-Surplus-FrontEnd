@@ -19,7 +19,7 @@ const App = () => {
   const [choice, setChoice] = useState(null)
 
   const navigate = useNavigate()
-  const { setUser, user } = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
@@ -29,7 +29,7 @@ const App = () => {
     if (token) {
       checkToken()
     } else {
-      // navigate('/auth/register')
+      navigate('/welcome')
     }
   }, [])
   return (
@@ -49,12 +49,13 @@ const App = () => {
               />
             }
           />
-          <Route path="/auth/login" element={<LoginForm  role={role}/>} />
+          <Route path="/auth/login" element={<LoginForm role={role} />} />
           <Route path="/foods/:id" element={<FoodCard />} />
           <Route path="/account" element={<Account />} />
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
         </Routes>
       </main>
+
       <NavBar />
     </>
   )

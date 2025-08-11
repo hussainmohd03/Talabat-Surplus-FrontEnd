@@ -14,12 +14,12 @@ const Register = ({ role, choice, setRole, setChoice }) => {
         <>
           <button onClick={() => setChoice('register')}>
             {choice && console.log(choice)}
-            Have an account? Sign up
+            Don't Have an account? Sign up
           </button>
 
           <button onClick={() => setChoice('login')}>
             {choice && console.log(choice)}
-            Don't have an account? Sign in
+            have an account? Sign in
           </button>
         </>
       ) : (
