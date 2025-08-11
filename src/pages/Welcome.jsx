@@ -6,6 +6,7 @@ import '../../public/styleSheets/Welcome.css'
 
 const Register = ({ role, choice, setRole, setChoice }) => {
   return (
+
     <div className="welcome-page">
       <div className="top-section">
         <img src="../../img/logo2.png" alt="Logo" />
@@ -22,6 +23,8 @@ const Register = ({ role, choice, setRole, setChoice }) => {
               onClick={() => setChoice('register')}
             >
               Have an account? Sign up
+
+
             </button>
 
             <button className="auth-button" onClick={() => setChoice('login')}>

@@ -9,16 +9,18 @@ import CuisineFoods from './pages/CuisineFoods'
 import { CheckSession } from '../services/Auth'
 import { UserContext } from './context/UserContext'
 import { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import Account from './pages/Account'
 import RegisterForm from './pages/RegisterForm'
 import { useState } from 'react'
+import Cart from './pages/Cart'
 
 const App = () => {
   const [role, setRole] = useState(null)
   const [choice, setChoice] = useState(null)
 
   const navigate = useNavigate()
+  const location = useLocation()
   const { setUser } = useContext(UserContext)
   const checkToken = async () => {
     const user = await CheckSession()
@@ -53,12 +55,11 @@ const App = () => {
           <Route path="/foods/:id" element={<FoodCard />} />
           <Route path="/account" element={<Account />} />
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
+          <Route path="cart" element={<Cart />} />
         </Routes>
       </main>
-{
-  
-      <NavBar />
-}     
+      {location.pathname !== '/welcome' && <NavBar />}
+
     </>
   )
 }
