@@ -103,7 +103,7 @@ const RegisterForm = ({ role }) => {
           <label htmlFor="confirm_password">Confirm Password</label>
           <input
             type="password"
-            name="confirm_password"
+            name="confirm password"
             placeholder="Password"
             onChange={handleChange}
             value={credentials.confirm_password}
@@ -121,7 +121,7 @@ const RegisterForm = ({ role }) => {
           <p>Passwords must match.</p>
           <p>
             By creating an account you agree to the Privacy Policy and to the
-            Terms of Use{' '}
+            Terms of Use.
           </p>
           <button disabled={!filled} type="submit">
             Create Your Account
@@ -183,6 +183,7 @@ const RegisterForm = ({ role }) => {
             value={customerValues.password}
             required
           />
+
           <label htmlFor="confirm_password">Confirm Password</label>
           <input
             type="password"
@@ -195,7 +196,7 @@ const RegisterForm = ({ role }) => {
           <br />
           <p>
             By creating an account you agree to the Privacy Policy and to the
-            Terms of Use{' '}
+            Terms of Use
           </p>
 
           <button disabled={!filled} type="submit">
