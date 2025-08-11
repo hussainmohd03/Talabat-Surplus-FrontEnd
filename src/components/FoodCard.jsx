@@ -43,7 +43,7 @@ const FoodCard = () => {
 
   return (
     <>
-      <div style={{ position: 'relative' }}>
+      <div className="food-card-container">
         <div id="food-card">
           <div id="food-picture">
             <img id="food-picture" src={selectedFood?.image_url} alt="" />
@@ -56,19 +56,23 @@ const FoodCard = () => {
             <h4 id="food-test-food-descr">{selectedFood?.description}</h4>
           </div>
 
-          <button id="button-cart" onClick={handleClick}>
-            <div id="add-to-cart">
-              <div>Add item </div>
-              <div>BHD {selectedFood?.price?.toFixed(3)}</div>
-            </div>
-          </button>
+          {user && user.role !== 'restaurant' && (
+            <button id="button-cart" onClick={handleClick}>
+              <div id="add-to-cart">
+                <div>Add item </div>
+                <div>BHD {selectedFood?.price?.toFixed(3)}</div>
+              </div>
+            </button>
+          )}
 
           {user && user.role === 'restaurant' && (
             <button
               className="food-edit-button"
-              onClick={() => setEditing((prev) => !prev)}
+              onClick={() => setEditing(!editing)}
             >
-              {editing ? 'Cancel' : 'Edit'}
+              <div className="edit-food">
+                {editing ? 'Cancel' : 'Edit Food'}
+              </div>
             </button>
           )}
 

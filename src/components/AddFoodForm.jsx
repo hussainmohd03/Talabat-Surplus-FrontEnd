@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import Client from '../../services/api'
+import { cuisines } from '../../globals'
 
 const AddFoodForm = ({ cuisine, setCuisineFoods, cuisineFoods }) => {
-  const [form, setForm] = useState({
+  const initialValues = {
     name: '',
     price: '',
     image_url: '',
     cuisine: cuisine || ''
-  })
+  }
+  const [form, setForm] = useState(initialValues)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -19,7 +21,7 @@ const AddFoodForm = ({ cuisine, setCuisineFoods, cuisineFoods }) => {
       const token = localStorage.getItem('token')
       const res = await Client.post('/foods', form)
       setCuisineFoods([res.data, ...cuisineFoods])
-      setForm({ name: '', price: '', image_url: '', cuisine: cuisine || '' })
+      setForm(initialValues)
     } catch (err) {
       setError('Failed to add food item')
     } finally {
@@ -54,6 +56,19 @@ const AddFoodForm = ({ cuisine, setCuisineFoods, cuisineFoods }) => {
         onChange={handleChange}
         required
       />
+      <select
+        name="cuisine"
+        value={form.cuisine}
+        onChange={handleChange}
+        required
+      >
+        <option value="">Select Cuisine</option>
+        {cuisines.map((cuisine) => (
+          <option key={cuisine.id} value={cuisine.name}>
+            {cuisine.name}
+          </option>
+        ))}
+      </select>
       <button type="submit">Add Food</button>
     </form>
   )

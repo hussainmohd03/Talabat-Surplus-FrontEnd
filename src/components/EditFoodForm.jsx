@@ -16,7 +16,6 @@ const EditFoodForm = ({ food, setCuisineFoods, cuisineFoods, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const token = localStorage.getItem('token')
       const res = await Client.put(`/foods/${food._id}`, form)
       setCuisineFoods(
         cuisineFoods.map((item) => (item._id === food._id ? res.data : item))
