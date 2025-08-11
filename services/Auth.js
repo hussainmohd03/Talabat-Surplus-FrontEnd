@@ -13,7 +13,6 @@ export const SignInUser = async (data, role) => {
   try {
     const res = await Client.post(`/auth/login?role=${role}`, data)
     localStorage.setItem('token', res.data.token)
-    return res.data.user
   } catch (error) {
     throw error
   }
