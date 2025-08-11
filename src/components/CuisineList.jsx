@@ -5,7 +5,7 @@ import { useContext } from 'react'
 
 import { UserContext } from '../context/UserContext'
 
-const CuisineList = ({ search = '' }) => {
+const CuisineList = ({ search }) => {
   const { user } = useContext(UserContext)
 
   const filteredCuisines = cuisines.filter((cuisine) =>
