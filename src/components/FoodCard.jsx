@@ -4,13 +4,12 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 
-const FoodCard = () => {
+const FoodCard = ({ selectOrder, setSelectOrder }) => {
   const navigate = useNavigate()
   let { id } = useParams()
-
   const [selectedFood, setSelectedFood] = useState(null)
-  const [selectOrder, setSelectOrder] = useState(null)
 
+  console.log(selectOrder, 'this is it in food')
   useEffect(() => {
     const onMount = async () => {
       let food = await Client.get(`${BASE_URL}/foods/${id}`)
@@ -28,6 +27,7 @@ const FoodCard = () => {
         order_status: 'pending',
         total_price: selectedFood.price
       })
+      setSelectOrder(order)
       navigate('/cart')
     }
     if (
@@ -35,7 +35,7 @@ const FoodCard = () => {
       selectOrder.payment_status === 'pending' &&
       selectOrder.order_status === 'pending'
     ) {
-      console.log(selectOrder)
+      navigate('/foods')
     }
   }
 

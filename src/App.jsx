@@ -14,18 +14,22 @@ import Account from './pages/Account'
 import RegisterForm from './pages/RegisterForm'
 import { useState } from 'react'
 import Cart from './pages/Cart'
+import Client from '../services/api'
+import { BASE_URL } from '../globals'
 
 const App = () => {
   const [role, setRole] = useState(null)
   const [choice, setChoice] = useState(null)
-
+  const [cartItems, setCartItems] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
-  const { setUser } = useContext(UserContext)
+  const { setUser, user } = useContext(UserContext)
+
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
   }
+  let userOrder = ''
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -35,28 +39,17 @@ const App = () => {
     }
   }, [])
 
-  const initialCreds = {
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: '',
-    address: ''
-  }
-
-  const firstCreds = {
-    resName: '',
-    resPhone: '',
-    resAddress: '',
-    resEmail: '',
-    CR: ''
-  }
-
-  const [creds, setCreds] = useState(initialCreds)
-
-  const handleChange = (e) => {
-    setCreds({ ...creds, [e.target.id]: e.target.value })
-  }
-
+  useEffect(() => {
+    const order = async () => {
+      console.log('hello')
+      userOrder = await Client.get(`${BASE_URL}/orders/`)
+      console.log(userOrder)
+    }
+    order()
+  },[])
+  userOrder && console.log(userOrder)
+  const [selectOrder, setSelectOrder] = useState(userOrder ? userOrder : null)
+  console.log(selectOrder)
   return (
     <>
       <main>
@@ -75,17 +68,29 @@ const App = () => {
             }
           />
           <Route path="/auth/login" element={<LoginForm role={role} />} />
-          <Route path="/foods/:id" element={<FoodCard />} />
-          <Route path="/account" element={<Account />} />
           <Route
-            path="/auth/register"
+            path="/foods/:id"
             element={
-              <RegisterForm
-                role={role}
+              <FoodCard
+                selectOrder={selectOrder}
+                setSelectOrder={setSelectOrder}
               />
             }
           />
-          <Route path="cart" element={<Cart />} />
+          <Route path="/account" element={<Account />} />
+
+          <Route path="/auth/register" element={<RegisterForm role={role} />} />
+          <Route
+            path="cart"
+            element={
+              <Cart
+                selectOrder={selectOrder}
+                setSelectOrder={setSelectOrder}
+                setCartItems={setCartItems}
+                cartItems={cartItems}
+              />
+            }
+          />
         </Routes>
       </main>
       {location.pathname !== '/welcome' && <NavBar />}
