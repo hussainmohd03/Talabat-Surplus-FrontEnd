@@ -11,9 +11,7 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
   let { id } = useParams()
   const { user } = useContext(UserContext)
   const [selectedFood, setSelectedFood] = useState(null)
-  const [selectOrder, setSelectOrder] = useState(null)
   const [editing, setEditing] = useState(false)
-
 
   console.log(selectOrder, 'this is it in food')
   useEffect(() => {
@@ -86,7 +84,7 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
                   food={selectedFood}
                   setCuisineFoods={(foods) =>
                     setSelectedFood(
-                      foods.find((f) => f._id === selectedFood._id) ||
+                      foods.find((food) => food._id === selectedFood._id) ||
                         selectedFood
                     )
                   }

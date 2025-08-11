@@ -208,4 +208,3 @@ const RegisterForm = ({ role }) => {
 }
 
 export default RegisterForm
-

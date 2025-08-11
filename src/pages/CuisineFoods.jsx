@@ -7,6 +7,8 @@ import { GetFoodByCuisine } from '../../services/GetFoodByCuisine'
 import { UserContext } from '../context/UserContext'
 
 const CuisineFoods = () => {
+  const [search, setSearch] = useState('')
+
   const { user } = useContext(UserContext)
   const [searchParams] = useSearchParams()
   const cuisine = searchParams.get('cuisine')
