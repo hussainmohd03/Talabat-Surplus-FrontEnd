@@ -59,6 +59,7 @@ const App = () => {
         </Routes>
       </main>
       {location.pathname !== '/welcome' && <NavBar />}
+
     </>
   )
 }

@@ -2,40 +2,57 @@ import { useState } from 'react'
 import RegisterForm from './RegisterForm'
 import LoginForm from './LoginForm'
 import { Link } from 'react-router-dom'
+import '../../public/styleSheets/Welcome.css'
 
 const Register = ({ role, choice, setRole, setChoice }) => {
   return (
-    <div>
-      <h1>Hey there!</h1>
-      <p>Log in or sign up for a more personalized ordering experience </p>
-      {!choice ? (
-        <>
-          <button onClick={() => setChoice('register')}>
-            {choice && console.log(choice)}
-            Don't have an account? Sign up
 
-          </button>
+    <div className="welcome-page">
+      <div className="top-section">
+        <img src="../../img/logo2.png" alt="Logo" />
+      </div>
 
-          <button onClick={() => setChoice('login')}>
-            {choice && console.log(choice)}
-            Have an account? Sign in
-          </button>
-        </>
-      ) : (
-        <div>
-          <Link to={`/auth/${choice}`}>
-            <button onClick={() => setRole('restaurant')}>
-              Continue as a restaurant
+      <div className="bottom-section">
+        <h1>Hey there!</h1>
+        <p>Log in or sign up for a more personalized ordering experience</p>
+
+        {!choice ? (
+          <>
+            <button
+              className="auth-button"
+              onClick={() => setChoice('register')}
+            >
+              Have an account? Sign up
+
+
             </button>
-          </Link>
 
-          <Link to={`/auth/${choice}`}>
-            <button onClick={() => setRole('customer')}>
-              Continue as a customer
+            <button className="auth-button" onClick={() => setChoice('login')}>
+              Don't have an account? Sign in
             </button>
-          </Link>
-        </div>
-      )}
+          </>
+        ) : (
+          <div className="role-selection">
+            <Link to={`/auth/${choice}`}>
+              <button
+                className="role-button"
+                onClick={() => setRole('restaurant')}
+              >
+                Continue as a restaurant
+              </button>
+            </Link>
+
+            <Link to={`/auth/${choice}`}>
+              <button
+                className="role-button"
+                onClick={() => setRole('customer')}
+              >
+                Continue as a customer
+              </button>
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
