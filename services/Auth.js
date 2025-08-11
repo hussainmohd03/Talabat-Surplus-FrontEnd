@@ -11,7 +11,7 @@ export const RegisterUser = async (data, role) => {
 
 export const SignInUser = async (data, role) => {
   try {
-    const res = await Client.post(`/auth/login?role=${role}`, data)
+    const res = await Client.post(`/auth/login?role=restaurant`, data)
     localStorage.setItem('token', res.data.token)
   } catch (error) {
     throw error

@@ -22,7 +22,7 @@ const App = () => {
     if (token) {
       checkToken()
     } else {
-      navigate('/auth/login')
+      // navigate('/auth/login')
     }
   }, [])
   return (
@@ -36,6 +36,7 @@ const App = () => {
           <Route path="/foods/:id" element={<FoodCard />} />
         </Routes>
       </main>
+      
       <NavBar />
     </>
   )
