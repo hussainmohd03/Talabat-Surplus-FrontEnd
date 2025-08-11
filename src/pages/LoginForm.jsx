@@ -3,6 +3,7 @@ import { RegisterUser, SignInUser } from '../../services/Auth'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 import { Link } from 'react-router-dom'
+import "../../public/styleSheets/LoginStyle.css"
 
 const LoginForm = ({ role }) => {
   const initialState = { email: '', password: '' }
@@ -25,7 +26,8 @@ const LoginForm = ({ role }) => {
 
   return (
     <>
-      <h1>Log in</h1>
+    <div className='login-container'>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
@@ -44,6 +46,7 @@ const LoginForm = ({ role }) => {
         <button type="submit">Log in</button>
         <br />
       </form>
+      </div>
     </>
   )
 }

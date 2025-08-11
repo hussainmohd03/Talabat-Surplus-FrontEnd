@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../../globals'
-
+import Client from '../../services/api'
 const Account = () => {
   const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
@@ -9,12 +9,9 @@ const Account = () => {
   useEffect(() => {
     const getAccount = async () => {
       try {
-        const token = localStorage.getItem('token') //storing
-        const res = await axios.get(`${BASE_URL}/auth/profile`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
+        // const token = localStorage.getItem('token') //storing
+        const res = await Client.get(`${BASE_URL}/auth/profile`)
+        console.log('account response rn ', res)
         setAccount(res.data)
       } catch (err) {
         setError('Failed to load profile')
@@ -26,28 +23,28 @@ const Account = () => {
   }, [])
 
   if (error) return <p>{error}</p>
-  if (!account) return <p>Loading Account...</p>
+  if (!account) return <p>Loading your account...</p>
 
   return (
     <div>
       <h1>Account</h1>
-      {'first_name' in profile ? (
+      {'first_name' in account ? (
         <>
-          <p>First Name: {profile.first_name}</p>
-          <p>Last Name:{profile.last_name}</p>
-          <p>Email:{profile.email}</p>
-          <p>Address:{profile.address}</p>
-          {profile.avatar_url && (
-            <img src={profile.avatar_url} alt="Avatar" width="100" />
+          <p>First Name: {account.first_name}</p>
+          <p>Last Name: {account.last_name}</p>
+          <p>Email: {account.email}</p>
+          <p>Address: {account.address}</p>
+          {account.avatar_url && (
+            <img src={account.avatar_url} alt="Avatar" width="100" />
           )}
         </>
       ) : (
         <>
-          <p>Restaurant Name:{profile.rest_name}</p>
-          <p>Email:{profile.email}</p>
-          <p>Phone: {profile.rest_tel}</p>
-          <p>Address:{profile.rest_address}</p>
-          <p>CR: {profile.CR}</p>
+          <p>Restaurant Name:{account.rest_name}</p>
+          <p>Email:{account.email}</p>
+          <p>Phone: {account.rest_tel}</p>
+          <p>Address:{account.rest_address}</p>
+          <p>CR: {account.CR}</p>
         </>
       )}
     </div>

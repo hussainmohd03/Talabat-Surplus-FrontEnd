@@ -14,18 +14,22 @@ import Account from './pages/Account'
 import RegisterForm from './pages/RegisterForm'
 import { useState } from 'react'
 import Cart from './pages/Cart'
+import Client from '../services/api'
+import { BASE_URL } from '../globals'
 
 const App = () => {
   const [role, setRole] = useState(null)
   const [choice, setChoice] = useState(null)
-
+  const [cartItems, setCartItems] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
-  const { setUser } = useContext(UserContext)
+  const { setUser, user } = useContext(UserContext)
+
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
   }
+  let userOrder = ''
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -34,6 +38,18 @@ const App = () => {
       navigate('/welcome')
     }
   }, [])
+
+  useEffect(() => {
+    const order = async () => {
+      console.log('hello')
+      userOrder = await Client.get(`${BASE_URL}/orders/`)
+      console.log(userOrder)
+    }
+    order()
+  },[])
+  userOrder && console.log(userOrder)
+  const [selectOrder, setSelectOrder] = useState(userOrder ? userOrder : null)
+  console.log(selectOrder)
   return (
     <>
       <main>
@@ -52,14 +68,32 @@ const App = () => {
             }
           />
           <Route path="/auth/login" element={<LoginForm role={role} />} />
-          <Route path="/foods/:id" element={<FoodCard />} />
+          <Route
+            path="/foods/:id"
+            element={
+              <FoodCard
+                selectOrder={selectOrder}
+                setSelectOrder={setSelectOrder}
+              />
+            }
+          />
           <Route path="/account" element={<Account />} />
+
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
-          <Route path="cart" element={<Cart />} />
+          <Route
+            path="cart"
+            element={
+              <Cart
+                selectOrder={selectOrder}
+                setSelectOrder={setSelectOrder}
+                setCartItems={setCartItems}
+                cartItems={cartItems}
+              />
+            }
+          />
         </Routes>
       </main>
       {location.pathname !== '/welcome' && <NavBar />}
-
     </>
   )
 }
