@@ -69,7 +69,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
     <div className="account-container">
      
       <div className="back-btn">
-        <button onClick={() => navigate(-1)}>Back</button> 
+        <button onClick={() => navigate(-1)}>Back</button> {/* the navigate(-1) returns the user to the previous page*/}
       </div>
       <h1>Account info</h1>
    
