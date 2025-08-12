@@ -3,7 +3,7 @@ import axios from 'axios'
 import { BASE_URL } from '../../globals'
 import Client from '../../services/api'
 import '../../public/styleSheets/AccountStyle.css'
-
+import { Link } from 'react-router-dom'
 const Account = ({ handleLogOut }) => {
   const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
@@ -52,8 +52,10 @@ const Account = ({ handleLogOut }) => {
             <span>Address:</span>
             <input type="text" value={account.address} readOnly />
           </label>
-
-          {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />}
+          <Link to={'/account/password'}>
+            <button>Change password</button>
+          </Link>
+          {/* {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />} */}
         </>
       ) : (
         <>

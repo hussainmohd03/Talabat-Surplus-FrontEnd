@@ -17,6 +17,7 @@ import Cart from './pages/Cart'
 import Client from '../services/api'
 import { BASE_URL } from '../globals'
 import Order from './pages/Order'
+import ChangePassword from './pages/ChangePassword'
 
 const App = () => {
   const [price, setPrice] = useState(0)
@@ -110,6 +111,7 @@ const App = () => {
             }
           />
           <Route path="orders" element={<Order />} />
+          <Route path='/account/password' element={<ChangePassword/>}/>
         </Routes>
       </main>
       {location.pathname !== '/welcome' &&
