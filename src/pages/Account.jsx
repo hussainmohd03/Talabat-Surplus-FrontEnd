@@ -13,7 +13,6 @@ const Account = () => {
       try {
         // const token = localStorage.getItem('token') //storing
         const res = await Client.get(`${BASE_URL}/auth/profile`)
-        console.log('account response rn ', res)
         setAccount(res.data)
       } catch (err) {
         setError('Failed to load profile')
@@ -27,7 +26,13 @@ const Account = () => {
   if (error) return <p>{error}</p>
   if (!account) return <p>Loading your account...</p>
 
+  const handleAccountClick = () => {
+
+  }
+
   return (
+
+    <div>
    <div className="account-container">
   <h1>Account info</h1>
   {'first_name' in account ? (
@@ -85,6 +90,7 @@ const Account = () => {
 
       {account.logo_url && (
         <img src={account.logo_url} alt="Restaurant Logo" />
+
       )}
     </>
   )}

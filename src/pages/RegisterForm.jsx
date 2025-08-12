@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../../services/Auth'
 import '../../public/styleSheets/RegisterStyle.css'
+
 const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
 
@@ -31,209 +32,174 @@ const RegisterForm = ({ role }) => {
   const [resValues, setResValues] = useState(resInitialState)
   const [credentials, setCredentials] = useState(credInitial)
   const [filled, setFilled] = useState(false)
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-
-    if (role === 'customer') {
-      setCustomerValues({ ...customerValues, [name]: value })
-    } else {
-      setResValues({ ...resValues, [name]: value })
-    }
-
-    if (name === 'confirm_password') {
-      setCredentials({ ...credentials, confirm_password: value })
-    }
-
-    // Check if passwords match and are non-empty
-    const pwd = role === 'customer'
-      ? (name === 'password' ? value : customerValues.password)
-      : (name === 'password' ? value : resValues.password)
-
-    const confirmPwd = name === 'confirm_password' ? value : credentials.confirm_password
-
-    if (pwd && confirmPwd && pwd === confirmPwd) {
+  
+const handleChange = (e) => {
+    if (
+      customerValues.password === credentials.confirm_password &&
+      customerValues.password.length >=8 && customerValues.password.includes('@')
+    ) {
       setFilled(true)
-    } else {
-      setFilled(false)
     }
+    setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
+    setResValues({ ...resValues, [e.target.name]: e.target.value })
+    setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    if (role === 'customer') {
+    if (role === ‘customer’) {
+      e.preventDefault()
       await RegisterUser(customerValues, role)
       setCustomerValues(custInitialState)
+      navigate(‘/auth/login’)
     } else {
+      e.preventDefault()
       await RegisterUser(resValues, role)
       setResValues(resInitialState)
+      navigate(‘/auth/login’)
     }
-
-    setCredentials(credInitial)
-    setFilled(false)
-    navigate('/auth/login')
   }
 
   return (
-    <div className="Register-Container">
+    <div className=“Register-Container”>
       <h1>Create a {role} account</h1>
 
-      {role === 'customer' ? (
+      {role === ‘customer’ ? (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="first_name">First Name</label>
+          <label htmlFor=“first_name”>First Name</label>
           <input
-            type="text"
-            name="first_name"
-            placeholder="First Name"
+            type=“text”
+            name=“first_name”
+            placeholder=“First Name”
             onChange={handleChange}
             value={customerValues.first_name}
             required
           />
-
-          <label htmlFor="last_name">Last Name</label>
+          <label htmlFor=“last_name”>Last Name</label>
           <input
-            type="text"
-            name="last_name"
-            placeholder="Last Name"
+            type=“text”
+            name=“last_name”
+            placeholder=“Last Name”
             onChange={handleChange}
             value={customerValues.last_name}
             required
           />
-
-          <label htmlFor="email">Email</label>
+          <label htmlFor=“email”>Email</label>
           <input
-            type="email"
-            name="email"
-            placeholder="Email"
+            type=“email”
+            name=“email”
+            placeholder=“Email”
             onChange={handleChange}
             value={customerValues.email}
             required
           />
-
-          <label htmlFor="password">Password</label>
+          <label htmlFor=“password”>Password</label>
           <input
-            type="password"
-            name="password"
-            placeholder="Password"
+            type=“password”
+            name=“password”
+            placeholder=“Password”
             onChange={handleChange}
             value={customerValues.password}
             required
           />
-
-          <label htmlFor="confirm_password">Confirm Password</label>
+          <label htmlFor=“confirm_password”>Confirm Password</label>
           <input
-            type="password"
-            name="confirm_password"
-            placeholder="Confirm Password"
+            type=“password”
+            name=“confirm_password”
+            placeholder=“Password”
             onChange={handleChange}
             value={credentials.confirm_password}
             required
           />
-
-          <label htmlFor="address">Address</label>
+          <label htmlFor=“address”>Address</label>
           <input
-            type="text"
-            name="address"
-            placeholder="street 123"
+            type=“text”
+            name=“address”
+            placeholder=“street 123”
             onChange={handleChange}
             value={customerValues.address}
           />
           <br />
-
           <p>Passwords must match.</p>
           <p>
-  By creating an account you agree to the 
-  <a href="#" className="privacy"> Privacy Policy </a> 
-  and to the 
-  <a href="#" className="terms"> terms of use</a>
+            By creating an account you agree to the Privacy Policy and to the
+            Terms of Use{' ‘}
           </p>
-
-          <button disabled={!filled} type="submit">
+          <button disabled={!filled} type=“submit”>
             Create Your Account
           </button>
         </form>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="rest_name">Restaurant Name</label>
+        <form>
+          <label htmlFor=“rest_name”>Restaurant Name</label>
           <input
-            type="text"
-            name="rest_name"
-            placeholder="Restaurant Name"
+            type=“text”
+            name=“rest_name”
+            placeholder=“Restaurant Name”
             onChange={handleChange}
             value={resValues.rest_name}
             required
           />
-
-          <label htmlFor="res_tel">Restaurant Telephone</label>
+          <label htmlFor=“res_tel”>Restaurant Telephone</label>
           <input
-            type="text"
-            name="res_tel"
-            placeholder="Restaurant Telephone"
+            type=“text”
+            name=“res_tel”
+            placeholder=“Restaurant Telephone”
             onChange={handleChange}
             value={resValues.res_tel}
             required
           />
-
-          <label htmlFor="rest_address">Restaurant Address</label>
+          <label htmlFor=“rest_address”>Restaurant Address</label>
           <input
-            type="text"
-            name="rest_address"
-            placeholder="Restaurant Address"
+            type=“text”
+            name=“rest_address”
+            placeholder=“Restaurant Address”
             onChange={handleChange}
             value={resValues.rest_address}
             required
           />
-
-          <label htmlFor="email">Restaurant Email</label>
+          <label htmlFor=“email”>Restaurant Email</label>
           <input
-            type="email"
-            name="email"
-            placeholder="Restaurant Email"
+            type=“email”
+            name=“email”
+            placeholder=“Restaurant Email”
             onChange={handleChange}
             value={resValues.email}
             required
           />
-
-          <label htmlFor="CR">CR</label>
+          <label htmlFor=“CR”>CR</label>
           <input
-            type="text"
-            name="CR"
-            placeholder="CR"
+            type=“text”
+            name=“CR”
+            placeholder=“CR”
             onChange={handleChange}
             value={resValues.CR}
             required
           />
-
-          <label htmlFor="password">Password</label>
+          <label htmlFor=“password”>Password</label>
           <input
-            type="password"
-            name="password"
-            placeholder="Password"
+            type=“password”
+            name=“password”
+            placeholder=“Password”
             onChange={handleChange}
-            value={resValues.password}
+            value={customerValues.password}
             required
           />
-
-          <label htmlFor="confirm_password">Confirm Password</label>
+          <label htmlFor=“confirm_password”>Confirm Password</label>
           <input
-            type="password"
-            name="confirm_password"
-            placeholder="Confirm Password"
+            type=“password”
+            name=“confirm_password”
+            placeholder=“Password”
             onChange={handleChange}
             value={credentials.confirm_password}
             required
           />
           <br />
-
           <p>
-  By creating an account you agree to the 
-  <a href="#" className="privacy"> Privacy Policy </a> 
-  and to the 
-  <a href="#" className="terms"> terms of use</a>
+            By creating an account you agree to the Privacy Policy and to the
+            Terms of Use{’ ’}
           </p>
 
-          <button disabled={!filled} type="submit">
+          <button disabled={!filled} type=“submit”>
             Create Your Account
           </button>
         </form>
