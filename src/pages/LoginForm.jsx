@@ -43,6 +43,11 @@ const LoginForm = ({ role }) => {
           placeholder="password"
           onChange={handleChange}
         />
+  <p> By creating an account you agree to the 
+  <a href="#" className="privacy"> Privacy Policy </a> 
+  and to the 
+  <a href="#" className="terms"> terms of use</a>
+</p>
         <button type="submit">Log in</button>
         <br />
       </form>
