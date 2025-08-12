@@ -1,13 +1,20 @@
 import { UserContext } from '../context/UserContext'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-const FoodList = ({ food }) => {
+import Client from '../../services/api'
+
+const FoodList = ({ food, setCuisineFoods, cuisineFoods }) => {
   const { user } = useContext(UserContext)
-  console.log(user)
+
+  const handleDelete = async () => {
+    await Client.delete(`/foods/${food._id}`)
+    setCuisineFoods(cuisineFoods.filter((item) => item._id !== food._id))
+  }
+
   return (
     <>
       <article className="food-item">
-        <Link to={`/foods/${food._id}`} id="cuisine-foods-link">
+        <Link to={`/foods/${food._id}`} className="cuisine-foods-link">
           <img src={food.image_url} alt="" />
         </Link>
 
@@ -15,7 +22,12 @@ const FoodList = ({ food }) => {
           <h3>{food.name}</h3>
           <h3>{food.price}BD</h3>
         </div>
-        {user && user.role === 'restaurant' && <button>X</button>}
+        {user && user.role === 'restaurant' && (
+          <button
+            className="food-delete-button"
+            onClick={handleDelete}
+          ></button>
+        )}
       </article>
     </>
   )

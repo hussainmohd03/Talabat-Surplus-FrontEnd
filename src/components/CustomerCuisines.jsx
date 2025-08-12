@@ -1,8 +1,9 @@
 import CuisineList from './CuisineList'
-const CustomerCuisines = () => {
+
+const CustomerCuisines = ({ search }) => {
   return (
     <>
-      <CuisineList />
+      <CuisineList search={search} />
     </>
   )
 }

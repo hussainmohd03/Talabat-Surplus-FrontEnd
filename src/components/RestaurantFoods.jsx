@@ -1,29 +1,48 @@
 import FoodItem from './FoodItem'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { BASE_URL } from '../../globals'
-import { Link } from 'react-router-dom'
 import Client from '../../services/api'
-const RestaurantFood = () => {
-  const [restFoods, setRestFoods] = useState(null)
+import AddFoodForm from './AddFoodForm'
 
+const RestaurantFood = ({ search }) => {
+  const [restFoods, setRestFoods] = useState(null)
+  const [showAddForm, setShowAddForm] = useState(false)
   useEffect(() => {
     const getRestFood = async () => {
       const res = await Client.get('/foods')
-      console.log(res.data)
       setRestFoods(res.data)
     }
     getRestFood()
   }, [])
 
+  const filteredFoods = restFoods
+    ? restFoods.filter((food) =>
+        food.name.toLowerCase().includes(search.toLowerCase())
+      )
+    : []
+
   return (
     <>
       <section id="food-list">
-        <button>New Food</button>
-        {restFoods &&
-          restFoods.map((restFood) => (
-            <FoodItem food={restFood} key={restFood._id} />
-          ))}
+        <button
+          onClick={() => setShowAddForm((prev) => !prev)}
+          className="add-food-btn"
+        >
+          {showAddForm ? 'Close' : 'New Food'}
+        </button>
+        {showAddForm && (
+          <AddFoodForm
+            setCuisineFoods={setRestFoods}
+            cuisineFoods={restFoods || []}
+          />
+        )}
+        {filteredFoods.map((restFood) => (
+          <FoodItem
+            food={restFood}
+            key={restFood._id}
+            setCuisineFoods={setRestFoods}
+            cuisineFoods={restFoods}
+          />
+        ))}
       </section>
     </>
   )

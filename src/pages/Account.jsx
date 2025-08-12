@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom'
 import EditAccount from './EditAccount'
 import { UserContext } from '../context/UserContext'
 
+import BackButton from '../components/BackButton'
+
 const Account = () => {
   const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
@@ -20,7 +22,6 @@ const Account = () => {
       try {
         // const token = localStorage.getItem('token') //storing
         const res = await Client.get(`${BASE_URL}/auth/profile`)
-        console.log('account response rn ', res)
         setAccount(res.data)
         setUser(res.data)
       } catch (err) {
@@ -59,8 +60,11 @@ useEffect(() => {
   if (error) return <p>{error}</p>
   if (!account) return <p>Loading your account...</p>
 
+  const handleAccountClick = () => {}
+
   return (
    <div className="account-container">
+    <BackButton />
       {edit ? (
         
         <EditAccount account={account} onUpdateSuccess={setAccount} />
@@ -138,6 +142,7 @@ useEffect(() => {
           )}
         </>
       )}
+
     </div>
   )
 }

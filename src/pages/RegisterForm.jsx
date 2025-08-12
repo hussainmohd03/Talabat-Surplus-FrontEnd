@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../../services/Auth'
 import '../../public/styleSheets/RegisterStyle.css'
+
 const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
 
@@ -30,10 +31,11 @@ const RegisterForm = ({ role }) => {
   const [resValues, setResValues] = useState(resInitialState)
   const [credentials, setCredentials] = useState(credInitial)
   const [filled, setFilled] = useState(false)
-  const handleChange = (e) => {
+  
+const handleChange = (e) => {
     if (
       customerValues.password === credentials.confirm_password &&
-      customerValues.password.length !== 0
+      customerValues.password.length >=8 && customerValues.password.includes('@')
     ) {
       setFilled(true)
     }
@@ -70,7 +72,6 @@ const RegisterForm = ({ role }) => {
             value={customerValues.first_name}
             required
           />
-
           <label htmlFor="last_name">Last Name</label>
           <input
             type="text"
@@ -80,7 +81,6 @@ const RegisterForm = ({ role }) => {
             value={customerValues.last_name}
             required
           />
-
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -90,7 +90,6 @@ const RegisterForm = ({ role }) => {
             value={customerValues.email}
             required
           />
-
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -100,17 +99,15 @@ const RegisterForm = ({ role }) => {
             value={customerValues.password}
             required
           />
-
           <label htmlFor="confirm_password">Confirm Password</label>
           <input
             type="password"
             name="confirm_password"
-            placeholder="Confirm Password"
+            placeholder="Password"
             onChange={handleChange}
             value={credentials.confirm_password}
             required
           />
-
           <label htmlFor="address">Address</label>
           <input
             type="text"
@@ -120,21 +117,17 @@ const RegisterForm = ({ role }) => {
             value={customerValues.address}
           />
           <br />
-
           <p>Passwords must match.</p>
           <p>
-  By creating an account you agree to the 
-  <a href="#" className="privacy"> Privacy Policy </a> 
-  and to the 
-  <a href="#" className="terms"> terms of use</a>
+            By creating an account you agree to the Privacy Policy and to the
+            Terms of Use{' '}
           </p>
-
           <button disabled={!filled} type="submit">
             Create Your Account
           </button>
         </form>
       ) : (
-        <form onSubmit={handleSubmit}>
+        <form>
           <label htmlFor="rest_name">Restaurant Name</label>
           <input
             type="text"
@@ -144,7 +137,6 @@ const RegisterForm = ({ role }) => {
             value={resValues.rest_name}
             required
           />
-
           <label htmlFor="res_tel">Restaurant Telephone</label>
           <input
             type="text"
@@ -154,7 +146,6 @@ const RegisterForm = ({ role }) => {
             value={resValues.res_tel}
             required
           />
-
           <label htmlFor="rest_address">Restaurant Address</label>
           <input
             type="text"
@@ -164,7 +155,6 @@ const RegisterForm = ({ role }) => {
             value={resValues.rest_address}
             required
           />
-
           <label htmlFor="email">Restaurant Email</label>
           <input
             type="email"
@@ -174,7 +164,6 @@ const RegisterForm = ({ role }) => {
             value={resValues.email}
             required
           />
-
           <label htmlFor="CR">CR</label>
           <input
             type="text"
@@ -184,33 +173,28 @@ const RegisterForm = ({ role }) => {
             value={resValues.CR}
             required
           />
-
           <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
             placeholder="Password"
             onChange={handleChange}
-            value={resValues.password}
+            value={customerValues.password}
             required
           />
-
           <label htmlFor="confirm_password">Confirm Password</label>
           <input
             type="password"
             name="confirm_password"
-            placeholder="Confirm Password"
+            placeholder="Password"
             onChange={handleChange}
             value={credentials.confirm_password}
             required
           />
           <br />
-
           <p>
-  By creating an account you agree to the 
-  <a href="#" className="privacy"> Privacy Policy </a> 
-  and to the 
-  <a href="#" className="terms"> terms of use</a>
+            By creating an account you agree to the Privacy Policy and to the
+            Terms of Use{' '}
           </p>
 
           <button disabled={!filled} type="submit">

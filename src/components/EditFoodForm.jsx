@@ -1,0 +1,75 @@
+import { useState } from 'react'
+import Client from '../../services/api'
+import { cuisines } from '../../globals'
+
+const EditFoodForm = ({ food, setCuisineFoods, cuisineFoods, onClose }) => {
+  const [form, setForm] = useState({
+    name: food.name,
+    price: food.price,
+    image_url: food.image_url,
+    cuisine: food.cuisine
+  })
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const res = await Client.put(`/foods/${food._id}`, form)
+    setCuisineFoods(
+      cuisineFoods.map((item) => (item._id === food._id ? res.data : item))
+    )
+    if (onClose) onClose()
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="edit-food-form">
+      <h3>Edit Food</h3>
+      <input
+        type="text"
+        name="name"
+        placeholder="Food Name"
+        value={form.name}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="number"
+        name="price"
+        placeholder="Price"
+        value={form.price}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="text"
+        name="image_url"
+        placeholder="Image URL"
+        value={form.image_url}
+        onChange={handleChange}
+        required
+      />
+      <select
+        name="cuisine"
+        value={form.cuisine}
+        onChange={handleChange}
+        required
+      >
+        <option value="">Select Cuisine</option>
+        {cuisines.map((cuisine) => (
+          <option key={cuisine.id} value={cuisine.name}>
+            {cuisine.name}
+          </option>
+        ))}
+      </select>
+      <button type="submit">Save Changes</button>
+      <button type="button" onClick={onClose} className="cancel-button">
+        Cancel
+      </button>
+    </form>
+  )
+}
+
+export default EditFoodForm

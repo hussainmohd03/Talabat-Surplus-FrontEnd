@@ -24,15 +24,14 @@ nav {
   justify-content: center;
   height: 177px;
 }
-#home-header form {
-  margin-bottom: 25px;
-}
-#home-header form input {
+
+#home-header input {
   all: unset;
   background-color: white;
   padding: 15px;
-  width: 350px;
+  width: 370px;
   border-radius: 25px;
+  margin-bottom: 25px;
 }
 #cuisine-cards {
   display: flex;
@@ -115,17 +114,19 @@ main h1 {
   padding-left: 5px;
 }
 
-#button-cart {
+#button-cart,
+.food-edit-button {
   background-color: #fe5f1e;
-  border: none;
-  position: absolute;
   width: 214px;
   height: 53px;
-  left: calc(50% - 214px / 2);
-  top: 612px;
+  margin: 0 auto;
   background: #f55905;
   border-radius: 26.5px;
-  margin-top: 30px;
+}
+.edit-food {
+  font-family: 'DM Sans';
+  color: #f4ede3;
+  font-weight: 600;
 }
 
 #add-to-cart {
@@ -143,7 +144,67 @@ main h1 {
   font-weight: 400;
 }
 
-
 #food-test-food-name {
-  margin: 0px
+  margin: 0px;
+}
+.food-delete-button {
+  background: url('../public/remove.png');
+  background-repeat: no-repeat;
+  border: none;
+  width: 10px;
+  height: 10px;
+  background-size: contain;
+  margin-top: 60px;
+  margin-left: 20px;
+}
+
+.edit-food-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cancel-button {
+  background: none;
+  border: none;
+  color: #fe5f1e;
+  cursor: pointer;
+}
+.edit-form-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.edit-form {
+  background: #fff;
+  padding: 2em;
+  border-radius: 8px;
+  min-width: 320px;
+  max-width: 90v;
+}
+.add-food-btn {
+  all: unset;
+  width: 342px;
+  height: 53px;
+  border-radius: 26.5px;
+  color: white;
+  text-align: center;
+  margin: 25px 45px;
+  background-color: #f55905;
+}
+
+.food-card-container {
+  position: relative;
+}
+
+.top-section {
+}
+
+#cart-title {
 }

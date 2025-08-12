@@ -8,7 +8,7 @@ const Register = ({ role, choice, setRole, setChoice }) => {
   return (
     <div className="welcome-page">
       <div className="top-section">
-        <img src="../../img/logo2.png" alt="Logo" />
+        <img src="/logo.svg" alt="" />
       </div>
 
       <div className="bottom-section">
