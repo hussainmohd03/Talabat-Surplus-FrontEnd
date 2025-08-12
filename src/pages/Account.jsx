@@ -10,7 +10,10 @@ import { UserContext } from '../context/UserContext'
 
 import BackButton from '../components/BackButton'
 
-const Account = () => {
+const Account = ({ handleLogOut }) => {
+
+
+
   const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
   const [ edit, setEdit ] = useState(false)
@@ -63,86 +66,67 @@ useEffect(() => {
   const handleAccountClick = () => {}
 
   return (
-   <div className="account-container">
-    <BackButton />
-      {edit ? (
-        
-        <EditAccount account={account} onUpdateSuccess={setAccount} />
-      ) : (
-       
+    <div className="account-container">
+      <h1>Account info</h1>
+      {'first_name' in account ? (
         <>
-          
-          <div className='back-btn'>
-            <button onClick={() => navigate(-1)}>Back</button> 
-          </div>
-          <h1>Account info</h1>
+          <label>
+            <span>First Name:</span>
+            <input type="text" value={account.first_name} readOnly />
+          </label>
 
-          <div className='edit-btn'>
-            <button onClick={() => setEdit(true)}>Edit Profile</button>
-          </div>
+          <label>
+            <span>Last Name:</span>
+            <input type="text" value={account.last_name} readOnly />
+          </label>
 
-          {'first_name' in account ? (
-            
-            <>
-              <label>
-                <span>First Name:</span>
-                <input type="text" value={account.first_name} readOnly />
-              </label>
+          <label>
+            <span>Email:</span>
+            <input type="email" value={account.email} readOnly />
+          </label>
 
-              <label>
-                <span>Last Name:</span>
-                <input type="text" value={account.last_name} readOnly />
-              </label>
+          <label>
+            <span>Address:</span>
+            <input type="text" value={account.address} readOnly />
+          </label>
+          <Link to={'/account/password'}>
+            <button>Change password</button>
+          </Link>
+          <button onClick={handleLogOut}>Log out</button>
+          {/* {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />} */}
+        </>
+      ) : (
+        <>
+          <label>
+            <span>Restaurant Name:</span>
+            <input type="text" value={account.rest_name} readOnly />
+          </label>
 
-              <label>
-                <span>Email:</span>
-                <input type="email" value={account.email} readOnly />
-              </label>
+          <label>
+            <span>Email:</span>
+            <input type="email" value={account.email} readOnly />
+          </label>
 
-              <label>
-                <span>Address:</span>
-                <input type="text" value={account.address} readOnly />
-              </label>
-              <div className='delete-btn'>
-                <button>Delete Account</button>
-              </div>
-            </>
-          ) : (
-            
-            <>
-              <label>
-                <span>Restaurant Name:</span>
-                <input type="text" value={account.rest_name} readOnly />
-              </label>
+          <label>
+            <span>Phone:</span>
+            <input type="tel" value={account.rest_tel} readOnly />
+          </label>
 
-              <label>
-                <span>Email:</span>
-                <input type="email" value={account.email} readOnly />
-              </label>
+          <label>
+            <span>Address:</span>
+            <input type="text" value={account.rest_address} readOnly />
+          </label>
 
-              <label>
-                <span>Phone:</span>
-                <input type="tel" value={account.rest_tel} readOnly />
-              </label>
+          <label>
+            <span>CR:</span>
+            <input type="text" value={account.CR} readOnly />
+          </label>
 
-              <label>
-                <span>Address:</span>
-                <input type="text" value={account.rest_address} readOnly />
-              </label>
-
-              <label>
-                <span>CR:</span>
-                <input type="text" value={account.CR} readOnly />
-              </label>
-
-              {account.logo_url && (
-                <img src={account.logo_url} alt="Restaurant Logo" />
-              )}
-            </>
+          {account.logo_url && (
+            <img src={account.logo_url} alt="Restaurant Logo" />
           )}
         </>
       )}
-
     </div>
   )
 }
