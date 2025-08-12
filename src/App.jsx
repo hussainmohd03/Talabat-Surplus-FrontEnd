@@ -43,19 +43,15 @@ const App = () => {
     }
   }, [])
 
-  useEffect(() => {
-    const getPendingOrder = async () => {
-      const res = await Client.get(`${BASE_URL}/orders/`)
-      if (res.data) {
-        setSelectOrder(res.data)
-      }
-      // console.log('select order ', selectOrder)
-    }
-    getPendingOrder()
-  }, [])
-  // userOrder && console.log(userOrder)
-  // const [selectOrder, setSelectOrder] = useState(ubserOrder ? userOrder : null)
-  // console.log(selectOrder)
+  // useEffect(() => {
+  //   const getPendingOrder = async () => {
+  //     const res = await Client.get(`${BASE_URL}/orders/`)
+  //     if (res.data) {
+  //       setSelectOrder(res.data)
+  //     }
+  //   }
+  //   getPendingOrder()
+  // }, [])
 
   const handleLogOut = () => {
     setUser(null)
@@ -111,7 +107,7 @@ const App = () => {
             }
           />
           <Route path="orders" element={<Order />} />
-          <Route path='/account/password' element={<ChangePassword/>}/>
+          <Route path="/account/password" element={<ChangePassword />} />
         </Routes>
       </main>
       {location.pathname !== '/welcome' &&

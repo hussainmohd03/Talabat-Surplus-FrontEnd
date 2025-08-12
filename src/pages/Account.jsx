@@ -55,6 +55,7 @@ const Account = ({ handleLogOut }) => {
           <Link to={'/account/password'}>
             <button>Change password</button>
           </Link>
+          <button onClick={handleLogOut}>Log out</button>
           {/* {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />} */}
         </>
       ) : (

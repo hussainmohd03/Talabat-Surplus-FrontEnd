@@ -13,13 +13,11 @@ const ChangePassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('making call')
-    const response = await Client.put(`${BASE_URL}/auth/update`, {
+    await Client.put(`${BASE_URL}/auth/update`, {
       old_password: credentials.old_password,
       new_password: credentials.new_password
     })
-    console.log(response, 'success')
-    // navigate('/home')
+    navigate('/account')
   }
 
   const handleChange = (e) => {
