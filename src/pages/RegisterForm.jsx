@@ -35,7 +35,8 @@ const RegisterForm = ({ role }) => {
   const handleChange = (e) => {
     if (
       customerValues.password === credentials.confirm_password &&
-      customerValues.password.length !== 0
+      customerValues.password.length >= 8 &&
+      customerValues.password.includes('@')
     ) {
       setFilled(true)
     }
