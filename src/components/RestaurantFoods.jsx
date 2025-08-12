@@ -3,10 +3,9 @@ import { useState, useEffect } from 'react'
 import Client from '../../services/api'
 import AddFoodForm from './AddFoodForm'
 
-const RestaurantFood = () => {
+const RestaurantFood = ({ search }) => {
   const [restFoods, setRestFoods] = useState(null)
   const [showAddForm, setShowAddForm] = useState(false)
-
   useEffect(() => {
     const getRestFood = async () => {
       const res = await Client.get('/foods')
@@ -14,6 +13,12 @@ const RestaurantFood = () => {
     }
     getRestFood()
   }, [])
+
+  const filteredFoods = restFoods
+    ? restFoods.filter((food) =>
+        food.name.toLowerCase().includes(search.toLowerCase())
+      )
+    : []
 
   return (
     <>
@@ -30,15 +35,14 @@ const RestaurantFood = () => {
             cuisineFoods={restFoods || []}
           />
         )}
-        {restFoods &&
-          restFoods.map((restFood) => (
-            <FoodItem
-              food={restFood}
-              key={restFood._id}
-              setCuisineFoods={setRestFoods}
-              cuisineFoods={restFoods}
-            />
-          ))}
+        {filteredFoods.map((restFood) => (
+          <FoodItem
+            food={restFood}
+            key={restFood._id}
+            setCuisineFoods={setRestFoods}
+            cuisineFoods={restFoods}
+          />
+        ))}
       </section>
     </>
   )

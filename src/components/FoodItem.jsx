@@ -9,7 +9,6 @@ const FoodList = ({ food, setCuisineFoods, cuisineFoods }) => {
   const handleDelete = async () => {
     try {
       await Client.delete(`/foods/${food._id}`)
-      // Remove the deleted food from the list
       setCuisineFoods(cuisineFoods.filter((item) => item._id !== food._id))
     } catch (error) {
       console.error('Error deleting food item:', error)
@@ -28,7 +27,10 @@ const FoodList = ({ food, setCuisineFoods, cuisineFoods }) => {
           <h3>{food.price}BD</h3>
         </div>
         {user && user.role === 'restaurant' && (
-          <button className='food-delete-button' onClick={handleDelete}></button>
+          <button
+            className="food-delete-button"
+            onClick={handleDelete}
+          ></button>
         )}
       </article>
     </>

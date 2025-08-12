@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Client from '../../services/api'
+import { cuisines } from '../../globals'
 
 const EditFoodForm = ({ food, setCuisineFoods, cuisineFoods, onClose }) => {
   const [form, setForm] = useState({
@@ -53,6 +54,22 @@ const EditFoodForm = ({ food, setCuisineFoods, cuisineFoods, onClose }) => {
         onChange={handleChange}
         required
       />
+      <select
+        name="cuisine"
+        value={form.cuisine}
+        onChange={handleChange}
+        required
+      >
+        <option value="">Select Cuisine</option>
+        {cuisines.map((cuisine) => (
+          <option
+            key={cuisine.id}
+            value={cuisine.name}
+          >
+            {cuisine.name}
+          </option>
+        ))}
+      </select>
       <button type="submit">Save Changes</button>
       <button type="button" onClick={onClose} className="cancel-button">
         Cancel

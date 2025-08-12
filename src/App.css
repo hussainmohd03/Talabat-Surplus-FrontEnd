@@ -24,15 +24,14 @@ nav {
   justify-content: center;
   height: 177px;
 }
-#home-header form {
-  margin-bottom: 25px;
-}
-#home-header form input {
+
+#home-header input {
   all: unset;
   background-color: white;
   padding: 15px;
   width: 370px;
   border-radius: 25px;
+  margin-bottom: 25px;
 }
 #cuisine-cards {
   display: flex;
@@ -208,7 +207,10 @@ main h1 {
   position: relative;
 }
 
+.top-section {
+}
 
 #cart-title {
   
 }
+
