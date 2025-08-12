@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../../globals'
 import Client from '../../services/api'
-const Account = ({handleLogOut}) => {
+import '../../public/styleSheets/AccountStyle.css'
+
+const Account = ({ handleLogOut }) => {
   const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
 
@@ -24,33 +26,65 @@ const Account = ({handleLogOut}) => {
   if (error) return <p>{error}</p>
   if (!account) return <p>Loading your account...</p>
 
-  const handleAccountClick = () => {
-
-  }
+  const handleAccountClick = () => {}
 
   return (
-    <div>
-      <h1>Account</h1>
+    <div className="account-container">
+      <h1>Account info</h1>
       {'first_name' in account ? (
         <>
-          <p>First Name: {account.first_name}</p>
-          <p>Last Name: {account.last_name}</p>
-          <p>Email: {account.email}</p>
-          <p>Address: {account.address}</p>
-          {account.avatar_url && (
-            <img src={account.avatar_url} alt="Avatar" width="100" />
-          )}
-          <button onClick={handleAccountClick}>Account info</button>
-          <button>Change password</button>
-          <button onClick={handleLogOut}>Log out</button>
+          <label>
+            <span>First Name:</span>
+            <input type="text" value={account.first_name} readOnly />
+          </label>
+
+          <label>
+            <span>Last Name:</span>
+            <input type="text" value={account.last_name} readOnly />
+          </label>
+
+          <label>
+            <span>Email:</span>
+            <input type="email" value={account.email} readOnly />
+          </label>
+
+          <label>
+            <span>Address:</span>
+            <input type="text" value={account.address} readOnly />
+          </label>
+
+          {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />}
         </>
       ) : (
         <>
-          <p>Restaurant Name:{account.rest_name}</p>
-          <p>Email:{account.email}</p>
-          <p>Phone: {account.rest_tel}</p>
-          <p>Address:{account.rest_address}</p>
-          <p>CR: {account.CR}</p>
+          <label>
+            <span>Restaurant Name:</span>
+            <input type="text" value={account.rest_name} readOnly />
+          </label>
+
+          <label>
+            <span>Email:</span>
+            <input type="email" value={account.email} readOnly />
+          </label>
+
+          <label>
+            <span>Phone:</span>
+            <input type="tel" value={account.rest_tel} readOnly />
+          </label>
+
+          <label>
+            <span>Address:</span>
+            <input type="text" value={account.rest_address} readOnly />
+          </label>
+
+          <label>
+            <span>CR:</span>
+            <input type="text" value={account.CR} readOnly />
+          </label>
+
+          {account.logo_url && (
+            <img src={account.logo_url} alt="Restaurant Logo" />
+          )}
         </>
       )}
     </div>

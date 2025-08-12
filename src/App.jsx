@@ -17,7 +17,6 @@ import Cart from './pages/Cart'
 import Client from '../services/api'
 import { BASE_URL } from '../globals'
 import Order from './pages/Order'
-// import { set } from 'mongoose'
 
 const App = () => {
   const [price, setPrice] = useState(0)
@@ -113,7 +112,9 @@ const App = () => {
           <Route path="orders" element={<Order />} />
         </Routes>
       </main>
-      {location.pathname !== '/welcome' && <NavBar />}
+      {location.pathname !== '/welcome' &&
+        location.pathname !== '/auth/login' &&
+        location.pathname !== '/auth/register' && <NavBar />}
     </>
   )
 }

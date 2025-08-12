@@ -2,6 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../../services/Auth'
+import '../../public/styleSheets/RegisterStyle.css'
 
 const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
@@ -31,12 +32,11 @@ const RegisterForm = ({ role }) => {
   const [resValues, setResValues] = useState(resInitialState)
   const [credentials, setCredentials] = useState(credInitial)
   const [filled, setFilled] = useState(false)
-
-  const handleChange = (e) => {
+  
+const handleChange = (e) => {
     if (
       customerValues.password === credentials.confirm_password &&
-      customerValues.password.length >= 8 &&
-      customerValues.password.includes('@')
+      customerValues.password.length >=8 && customerValues.password.includes('@')
     ) {
       setFilled(true)
     }
@@ -122,7 +122,7 @@ const RegisterForm = ({ role }) => {
           <p>Passwords must match.</p>
           <p>
             By creating an account you agree to the Privacy Policy and to the
-            Terms of Use.
+            Terms of Use{' '}
           </p>
           <button disabled={!filled} type="submit">
             Create Your Account
@@ -184,7 +184,6 @@ const RegisterForm = ({ role }) => {
             value={customerValues.password}
             required
           />
-
           <label htmlFor="confirm_password">Confirm Password</label>
           <input
             type="password"
@@ -197,7 +196,7 @@ const RegisterForm = ({ role }) => {
           <br />
           <p>
             By creating an account you agree to the Privacy Policy and to the
-            Terms of Use
+            Terms of Use{' '}
           </p>
 
           <button disabled={!filled} type="submit">
