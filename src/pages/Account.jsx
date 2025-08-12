@@ -6,7 +6,7 @@ import '../../public/styleSheets/AccountStyle.css'
 import BackButton from '../components/BackButton'
 import { useNavigate } from 'react-router-dom'
 
-const Account = ({handleLogOut}) => {
+const Account = ({ handleLogOut }) => {
   const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
 
@@ -60,8 +60,8 @@ const Account = ({handleLogOut}) => {
             {account.avatar_url && (
               <img src={account.avatar_url} alt="Avatar" />
             )}
-            
-            <button onClick={()=>handleLogOut}>Log out</button>
+
+            <button onClick={handleLogOut}>Log out</button>
           </>
         ) : (
           <>
