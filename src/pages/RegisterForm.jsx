@@ -104,7 +104,7 @@ const RegisterForm = ({ role }) => {
           <label htmlFor="confirm_password">Confirm Password</label>
           <input
             type="password"
-            name="confirm password"
+            name="confirm_password"
             placeholder="Password"
             onChange={handleChange}
             value={credentials.confirm_password}

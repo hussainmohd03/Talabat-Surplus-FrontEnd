@@ -20,6 +20,7 @@ import Order from './pages/Order'
 // import { set } from 'mongoose'
 
 const App = () => {
+  const [price, setPrice] = useState(0)
   const [item, setItem] = useState('')
   const [role, setRole] = useState(null)
   const [choice, setChoice] = useState(null)
@@ -59,6 +60,7 @@ const App = () => {
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
+    navigate('/welcome')
   }
   return (
     <>
@@ -84,6 +86,8 @@ const App = () => {
               <FoodCard
                 selectOrder={selectOrder}
                 setSelectOrder={setSelectOrder}
+                price={price}
+                setPrice={setPrice}
               />
             }
           />

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../../globals'
 import Client from '../../services/api'
-const Account = () => {
+const Account = ({handleLogOut}) => {
   const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
 
@@ -42,7 +42,7 @@ const Account = () => {
           )}
           <button onClick={handleAccountClick}>Account info</button>
           <button>Change password</button>
-          <button>Log out</button>
+          <button onClick={handleLogOut}>Log out</button>
         </>
       ) : (
         <>

@@ -5,7 +5,14 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import { useNavigate } from 'react-router-dom'
 
-const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems, item, setItem }) => {
+const Cart = ({
+  selectOrder,
+  setSelectOrder,
+  cartItems,
+  setCartItems,
+  item,
+  setItem
+}) => {
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -14,6 +21,7 @@ const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems, item, setI
       setItem(items.data._id)
       // console.log('mini', items.data.food_id[0].price)
       // console.log(items.data)
+
       setCartItems(items.data.food_id)
     }
     onMount()
@@ -22,15 +30,13 @@ const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems, item, setI
   // console.log('cart items', cartItems[0].name)
 
   const handleRemove = async (foodId) => {
-    const remove = await Client.put(`${BASE_URL}/orders/${item}`, {
-      $pull: { food_id: foodId }
-      // total_price: total_price-foodId.price
-    })
-    // console.log(remove)
-    // console.log('cart items', cartItems[0])
+    const remove = await Client.put(
+      `${BASE_URL}/orders/${item}?action=remove&status=pending&foodId=${foodId}`
+    )
+    console.log(remove)
   }
 
-  const handlePlaceOrder = async ()=> {
+  const handlePlaceOrder = async () => {
     const placedOrder = await Client.put(`${BASE_URL}/orders/${item}`, {
       payment_status: 'approved'
     })
@@ -57,7 +63,7 @@ const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems, item, setI
       <Link to={'/'}>
         <button>Add items </button>
       </Link>
-        <button onClick={handlePlaceOrder}>Place order </button>
+      <button onClick={handlePlaceOrder}>Place order </button>
     </>
   )
 }
