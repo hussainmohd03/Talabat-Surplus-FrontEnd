@@ -7,6 +7,8 @@ import '../../public/styleSheets/RegisterStyle.css'
 const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
 
+const RegisterForm = ({ role }) => {
+  const navigate = useNavigate()
   const custInitialState = {
     first_name: '',
     last_name: '',
@@ -14,7 +16,6 @@ const RegisterForm = ({ role }) => {
     password: '',
     address: ''
   }
-
   const resInitialState = {
     rest_name: '',
     rest_tel: '',
@@ -23,11 +24,9 @@ const RegisterForm = ({ role }) => {
     CR: '',
     password: ''
   }
-
   const credInitial = {
     confirm_password: ''
   }
-
   const [customerValues, setCustomerValues] = useState(custInitialState)
   const [resValues, setResValues] = useState(resInitialState)
   const [credentials, setCredentials] = useState(credInitial)
@@ -57,7 +56,6 @@ const RegisterForm = ({ role }) => {
     setResValues({ ...resValues, [e.target.name]: e.target.value })
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
-
   const handleSubmit = async (e) => {
     if (role === 'customer') {
       e.preventDefault()
@@ -221,6 +219,7 @@ const RegisterForm = ({ role }) => {
       )}
     </div>
   )
+}
 }
 
 export default RegisterForm

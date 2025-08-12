@@ -16,6 +16,7 @@ import { useState } from 'react'
 import Cart from './pages/Cart'
 import Client from '../services/api'
 import { BASE_URL } from '../globals'
+import EditAccount from './pages/EditAccount'
 import Order from './pages/Order'
 import ChangePassword from './pages/ChangePassword'
 
@@ -87,10 +88,12 @@ const App = () => {
               />
             }
           />
+
           <Route
             path="/account"
             element={<Account handleLogOut={handleLogOut} />}
           />
+
 
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
           <Route
