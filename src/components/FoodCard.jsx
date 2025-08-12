@@ -13,8 +13,6 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
   const [selectedFood, setSelectedFood] = useState(null)
   const [editing, setEditing] = useState(false)
 
-  console.log(selectOrder, 'this is it in food')
-
   useEffect(() => {
     const onMount = async () => {
       let food = await Client.get(`${BASE_URL}/foods/${id}`)
@@ -34,8 +32,15 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
       setSelectOrder(order)
       navigate('/cart')
     } else {
-      const updated = await Client.put(`${BASE_URL}/orders/${selectOrder._id}`, {
-      food_id: [...selectOrder.food_id.map(food => food._id), selectedFood._id]})
+      const updated = await Client.put(
+        `${BASE_URL}/orders/${selectOrder._id}`,
+        {
+          food_id: [
+            ...selectOrder.food_id.map((food) => food._id),
+            selectedFood._id
+          ]
+        }
+      )
       setSelectOrder(updated.data)
       navigate('/cart')
     }

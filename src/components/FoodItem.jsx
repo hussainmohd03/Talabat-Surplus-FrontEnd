@@ -7,12 +7,8 @@ const FoodList = ({ food, setCuisineFoods, cuisineFoods }) => {
   const { user } = useContext(UserContext)
 
   const handleDelete = async () => {
-    try {
-      await Client.delete(`/foods/${food._id}`)
-      setCuisineFoods(cuisineFoods.filter((item) => item._id !== food._id))
-    } catch (error) {
-      console.error('Error deleting food item:', error)
-    }
+    await Client.delete(`/foods/${food._id}`)
+    setCuisineFoods(cuisineFoods.filter((item) => item._id !== food._id))
   }
 
   return (

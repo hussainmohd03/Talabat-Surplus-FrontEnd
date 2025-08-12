@@ -33,7 +33,7 @@ const Account = () => {
   return (
 
     <div>
-   <div className="account-container">
+  <div className="account-container">
   <h1>Account info</h1>
   {'first_name' in account ? (
     <>
@@ -93,9 +93,10 @@ const Account = () => {
 
       )}
     </>
-  )}
-</div>
-  )
+  )} 
+  </div> 
+</div> 
+  ) 
 }
 
 export default Account
