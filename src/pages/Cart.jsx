@@ -5,7 +5,14 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import { useNavigate } from 'react-router-dom'
 
-const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems, item, setItem }) => {
+const Cart = ({
+  selectOrder,
+  setSelectOrder,
+  cartItems,
+  setCartItems,
+  item,
+  setItem
+}) => {
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -30,7 +37,7 @@ const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems, item, setI
     // console.log('cart items', cartItems[0])
   }
 
-  const handlePlaceOrder = async ()=> {
+  const handlePlaceOrder = async () => {
     const placedOrder = await Client.put(`${BASE_URL}/orders/${item}`, {
       payment_status: 'approved'
     })
@@ -57,7 +64,7 @@ const Cart = ({ selectOrder, setSelectOrder, cartItems, setCartItems, item, setI
       <Link to={'/'}>
         <button>Add items </button>
       </Link>
-        <button onClick={handlePlaceOrder}>Place order </button>
+      <button onClick={handlePlaceOrder}>Place order </button>
     </>
   )
 }
