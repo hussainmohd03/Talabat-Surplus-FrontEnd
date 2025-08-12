@@ -61,7 +61,7 @@ const Account = ({ handleLogOut }) => {
               <img src={account.avatar_url} alt="Avatar" />
             )}
 
-            <button onClick={handleLogOut}>Log out</button>
+            <button onClick={() => handleLogOut()}>Log out</button>
           </>
         ) : (
           <>
