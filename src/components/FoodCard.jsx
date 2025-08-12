@@ -5,6 +5,7 @@ import { UserContext } from '../context/UserContext'
 import EditFoodForm from './EditFoodForm'
 import { useParams, useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
+import BackButton from './BackButton'
 
 const FoodCard = ({ selectOrder, setSelectOrder }) => {
   const navigate = useNavigate()
@@ -49,6 +50,7 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
   return (
     <>
       <div className="food-card-container">
+        <BackButton />
         <div id="food-card">
           <div id="food-picture">
             <img id="food-picture" src={selectedFood?.image_url} alt="" />
