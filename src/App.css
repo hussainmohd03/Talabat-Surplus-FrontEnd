@@ -117,15 +117,11 @@ main h1 {
 #button-cart,
 .food-edit-button {
   background-color: #fe5f1e;
-  border: none;
-  position: absolute;
   width: 214px;
   height: 53px;
-  left: calc(50% - 214px / 2);
-  top: 612px;
+  margin: 0 auto;
   background: #f55905;
   border-radius: 26.5px;
-  margin-top: 30px;
 }
 .edit-food {
   font-family: 'DM Sans';
@@ -211,6 +207,4 @@ main h1 {
 }
 
 #cart-title {
-  
 }
-

@@ -16,15 +16,12 @@ const EditFoodForm = ({ food, setCuisineFoods, cuisineFoods, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const res = await Client.put(`/foods/${food._id}`, form)
-      setCuisineFoods(
-        cuisineFoods.map((item) => (item._id === food._id ? res.data : item))
-      )
-      if (onClose) onClose()
-    } catch (err) {
-      throw err
-    }
+
+    const res = await Client.put(`/foods/${food._id}`, form)
+    setCuisineFoods(
+      cuisineFoods.map((item) => (item._id === food._id ? res.data : item))
+    )
+    if (onClose) onClose()
   }
 
   return (
@@ -62,10 +59,7 @@ const EditFoodForm = ({ food, setCuisineFoods, cuisineFoods, onClose }) => {
       >
         <option value="">Select Cuisine</option>
         {cuisines.map((cuisine) => (
-          <option
-            key={cuisine.id}
-            value={cuisine.name}
-          >
+          <option key={cuisine.id} value={cuisine.name}>
             {cuisine.name}
           </option>
         ))}
