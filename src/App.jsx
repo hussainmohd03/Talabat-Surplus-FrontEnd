@@ -16,6 +16,7 @@ import { useState } from 'react'
 import Cart from './pages/Cart'
 import Client from '../services/api'
 import { BASE_URL } from '../globals'
+import EditAccount from './pages/EditAccount'
 
 const App = () => {
   const [role, setRole] = useState(null)
@@ -78,6 +79,9 @@ const App = () => {
             }
           />
           <Route path="/account" element={<Account />} />
+          
+                    {/* <Route path="/account/edit" element={<EditAccount />} /> */}
+
 
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
           <Route

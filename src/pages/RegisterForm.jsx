@@ -6,6 +6,8 @@ import '../../public/styleSheets/RegisterStyle.css'
 const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
 
+const RegisterForm = ({ role }) => {
+  const navigate = useNavigate()
   const custInitialState = {
     first_name: '',
     last_name: '',
@@ -13,7 +15,6 @@ const RegisterForm = ({ role }) => {
     password: '',
     address: ''
   }
-
   const resInitialState = {
     rest_name: '',
     res_tel: '',
@@ -22,57 +23,36 @@ const RegisterForm = ({ role }) => {
     CR: '',
     password: ''
   }
-
   const credInitial = {
     confirm_password: ''
   }
-
   const [customerValues, setCustomerValues] = useState(custInitialState)
   const [resValues, setResValues] = useState(resInitialState)
   const [credentials, setCredentials] = useState(credInitial)
   const [filled, setFilled] = useState(false)
-
   const handleChange = (e) => {
-    const { name, value } = e.target
-
-    if (role === 'customer') {
-      setCustomerValues({ ...customerValues, [name]: value })
-    } else {
-      setResValues({ ...resValues, [name]: value })
-    }
-
-    if (name === 'confirm_password') {
-      setCredentials({ ...credentials, confirm_password: value })
-    }
-
-    // Check if passwords match and are non-empty
-    const pwd = role === 'customer'
-      ? (name === 'password' ? value : customerValues.password)
-      : (name === 'password' ? value : resValues.password)
-
-    const confirmPwd = name === 'confirm_password' ? value : credentials.confirm_password
-
-    if (pwd && confirmPwd && pwd === confirmPwd) {
+    if (
+      customerValues.password === credentials.confirm_password &&
+      customerValues.password.length !== 0
+    ) {
       setFilled(true)
-    } else {
-      setFilled(false)
     }
+    setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
+    setResValues({ ...resValues, [e.target.name]: e.target.value })
+    setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
-
   const handleSubmit = async (e) => {
-    e.preventDefault()
-
     if (role === 'customer') {
+      e.preventDefault()
       await RegisterUser(customerValues, role)
       setCustomerValues(custInitialState)
+      navigate('/auth/login')
     } else {
+      e.preventDefault()
       await RegisterUser(resValues, role)
       setResValues(resInitialState)
+      navigate('/auth/login')
     }
-
-    setCredentials(credInitial)
-    setFilled(false)
-    navigate('/auth/login')
   }
 
   return (
@@ -240,6 +220,7 @@ const RegisterForm = ({ role }) => {
       )}
     </div>
   )
+}
 }
 
 export default RegisterForm
