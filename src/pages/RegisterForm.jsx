@@ -2,6 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../../services/Auth'
+import '../../public/styleSheets/RegisterStyle.css'
 
 const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
@@ -31,11 +32,11 @@ const RegisterForm = ({ role }) => {
   const [resValues, setResValues] = useState(resInitialState)
   const [credentials, setCredentials] = useState(credInitial)
   const [filled, setFilled] = useState(false)
-
-  const handleChange = (e) => {
+  
+const handleChange = (e) => {
     if (
       customerValues.password === credentials.confirm_password &&
-      customerValues.password.length !== 0
+      customerValues.password.length >=8 && customerValues.password.includes('@')
     ) {
       setFilled(true)
     }
