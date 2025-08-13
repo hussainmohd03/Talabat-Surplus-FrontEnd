@@ -26,7 +26,6 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
         }
       }
     }
-
     onMount()
   }, [id])
   // if select order has food id then disable bytton

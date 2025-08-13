@@ -6,9 +6,6 @@ import '../../public/styleSheets/RegisterStyle.css'
 
 const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
-
-const RegisterForm = ({ role }) => {
-  const navigate = useNavigate()
   const custInitialState = {
     first_name: '',
     last_name: '',
@@ -220,6 +217,5 @@ const RegisterForm = ({ role }) => {
     </div>
   )
 }
-}
-
+  
 export default RegisterForm

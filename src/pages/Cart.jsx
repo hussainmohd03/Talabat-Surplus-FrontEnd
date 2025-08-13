@@ -35,8 +35,9 @@ const Cart = ({
 
   const handleRemove = async (foodId) => {
     const updated = await Client.put(
-      `${BASE_URL}/orders/${item}?action=remove&status=pending&foodId=${foodId}`
+      `${BASE_URL}/orders/${item._id}?action=remove&status=pending&foodId=${foodId}`
     )
+    console.log(updated)
     setCartItems(updated.data.foodItems)
   }
 
@@ -47,7 +48,7 @@ const Cart = ({
     console.log(placedOrder)
     navigate('/orders')
   }
-  console.log('cart items', cartItems)
+  // console.log('cart items', cartItems)
   return (
     <>
       <h3 id="cart-title">Cart</h3>
@@ -71,7 +72,7 @@ const Cart = ({
       <Link to={'/'}>
         <button>Add items </button>
       </Link>
-      <button onClick={handlePlaceOrder}>Place order </button>
+      <button onClick={handlePlaceOrder}>Place order</button>
     </>
   )
 }
