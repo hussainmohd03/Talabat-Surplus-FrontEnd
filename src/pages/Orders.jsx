@@ -43,22 +43,27 @@ const Orders = ({ role }) => {
           <div>
             <h1>Your orders</h1>
 
-            {dbApprovedOrders &&
-              dbApprovedOrders.map((order) => (
-                <div>
-                  <li>
-                    {order._id}
-                    <li>{order.order_status}</li>
-                    <li>BHD{order.total_price}</li>
-                  </li>
-                </div>
-              ))}
+            {dbApprovedOrders?.map((order) => (
+              <div>
+                <li>
+                  {order._id}
+                  <li>{order.order_status}</li>
+                  <li>BHD{order.total_price}</li>
+                </li>
+              </div>
+            ))}
           </div>
         ) : (
           <div>
             <h1>Your orders</h1>
-            {dbApprovedOrders &&
-              dbApprovedOrders.map((order) => <Order order={order} />)}
+            {dbApprovedOrders?.map((order, idx) => (
+              <Order
+              dbApprovedOrders={dbApprovedOrders}
+                idx={idx}
+                order={order}
+                setDbApprovedOrders={setDbApprovedOrders}
+              />
+            ))}
           </div>
         )}
       </div>
