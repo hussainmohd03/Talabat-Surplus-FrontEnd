@@ -116,8 +116,11 @@ const App = () => {
             element={<Account handleLogOut={handleLogOut} account={account} setAccount={setAccount} />}
           />
 
-          <Route path="/account/edit" element={<EditAccount account={account} setAccount={setAccount} setTrigger={setTrigger} trigger={trigger} />}/>
+          <Route path="/account/edit" element={<EditAccount account={account} setAccount={setAccount} setTrigger={setTrigger} trigger={trigger} ha/>}/>
 
+<Route path="/account/settings" element={<Settings handleLogOut={handleLogOut} 
+  
+  />} />
 
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
           <Route

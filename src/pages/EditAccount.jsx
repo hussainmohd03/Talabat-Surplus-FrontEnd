@@ -173,6 +173,7 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
             <img src={resDetails.logo_url} alt="Restaurant Logo" />
           )}
           <button type="submit">Update Account Details</button>
+          
         </form>
       )}
     </div>
