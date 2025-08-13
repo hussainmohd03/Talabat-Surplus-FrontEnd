@@ -7,9 +7,16 @@ const EditAccount = ({
   onUpdateSuccess,
   setAccount,
   setTrigger,
-  trigger
+  trigger,
+  handleDeleteAccount
 }) => {
   console.log('here')
+
+if (!account) {
+    console.log('Account data is null in EditAccount, rendering loading message.');
+    // Display a loading message while account data is being fetched
+    return <p>Loading account details for editing...</p>
+}
 
   const isCustomer = 'first_name' in account
   const [customerDetails, setCustomerDetails] = useState(
@@ -73,6 +80,7 @@ const EditAccount = ({
     }
   }
 
+  
   return (
     <div className="account-container">
       <div className="back-btn">
@@ -125,6 +133,9 @@ const EditAccount = ({
           <div className="update-btn">
             <button type="submit">Update Account Details</button>
           </div>
+           <div className="delete-btn">
+          <button onClick={handleDeleteAccount}>Delete Account</button>
+        </div>
         </form>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -182,6 +193,9 @@ const EditAccount = ({
             <img src={resDetails.logo_url} alt="Restaurant Logo" />
           )}
           <button type="submit">Update Account Details</button>
+           <div className="delete-btn">
+          <button onClick={handleDeleteAccount}>Delete Account</button>
+        </div>
         </form>
       )}
     </div>

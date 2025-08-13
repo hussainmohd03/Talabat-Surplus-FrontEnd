@@ -21,7 +21,7 @@ const Account = ({ handleLogOut, account, setAccount }) => {
 
   const getAccount = async () => {
     try {
-      const res = await Client.get(`${BASE_URL}/auth/session`)
+      const res = await Client.get(`${BASE_URL}/auth/profile`)
       setAccount(res.data)
       setUser(res.data)
     } catch (err) {
@@ -90,10 +90,8 @@ const Account = ({ handleLogOut, account, setAccount }) => {
               <span>Address:</span>
               <input type="text" value={account.address} readOnly />
             </label>
-            <Link to={'/account/password'}>
-              <button>Change password</button>
-            </Link>
-            <button onClick={handleLogOut}>Log out</button>
+            
+            
             {/* {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />} */}
           </>
         ) : (
@@ -128,17 +126,12 @@ const Account = ({ handleLogOut, account, setAccount }) => {
           //   <img src={account.logo_url} alt="Restaurant Logo" />
           // )}
         )}
-        <Link to={'/account/password'}>
-          <button>Change password</button>
-        </Link>
-        <button onClick={handleLogOut}>Log out</button>
+        
 
         <div className="edit-btn">
           <button onClick={() => handleEditToggle()}>Edit Profile</button>
         </div>
-        <div className="delete-btn">
-          <button onClick={handleDeleteAccount}>Delete Account</button>
-        </div>
+       
         <div className="settings-btn">
           <Link to="/account/settings">
             <button>Settings</button>

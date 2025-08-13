@@ -84,6 +84,28 @@ const App = () => {
     localStorage.clear()
     navigate('/welcome')
   }
+
+    const handleDeleteAccount = async () => {
+    if (
+      window.confirm(
+        'Are you sure you want to delete your account? This action cannot be undone.'
+      )
+    ) {
+      try {
+        await Client.delete(`${BASE_URL}/auth`)
+        console.log('Account deleted successfully')
+
+        // clears user data from local storage and context
+        localStorage.removeItem('token')
+        setUser(null)
+
+        navigate('/welcome')
+      } catch (err) {
+        console.error('Failed to delete account:', err)
+        setError('Failed to delete account. Please try again.')
+      }
+    }
+  }
   return (
     <>
       <main>
@@ -136,10 +158,7 @@ const App = () => {
                 account={account}
                 setAccount={setAccount}
                 setTrigger={setTrigger}
-                trigger={trigger}
-                ha
-              />
-            }
+                trigger={trigger} handleDeleteAccount={handleDeleteAccount}/>}
           />
 
           <Route

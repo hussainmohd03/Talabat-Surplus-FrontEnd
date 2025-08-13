@@ -1,6 +1,6 @@
 .Register-Container {
   background: #fff;
-  font-family: Arial, sans-serif;
+  font-family:'DM Sans' , sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column; 
@@ -80,7 +80,18 @@ p .terms {
   text-decoration: none;
 }
 
-#register-submit {
+/* #register-submit {
+  grid-column: 1 / -1;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  background-color: #ff6600;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+} */
+
+.Register-Container button {
   grid-column: 1 / -1;
   padding: 0.5rem;
   font-size: 0.85rem;
@@ -94,3 +105,4 @@ p .terms {
 button:hover {
   background-color: #e85c00;
 }
+
