@@ -21,12 +21,12 @@ const Cart = ({
       setItem(items.data._id)
       // console.log('mini', items.data.food_id[0].price)
       // console.log(items.data)
-
+      
       setCartItems(items.data.foodItems)
     }
     onMount()
   }, [])
-
+  
   // console.log('cart items', cartItems[0].name)
 
   const handleRemove = async (foodId) => {
@@ -34,9 +34,9 @@ const Cart = ({
       `${BASE_URL}/orders/${item}?action=remove&status=pending&foodId=${foodId}`
     )
     setCartItems(updated.data.foodItems)
-    console.log(updated)
   }
-
+  
+  
   const handlePlaceOrder = async () => {
     const placedOrder = await Client.put(`${BASE_URL}/orders/${item}`, {
       payment_status: 'approved'
@@ -53,9 +53,11 @@ const Cart = ({
           {cartItems &&
             cartItems.map((item) => (
               <div>
-                <li key={item.id}>
-                  <h2>{item.name}</h2>
-                  <button onClick={() => handleRemove(item._id)}>remove</button>
+                <li key={item._id}>
+                  <h2>{item.foodId.name}</h2>
+                  <button onClick={() => handleRemove(item.foodId)}>
+                    remove
+                  </button>
                 </li>
               </div>
             ))}

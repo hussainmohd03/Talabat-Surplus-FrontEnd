@@ -18,7 +18,15 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
     const onMount = async () => {
       let food = await Client.get(`${BASE_URL}/foods/${id}`)
       setSelectedFood(food.data)
+
+      if (user && user.role !== 'restaurant') {
+        const res = await Client.get(`${BASE_URL}/orders`)
+        if (res.data && res.data.order_status === 'pending') {
+          setSelectOrder(res.data)
+        }
+      }
     }
+
     onMount()
   }, [id])
   // if select order has food id then disable bytton
@@ -34,13 +42,12 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
       navigate('/cart')
     } else {
       const updated = await Client.put(
-        `${BASE_URL}/orders/${selectOrder._id}?action=add&status=pending&foodId=${id}`
+        `${BASE_URL}/orders/${selectOrder._id}?action=add&status=pending&foodId=${selectedFood._id}`
       )
       setSelectOrder(updated.data)
       navigate('/cart')
     }
   }
-  console.log(price)
 
   const handleAdding = () => {
     console.log(selectOrder.food_id)
