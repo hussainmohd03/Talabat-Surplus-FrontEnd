@@ -12,7 +12,6 @@ import BackButton from '../components/BackButton'
 
 const Account = ({ handleLogOut, account, setAccount }) => {
 
-  const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
   const [edit, setEdit] = useState(false)
   const navigate = useNavigate()
