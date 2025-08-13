@@ -42,9 +42,12 @@ const Cart = ({
   }
 
   const handlePlaceOrder = async () => {
-    const placedOrder = await Client.put(`${BASE_URL}/orders/${item}`, {
-      payment_status: 'approved'
-    })
+    const placedOrder = await Client.put(
+      `${BASE_URL}/orders/place/${item._id}`,
+      {
+        payment_status: 'approved'
+      }
+    )
     console.log(placedOrder)
     navigate('/orders')
   }

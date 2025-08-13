@@ -58,7 +58,7 @@ const Orders = ({ role }) => {
             <h1>Your orders</h1>
             {dbApprovedOrders?.map((order, idx) => (
               <Order
-              dbApprovedOrders={dbApprovedOrders}
+                dbApprovedOrders={dbApprovedOrders}
                 idx={idx}
                 order={order}
                 setDbApprovedOrders={setDbApprovedOrders}
