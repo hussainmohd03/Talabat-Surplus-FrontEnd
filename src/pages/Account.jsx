@@ -10,13 +10,18 @@ import { UserContext } from '../context/UserContext'
 
 import BackButton from '../components/BackButton'
 
-const Account = ({ handleLogOut }) => {
+const Account = ({ handleLogOut, account, setAccount }) => {
+
   const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
   const [edit, setEdit] = useState(false)
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext) //
 
+  const handleEditToggle = () => {
+    navigate('edit')
+
+  }
   const getAccount = async () => {
     try {
       // const token = localStorage.getItem('token') //storing
@@ -36,6 +41,7 @@ const Account = ({ handleLogOut }) => {
   const handleEditComplete = (updatedAccountData) => {
     setAccount(updatedAccountData) // updates the account state
     setEdit(false)
+
   }
 
   // function to handle the deletion of the account
@@ -63,73 +69,81 @@ const Account = ({ handleLogOut }) => {
   if (error) return <p>{error}</p>
   if (!account) return <p>Loading your account...</p>
 
-  const handleAccountClick = () => {}
-
   return (
     <div className="account-container">
-      <h1>Account info</h1>
-      {'first_name' in account ? (
         <>
-          <label>
-            <span>First Name:</span>
-            <input type="text" value={account.first_name} readOnly />
-          </label>
+          <h2>Account Info</h2>
+          {'first_name' in account ? (
+            <>
+              <label>
+                <span>First Name:</span>
+                <input type="text" value={account.first_name} readOnly />{' '}
+                {/*readOnly not allows modifying of the content of the field*/}
+              </label>
 
-          <label>
-            <span>Last Name:</span>
-            <input type="text" value={account.last_name} readOnly />
-          </label>
-          <label>
-            <span>Email:</span>
-            <input type="email" value={account.email} readOnly />
-          </label>
+              <label>
+                <span>Last Name:</span>
+                <input type="text" value={account.last_name} readOnly />
+              </label>
+              <label>
+                <span>Email:</span>
+                <input type="email" value={account.email} readOnly />
+              </label>
 
-          <label>
-            <span>Address:</span>
-            <input type="text" value={account.address} readOnly />
-          </label>
-          <Link to={'/account/password'}>
-            <button>Change password</button>
-          </Link>
-          {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />}
+              <label>
+                <span>Address:</span>
+                <input type="text" value={account.address} readOnly />
+              </label>
+              <Link to={'/account/password'}>
+                <button>Change password</button>
+              </Link>
+              <button onClick={handleLogOut}>Log out</button>
+              {/* {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />} */}
+            </>
+          ) : (
+            <>
+              <label>
+                <span>Restaurant Name:</span>
+                <input type="text" value={account.rest_name} readOnly />
+              </label>
 
-          <button onClick={() => handleLogOut()}>Log out</button>
-        </>
-      ) : (
-        <>
-          <label>
-            <span>Restaurant Name:</span>
-            <input type="text" value={account.rest_name} readOnly />
-          </label>
-          <label>
-            <span>Restaurant Name:</span>
-            <input type="text" value={account.rest_name} readOnly />
-          </label>
-          <label>
-            <span>Email:</span>
-            <input type="email" value={account.email} readOnly />
-          </label>
+              <label>
+                <span>Email:</span>
+                <input type="email" value={account.email} readOnly />
+              </label>
 
-          <label>
-            <span>Phone:</span>
-            <input type="tel" value={account.rest_tel} readOnly />
-          </label>
+              <label>
+                <span>Phone:</span>
+                <input type="tel" value={account.rest_tel} readOnly />
+              </label>
 
-          <label>
-            <span>Address:</span>
-            <input type="text" value={account.rest_address} readOnly />
-          </label>
+              <label>
+                <span>Address:</span>
+                <input type="text" value={account.rest_address} readOnly />
+              </label>
 
-          <label>
-            <span>CR:</span>
-            <input type="text" value={account.CR} readOnly />
-          </label>
+              <label>
+                <span>CR:</span>
+                <input type="text" value={account.CR} readOnly />
+              </label>
+            </>
 
-          {account.logo_url && (
-            <img src={account.logo_url} alt="Restaurant Logo" />
+            // {account.logo_url && (
+            //   <img src={account.logo_url} alt="Restaurant Logo" />
+            // )}
           )}
+          <div className="edit-btn">
+            <button onClick={() => handleEditToggle()}>Edit Profile</button>
+          </div>
+          <div className="delete-btn">
+            <button onClick={handleDeleteAccount}>Delete Account</button>
+          </div>
+           <div className="settings-btn"> 
+              <Link to="/account/settings">
+                <button>Settings</button>
+              </Link>
+            </div>
         </>
-      )}
     </div>
   )
 }

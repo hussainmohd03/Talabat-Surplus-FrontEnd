@@ -19,6 +19,7 @@ import { BASE_URL } from '../globals'
 import Orders from './pages/Orders'
 import EditAccount from './pages/EditAccount'
 import ChangePassword from './pages/ChangePassword'
+import Settings from './pages/Settings'
 
 const App = () => {
   const [price, setPrice] = useState(0)
@@ -30,10 +31,24 @@ const App = () => {
   const location = useLocation()
   const { setUser, user } = useContext(UserContext)
   const [selectOrder, setSelectOrder] = useState(null)
+  const [account, setAccount] = useState(null)
+  const [trigger, setTrigger] = useState(false)
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
     // console.log(user)
+  }
+
+  const getAccount = async () => {
+    try {
+      // const token = localStorage.getItem('token') //storing
+      const res = await Client.get(`${BASE_URL}/auth/profile`)
+      setAccount(res.data)
+      setUser(res.data)
+    } catch (err) {
+      setError('Failed to load profile')
+      console.error(err)
+    }
   }
 
   useEffect(() => {
@@ -44,6 +59,10 @@ const App = () => {
       navigate('/welcome')
     }
   }, [])
+
+  useEffect(()=> {
+    getAccount()
+  }, [trigger])
 
   useEffect(() => {
     if (user.role === 'customer') {
@@ -94,8 +113,14 @@ const App = () => {
 
           <Route
             path="/account"
-            element={<Account handleLogOut={handleLogOut} />}
+            element={<Account handleLogOut={handleLogOut} account={account} setAccount={setAccount} />}
           />
+
+          <Route path="/account/edit" element={<EditAccount account={account} setAccount={setAccount} setTrigger={setTrigger} trigger={trigger} ha/>}/>
+
+<Route path="/account/settings" element={<Settings handleLogOut={handleLogOut} 
+  
+  />} />
 
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
           <Route

@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 
-const EditAccount = ({ account, onUpdateSuccess }) => {
-  const isCustomer = 'first_name' in account
+const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger }) => {
+  console.log('here')
 
+  const isCustomer = 'first_name' in account
   const [customerDetails, setCustomerDetails] = useState(
     isCustomer
       ? {
@@ -48,7 +49,6 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     try {
       const dataToUpdate = isCustomer ? customerDetails : resDetails
       const res = await Client.put(`/auth/profile`, dataToUpdate)
@@ -56,6 +56,9 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
       if (onUpdateSuccess) {
         onUpdateSuccess(res.data)
       }
+      setAccount({...account, dataToUpdate})
+      setTrigger(!trigger)
+
       navigate('/account')
     } catch (error) {
       console.error('Failed to update profile:', error)
@@ -171,6 +174,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
             <img src={resDetails.logo_url} alt="Restaurant Logo" />
           )}
           <button type="submit">Update Account Details</button>
+          
         </form>
       )}
     </div>
