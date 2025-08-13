@@ -5,6 +5,7 @@ import { UserContext } from '../context/UserContext'
 import EditFoodForm from './EditFoodForm'
 import { useParams, useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
+import BackButton from './BackButton'
 
 const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
   const navigate = useNavigate()
@@ -12,8 +13,6 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
   const { user } = useContext(UserContext)
   const [selectedFood, setSelectedFood] = useState(null)
   const [editing, setEditing] = useState(false)
-
-  console.log(selectOrder, 'this is it in food')
 
   useEffect(() => {
     const onMount = async () => {
@@ -35,6 +34,7 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
       navigate('/cart')
     } else {
       const updated = await Client.put(
+
         `${BASE_URL}/orders/${selectOrder._id}?action=add&status=pending&foodId=${id}`
       )
       setSelectOrder(updated.data)
@@ -49,6 +49,7 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
   return (
     <>
       <div className="food-card-container">
+        <BackButton />
         <div id="food-card">
           <div id="food-picture">
             <img id="food-picture" src={selectedFood?.image_url} alt="" />

@@ -17,16 +17,10 @@ const AddFoodForm = ({ cuisine, setCuisineFoods, cuisineFoods }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const token = localStorage.getItem('token')
-      const res = await Client.post('/foods', form)
-      setCuisineFoods([res.data, ...cuisineFoods])
-      setForm(initialValues)
-    } catch (err) {
-      setError('Failed to add food item')
-    } finally {
-      setLoading(false)
-    }
+
+    const res = await Client.post('/foods', form)
+    setCuisineFoods([res.data, ...cuisineFoods])
+    setForm(initialValues)
   }
 
   return (

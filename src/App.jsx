@@ -17,6 +17,7 @@ import Cart from './pages/Cart'
 import Client from '../services/api'
 import { BASE_URL } from '../globals'
 import Orders from './pages/Orders'
+import EditAccount from './pages/EditAccount'
 import ChangePassword from './pages/ChangePassword'
 
 const App = () => {
@@ -90,10 +91,12 @@ const App = () => {
               />
             }
           />
+
           <Route
             path="/account"
             element={<Account handleLogOut={handleLogOut} />}
           />
+
 
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
           <Route
