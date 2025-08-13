@@ -16,13 +16,7 @@ const Account = ({ handleLogOut, account, setAccount }) => {
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext) //
 
-  const handleEditComplete = (updatedAccountData) => {
-    setAccount(updatedAccountData) // updates the account state
-    setEdit(false)
-  }
-
-  const handleEditToggle = (value) => {
-    setEdit(value)
+  const handleEditToggle = () => {
     navigate('edit')
   }
 
@@ -51,13 +45,8 @@ const Account = ({ handleLogOut, account, setAccount }) => {
   if (error) return <p>{error}</p>
   if (!account) return <p>Loading your account...</p>
 
-  const handleAccountClick = () => {}
-
   return (
     <div className="account-container">
-      {edit ? (
-        <EditAccount account={account} onUpdateSuccess={setAccount} />
-      ) : (
         <>
           <h2>Account Info</h2>
           {'first_name' in account ? (
@@ -120,13 +109,12 @@ const Account = ({ handleLogOut, account, setAccount }) => {
             // )}
           )}
           <div className="edit-btn">
-            <button onClick={() => handleEditToggle(true)}>Edit Profile</button>
+            <button onClick={() => handleEditToggle()}>Edit Profile</button>
           </div>
           <div className="delete-btn">
             <button onClick={handleDeleteAccount}>Delete Account</button>
           </div>
         </>
-      )}
     </div>
   )
 }

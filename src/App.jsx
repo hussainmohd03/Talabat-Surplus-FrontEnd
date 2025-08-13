@@ -19,6 +19,7 @@ import { BASE_URL } from '../globals'
 import Orders from './pages/Orders'
 import EditAccount from './pages/EditAccount'
 import ChangePassword from './pages/ChangePassword'
+import Settings from './pages/Settings'
 
 const App = () => {
   const [price, setPrice] = useState(0)
@@ -31,6 +32,7 @@ const App = () => {
   const { setUser, user } = useContext(UserContext)
   const [selectOrder, setSelectOrder] = useState(null)
   const [account, setAccount] = useState(null)
+  const [trigger, setTrigger] = useState(false)
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
@@ -56,8 +58,11 @@ const App = () => {
     } else {
       navigate('/welcome')
     }
-    getAccount()
   }, [])
+
+  useEffect(()=> {
+    getAccount()
+  }, [trigger])
 
   useEffect(() => {
     if (user.role === 'customer') {
@@ -111,7 +116,7 @@ const App = () => {
             element={<Account handleLogOut={handleLogOut} account={account} setAccount={setAccount} />}
           />
 
-          <Route path="/account/edit" element={<EditAccount account={account} setAccount={setAccount} />}/>
+          <Route path="/account/edit" element={<EditAccount account={account} setAccount={setAccount} setTrigger={setTrigger} trigger={trigger} />}/>
 
 
           <Route path="/auth/register" element={<RegisterForm role={role} />} />

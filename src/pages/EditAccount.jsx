@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 
-const EditAccount = ({ account, onUpdateSuccess, setAccount }) => {
+const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger }) => {
   console.log('here')
+
   const isCustomer = 'first_name' in account
   const [customerDetails, setCustomerDetails] = useState(
     isCustomer
@@ -55,6 +56,8 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount }) => {
       if (onUpdateSuccess) {
         onUpdateSuccess(res.data)
       }
+      setAccount({...account, dataToUpdate})
+      setTrigger(!trigger)
       navigate('/account')
     } catch (error) {
       console.error('Failed to update profile:', error)
