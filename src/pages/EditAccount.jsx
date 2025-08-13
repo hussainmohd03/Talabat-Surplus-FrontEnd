@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 
-const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger }) => {
+const EditAccount = ({
+  account,
+  onUpdateSuccess,
+  setAccount,
+  setTrigger,
+  trigger
+}) => {
   console.log('here')
 
   const isCustomer = 'first_name' in account
@@ -58,7 +64,7 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
         onUpdateSuccess(res.data)
       }
 
-      setAccount({...account, dataToUpdate})
+      setAccount({ ...account, dataToUpdate })
       setTrigger(!trigger)
 
       navigate('/account')
@@ -176,7 +182,6 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
             <img src={resDetails.logo_url} alt="Restaurant Logo" />
           )}
           <button type="submit">Update Account Details</button>
-          
         </form>
       )}
     </div>

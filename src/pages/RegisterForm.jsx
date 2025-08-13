@@ -33,16 +33,16 @@ const RegisterForm = ({ role }) => {
     if (role === 'customer') {
       if (
         customerValues.password === credentials.confirm_password &&
-        customerValues.password.length >= 8 &&
-        customerValues.email.includes('@')
+        customerValues.password.length >= 8
+        // customerValues.email.includes('@')
       ) {
         setFilled(true)
       }
     } else if (role === 'restaurant') {
       if (
         resValues.password === credentials.confirm_password &&
-        resValues.password.length >= 8 &&
-        resValues.email.includes('@')
+        resValues.password.length >= 8
+        // resValues.email.includes('@')
       ) {
         setFilled(true)
       }

@@ -19,7 +19,7 @@ const Cart = ({
   useEffect(() => {
     const onMount = async () => {
       const items = await Client.get(`${BASE_URL}/orders`)
-
+      
       setItem(items.data)
       setCartItems(items.data.foodItems)
 
