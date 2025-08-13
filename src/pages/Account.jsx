@@ -10,32 +10,20 @@ import { UserContext } from '../context/UserContext'
 
 import BackButton from '../components/BackButton'
 
-const Account = ({ handleLogOut }) => {
-  const [account, setAccount] = useState(null)
+const Account = ({ handleLogOut, account, setAccount }) => {
   const [error, setError] = useState('')
   const [edit, setEdit] = useState(false)
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext) //
 
-  const getAccount = async () => {
-    try {
-      // const token = localStorage.getItem('token') //storing
-      const res = await Client.get(`${BASE_URL}/auth/profile`)
-      setAccount(res.data)
-      setUser(res.data)
-    } catch (err) {
-      setError('Failed to load profile')
-      console.error(err)
-    }
-  }
-
-  useEffect(() => {
-    getAccount()
-  }, [])
-
   const handleEditComplete = (updatedAccountData) => {
     setAccount(updatedAccountData) // updates the account state
     setEdit(false)
+  }
+
+  const handleEditToggle = (value) => {
+    setEdit(value)
+    navigate('edit')
   }
 
   // function to handle the deletion of the account
@@ -69,15 +57,15 @@ const Account = ({ handleLogOut }) => {
     <div className="account-container">
       {edit ? (
         <EditAccount account={account} onUpdateSuccess={setAccount} />
-
       ) : (
         <>
-        <h2>Account Info</h2>
+          <h2>Account Info</h2>
           {'first_name' in account ? (
             <>
               <label>
                 <span>First Name:</span>
-                <input type="text" value={account.first_name} readOnly />
+                <input type="text" value={account.first_name} readOnly />{' '}
+                {/*readOnly not allows modifying of the content of the field*/}
               </label>
 
               <label>
@@ -131,12 +119,12 @@ const Account = ({ handleLogOut }) => {
             //   <img src={account.logo_url} alt="Restaurant Logo" />
             // )}
           )}
-                <div className='edit-btn'>
-            <button onClick={() => setEdit(true)}>Edit Profile</button>
+          <div className="edit-btn">
+            <button onClick={() => handleEditToggle(true)}>Edit Profile</button>
           </div>
-          <div className='delete-btn'>
-                <button onClick={handleDeleteAccount}>Delete Account</button>
-              </div>
+          <div className="delete-btn">
+            <button onClick={handleDeleteAccount}>Delete Account</button>
+          </div>
         </>
       )}
     </div>

@@ -30,10 +30,23 @@ const App = () => {
   const location = useLocation()
   const { setUser, user } = useContext(UserContext)
   const [selectOrder, setSelectOrder] = useState(null)
+  const [account, setAccount] = useState(null)
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
     // console.log(user)
+  }
+
+  const getAccount = async () => {
+    try {
+      // const token = localStorage.getItem('token') //storing
+      const res = await Client.get(`${BASE_URL}/auth/profile`)
+      setAccount(res.data)
+      setUser(res.data)
+    } catch (err) {
+      setError('Failed to load profile')
+      console.error(err)
+    }
   }
 
   useEffect(() => {
@@ -43,6 +56,7 @@ const App = () => {
     } else {
       navigate('/welcome')
     }
+    getAccount()
   }, [])
 
   useEffect(() => {
@@ -94,8 +108,10 @@ const App = () => {
 
           <Route
             path="/account"
-            element={<Account handleLogOut={handleLogOut} />}
+            element={<Account handleLogOut={handleLogOut} account={account} setAccount={setAccount} />}
           />
+
+          <Route path="/account/edit" element={<EditAccount account={account} setAccount={setAccount} />}/>
 
 
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
