@@ -4,6 +4,9 @@ import { useContext, useState } from 'react'
 import CustomerCuisines from '../components/CustomerCuisines'
 import { UserContext } from '../context/UserContext'
 import RestaurantFood from '../components/RestaurantFoods'
+// import '../orders.css'
+
+
 const Home = () => {
   const [search, setSearch] = useState('')
   const { user } = useContext(UserContext)

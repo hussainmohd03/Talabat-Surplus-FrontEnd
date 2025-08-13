@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import { useEffect, useState } from 'react'
 import { BASE_URL } from '../../globals'
+// import '../App.css'
 const OrderPlaced = ({ item, setCartItems }) => {
   const [resName, setResName] = useState(null)
   const [address, setAddress] = useState(null)

@@ -4,6 +4,7 @@ import { BASE_URL } from '../../globals'
 import { UserContext } from '../context/UserContext'
 import { useLocation } from 'react-router-dom'
 import Order from '../components/Order'
+
 const Orders = ({ role }) => {
   const location = useLocation()
   const [dbApprovedOrders, setDbApprovedOrders] = useState(null)
@@ -42,7 +43,7 @@ const Orders = ({ role }) => {
       <div>
         {user.role === 'customer' ? (
           <div>
-            <h1>Your orders</h1>
+            <h1 className='orders-title'>Your orders</h1>
 
             {dbApprovedOrders?.map((order) => (
               <div>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import { useNavigate } from 'react-router-dom'
 import OrderPlaced from './OrderPlaced'
-import BackButton from '../components/BackButton'
+
 const Cart = ({
   selectOrder,
   setSelectOrder,
@@ -19,7 +19,7 @@ const Cart = ({
   useEffect(() => {
     const onMount = async () => {
       const items = await Client.get(`${BASE_URL}/orders`)
-
+      
       setItem(items.data)
       setCartItems(items.data.foodItems)
 
@@ -50,19 +50,11 @@ const Cart = ({
   // console.log('cart items', cartItems)
   return (
     <>
-      <BackButton />
       <h3 id="cart-title">Cart</h3>
 
       <div>
         <ul>
-          {cartItems && (
-              <div>
-                <Link to={'/'}>
-                  <button>Add items </button>
-                </Link>
-                <button onClick={handlePlaceOrder}>Place order</button>
-              </div>
-            ) &&
+          {cartItems &&
             cartItems.map((item) => (
               <div>
                 <li key={item._id}>
@@ -75,13 +67,12 @@ const Cart = ({
               </div>
             ))}
         </ul>
-        {!cartItems && (
-          <>
-            empty cart
-            <img src="cart-empty.png" alt="Empty cart" />
-          </>
-        )}
       </div>
+      
+      <Link to={'/'}>
+        <button>Add items </button>
+      </Link>
+      <button onClick={handlePlaceOrder}>Place order</button>
     </>
   )
 }
