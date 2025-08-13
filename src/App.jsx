@@ -19,6 +19,9 @@ import { BASE_URL } from '../globals'
 import Orders from './pages/Orders'
 import EditAccount from './pages/EditAccount'
 import ChangePassword from './pages/ChangePassword'
+
+import OrderPlaced from './pages/OrderPlaced'
+
 import Settings from './pages/Settings'
 
 const App = () => {
@@ -36,7 +39,6 @@ const App = () => {
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
-    // console.log(user)
   }
 
   const getAccount = async () => {
@@ -116,6 +118,7 @@ const App = () => {
             element={<Account handleLogOut={handleLogOut} account={account} setAccount={setAccount} />}
           />
 
+          <Route path="orders/placed" element={<OrderPlaced />} />
           <Route path="/account/edit" element={<EditAccount account={account} setAccount={setAccount} setTrigger={setTrigger} trigger={trigger} ha/>}/>
 
 <Route path="/account/settings" element={<Settings handleLogOut={handleLogOut} 
@@ -136,7 +139,7 @@ const App = () => {
               />
             }
           />
-          <Route path="orders" element={<Orders role={role}/>} />
+          <Route path="orders" element={<Orders role={role} />} />
           <Route path="/account/password" element={<ChangePassword />} />
         </Routes>
       </main>

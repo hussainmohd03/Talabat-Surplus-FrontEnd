@@ -49,6 +49,7 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
     }
   }
 
+
   const handleAdding = () => {
     console.log(selectOrder.food_id)
   }

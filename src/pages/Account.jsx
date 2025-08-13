@@ -10,7 +10,11 @@ import { UserContext } from '../context/UserContext'
 
 import BackButton from '../components/BackButton'
 
+
 const Account = ({ handleLogOut, account, setAccount }) => {
+
+
+    const [account, setAccount] = useState(null)
 
   const [error, setError] = useState('')
   const [edit, setEdit] = useState(false)
@@ -21,6 +25,7 @@ const Account = ({ handleLogOut, account, setAccount }) => {
     navigate('edit')
 
   }
+
   const getAccount = async () => {
     try {
       // const token = localStorage.getItem('token') //storing
@@ -131,6 +136,11 @@ const Account = ({ handleLogOut, account, setAccount }) => {
             //   <img src={account.logo_url} alt="Restaurant Logo" />
             // )}
           )}
+          <Link to={'/account/password'}>
+            <button>Change password</button>
+          </Link>
+          <button onClick={handleLogOut}>Log out</button>
+
           <div className="edit-btn">
             <button onClick={() => handleEditToggle()}>Edit Profile</button>
           </div>

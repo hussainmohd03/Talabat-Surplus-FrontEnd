@@ -5,7 +5,7 @@ const CuisineCard = ({ cuisine }) => {
     <>
       <Link to={`/foods?cuisine=${cuisine.name}`} id="cuisine-foods-link">
         <article id="cuisine-card">
-          <img src="/burger.png" alt="" />
+          <img src={cuisine.image} alt="" />
           <h3>{cuisine.name}</h3>
         </article>
       </Link>

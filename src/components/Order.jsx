@@ -19,12 +19,11 @@ const Order = ({ order, idx, setDbApprovedOrders, dbApprovedOrders }) => {
         <ul>
           {order._id}
           <li>{order.order_status}</li>
-          <li>BHD{order.total_price}</li>
+          <li>BHD {order.total_price}</li>
           <h3>order summary</h3>
           <OrderFood foodItems={order.foodItems} />
         
         </ul>
-        {order.order_status === 'pending'}
         {order.order_status === 'pending' && (
           <>
             <button onClick={() => handleClick(order._id, 'approved')}>

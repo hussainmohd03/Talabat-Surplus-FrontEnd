@@ -15,9 +15,13 @@ const cuisines = [
   {
     id: 4,
     name: 'Breakfast',
-    image: 'https://example.com/images/breakfast.jpg'
+    image: 'breakfast.png'
   },
-  { id: 5, name: 'Chinese', image: 'https://example.com/images/chinese.jpg' },
+  {
+    id: 5,
+    name: 'Chinese',
+    image: 'chinese.png'
+  },
   { id: 6, name: 'Mexican', image: 'https://example.com/images/mexican.jpg' },
   { id: 7, name: 'Indian', image: 'https://example.com/images/indian.jpg' },
   { id: 8, name: 'Thai', image: 'https://example.com/images/thai.jpg' },

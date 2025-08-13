@@ -49,6 +49,7 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     try {
       const dataToUpdate = isCustomer ? customerDetails : resDetails
       const res = await Client.put(`/auth/profile`, dataToUpdate)
@@ -56,6 +57,7 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
       if (onUpdateSuccess) {
         onUpdateSuccess(res.data)
       }
+
       setAccount({...account, dataToUpdate})
       setTrigger(!trigger)
 
