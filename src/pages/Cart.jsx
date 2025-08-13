@@ -19,26 +19,35 @@ const Cart = ({
   useEffect(() => {
     const onMount = async () => {
       const items = await Client.get(`${BASE_URL}/orders`)
-      setItem(items.data._id)
-      setCartItems(items.data.food_id)
+
+      setItem(items.data)
+      setCartItems(items.data.foodItems)
+
+      // console.log('mini', items.data.food_id[0].price)
+      // console.log(items.data)
     }
     onMount()
   }, [])
 
   const handleRemove = async (foodId) => {
-    const remove = await Client.put(
-      `${BASE_URL}/orders/${item}?action=remove&status=pending&foodId=${foodId}`
+    const updated = await Client.put(
+      `${BASE_URL}/orders/${item._id}?action=remove&status=pending&foodId=${foodId}`
     )
-    console.log(remove)
+    console.log(updated)
+    setCartItems(updated.data.foodItems)
   }
 
   const handlePlaceOrder = async () => {
-    const placedOrder = await Client.put(`${BASE_URL}/orders/${item}`, {
-      payment_status: 'approved'
-    })
+    const placedOrder = await Client.put(
+      `${BASE_URL}/orders/place/${item._id}`,
+      {
+        payment_status: 'approved'
+      }
+    )
     console.log(placedOrder)
     navigate('/orders/placed')
   }
+  // console.log('cart items', cartItems)
   return (
     <>
       <h3 id="cart-title">Cart</h3>
@@ -48,9 +57,12 @@ const Cart = ({
           {cartItems &&
             cartItems.map((item) => (
               <div>
-                <li key={item.id}>
-                  <h2>{item.name}</h2>
-                  <button onClick={() => handleRemove(item._id)}>remove</button>
+                <li key={item._id}>
+                  <h2>{item.foodId.name}</h2>
+                  <h2>Quantity: {item.quantity}</h2>
+                  <button onClick={() => handleRemove(item.foodId._id)}>
+                    remove
+                  </button>
                 </li>
               </div>
             ))}
@@ -59,7 +71,7 @@ const Cart = ({
       <Link to={'/'}>
         <button>Add items </button>
       </Link>
-      <button onClick={handlePlaceOrder}>Place order </button>
+      <button onClick={handlePlaceOrder}>Place order</button>
     </>
   )
 }
