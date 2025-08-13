@@ -9,7 +9,6 @@ import EditAccount from './EditAccount'
 import { UserContext } from '../context/UserContext'
 
 import BackButton from '../components/BackButton'
-import { useNavigate } from 'react-router-dom'
 
 const Account = ({ handleLogOut }) => {
   const [account, setAccount] = useState(null)

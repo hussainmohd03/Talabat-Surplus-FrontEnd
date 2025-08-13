@@ -22,7 +22,7 @@ const Cart = ({
       // console.log('mini', items.data.food_id[0].price)
       // console.log(items.data)
 
-      setCartItems(items.data.food_id)
+      setCartItems(items.data.foodItems)
     }
     onMount()
   }, [])
@@ -30,10 +30,11 @@ const Cart = ({
   // console.log('cart items', cartItems[0].name)
 
   const handleRemove = async (foodId) => {
-    const remove = await Client.put(
+    const updated = await Client.put(
       `${BASE_URL}/orders/${item}?action=remove&status=pending&foodId=${foodId}`
     )
-    console.log(remove)
+    setCartItems(updated.data.foodItems)
+    console.log(updated)
   }
 
   const handlePlaceOrder = async () => {
