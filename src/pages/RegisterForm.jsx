@@ -6,9 +6,6 @@ import '../../public/styleSheets/RegisterStyle.css'
 
 const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
-
-const RegisterForm = ({ role }) => {
-  const navigate = useNavigate()
   const custInitialState = {
     first_name: '',
     last_name: '',
@@ -37,17 +34,15 @@ const RegisterForm = ({ role }) => {
       if (
         customerValues.password === credentials.confirm_password &&
         customerValues.password.length >= 8 &&
-        customerValues.password.includes('@')
+        customerValues.email.includes('@')
       ) {
         setFilled(true)
       }
     } else if (role === 'restaurant') {
-      // console.log(credentials.confirm_password)
-      // console.log(resValues.password)
       if (
         resValues.password === credentials.confirm_password &&
         resValues.password.length >= 8 &&
-        resValues.password.includes('@')
+        resValues.email.includes('@')
       ) {
         setFilled(true)
       }
@@ -219,7 +214,6 @@ const RegisterForm = ({ role }) => {
       )}
     </div>
   )
-}
 }
 
 export default RegisterForm
