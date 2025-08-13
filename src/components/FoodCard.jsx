@@ -25,16 +25,15 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
   const handleClick = async () => {
     if (!selectOrder) {
       const order = await Client.post(`${BASE_URL}/orders`, {
-        food_id: selectedFood._id,
+        foodItems: [{ foodId: selectedFood._id, quantity: 1 }],
         payment_status: 'pending',
         order_status: 'pending',
         total_price: selectedFood.price
       })
-      setSelectOrder(order)
+      setSelectOrder(order.data)
       navigate('/cart')
     } else {
       const updated = await Client.put(
-
         `${BASE_URL}/orders/${selectOrder._id}?action=add&status=pending&foodId=${id}`
       )
       setSelectOrder(updated.data)
