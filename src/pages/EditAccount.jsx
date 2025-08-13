@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api' 
 
 const EditAccount = ({ account, onUpdateSuccess }) => {
+  console.log("here")
   const isCustomer = 'first_name' in account
-
   const [customerDetails, setCustomerDetails] = useState(
     isCustomer
       ? {
