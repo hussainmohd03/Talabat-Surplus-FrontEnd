@@ -58,6 +58,7 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
       }
       setAccount({...account, dataToUpdate})
       setTrigger(!trigger)
+
       navigate('/account')
     } catch (error) {
       console.error('Failed to update profile:', error)

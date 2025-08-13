@@ -1,7 +1,7 @@
 import Client from '../../services/api'
+import OrderFood from './OrderFood'
 import { BASE_URL } from '../../globals'
 const Order = ({ order, idx, setDbApprovedOrders, dbApprovedOrders }) => {
-
   const handleClick = async (id, status) => {
     const res = await Client.put(
       `${BASE_URL}/orders/${id}?action=status&status=${status}`
@@ -12,6 +12,7 @@ const Order = ({ order, idx, setDbApprovedOrders, dbApprovedOrders }) => {
     setDbApprovedOrders(orders)
   }
 
+  console.log(order)
   return (
     <>
       <div key={order._id}>
@@ -20,7 +21,8 @@ const Order = ({ order, idx, setDbApprovedOrders, dbApprovedOrders }) => {
           <li>{order.order_status}</li>
           <li>BHD{order.total_price}</li>
           <h3>order summary</h3>
-          food: {order.food_id}
+          <OrderFood foodItems={order.foodItems} />
+        
         </ul>
         {order.order_status === 'pending'}
         {order.order_status === 'pending' && (

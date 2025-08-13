@@ -11,6 +11,8 @@ import { UserContext } from '../context/UserContext'
 import BackButton from '../components/BackButton'
 
 const Account = ({ handleLogOut, account, setAccount }) => {
+
+  const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
   const [edit, setEdit] = useState(false)
   const navigate = useNavigate()
@@ -18,6 +20,28 @@ const Account = ({ handleLogOut, account, setAccount }) => {
 
   const handleEditToggle = () => {
     navigate('edit')
+
+  }
+  const getAccount = async () => {
+    try {
+      // const token = localStorage.getItem('token') //storing
+      const res = await Client.get(`${BASE_URL}/auth/profile`)
+      setAccount(res.data)
+      setUser(res.data)
+    } catch (err) {
+      setError('Failed to load profile')
+      console.error(err)
+    }
+  }
+
+  useEffect(() => {
+    getAccount()
+  }, [])
+
+  const handleEditComplete = (updatedAccountData) => {
+    setAccount(updatedAccountData) // updates the account state
+    setEdit(false)
+
   }
 
   // function to handle the deletion of the account
