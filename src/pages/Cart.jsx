@@ -4,6 +4,7 @@ import Client from '../../services/api'
 import { Link } from 'react-router-dom'
 import '../App.css'
 import { useNavigate } from 'react-router-dom'
+import OrderPlaced from './OrderPlaced'
 
 const Cart = ({
   selectOrder,
@@ -19,15 +20,10 @@ const Cart = ({
     const onMount = async () => {
       const items = await Client.get(`${BASE_URL}/orders`)
       setItem(items.data._id)
-      // console.log('mini', items.data.food_id[0].price)
-      // console.log(items.data)
-
       setCartItems(items.data.food_id)
     }
     onMount()
   }, [])
-
-  // console.log('cart items', cartItems[0].name)
 
   const handleRemove = async (foodId) => {
     const remove = await Client.put(
@@ -41,7 +37,7 @@ const Cart = ({
       payment_status: 'approved'
     })
     console.log(placedOrder)
-    navigate('/orders')
+    navigate('/orders/placed')
   }
   return (
     <>

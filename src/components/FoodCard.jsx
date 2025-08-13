@@ -41,7 +41,7 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
       navigate('/cart')
     }
   }
-  console.log(price)
+  // console.log(price)
 
   const handleAdding = () => {
     console.log(selectOrder.food_id)

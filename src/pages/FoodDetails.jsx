@@ -1,7 +1,9 @@
 const FoodDetails = () => {
-  return <>
+  return 
+  <>
   
-
+  
+  
   </>
 }
 

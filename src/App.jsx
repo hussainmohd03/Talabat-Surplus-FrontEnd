@@ -19,6 +19,7 @@ import { BASE_URL } from '../globals'
 import Orders from './pages/Orders'
 import EditAccount from './pages/EditAccount'
 import ChangePassword from './pages/ChangePassword'
+import OrderPlaced from './pages/OrderPlaced'
 
 const App = () => {
   const [price, setPrice] = useState(0)
@@ -33,7 +34,6 @@ const App = () => {
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
-    // console.log(user)
   }
 
   useEffect(() => {
@@ -97,7 +97,7 @@ const App = () => {
             element={<Account handleLogOut={handleLogOut} />}
           />
 
-
+          <Route path="orders/placed" element={<OrderPlaced />} />
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
           <Route
             path="cart"
@@ -112,7 +112,7 @@ const App = () => {
               />
             }
           />
-          <Route path="orders" element={<Orders role={role}/>} />
+          <Route path="orders" element={<Orders role={role} />} />
           <Route path="/account/password" element={<ChangePassword />} />
         </Routes>
       </main>
