@@ -215,5 +215,4 @@ const RegisterForm = ({ role }) => {
     </div>
   )
 }
-
 export default RegisterForm
