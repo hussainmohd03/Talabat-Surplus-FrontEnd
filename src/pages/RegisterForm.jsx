@@ -132,7 +132,7 @@ const RegisterForm = ({ role }) => {
             By creating an account you agree to the Privacy Policy and to the
             Terms of Use{' '}
           </p>
-          <button disabled={!filled} type="submit">
+          <button className="register-submit" disabled={!filled} type="submit">
             Create Your Account
           </button>
         </form>
@@ -207,7 +207,7 @@ const RegisterForm = ({ role }) => {
             Terms of Use{' '}
           </p>
 
-          <button disabled={!filled} type="submit">
+          <button disabled={!filled} type="submit" className="register-submit">
             Create Your Account
           </button>
         </form>

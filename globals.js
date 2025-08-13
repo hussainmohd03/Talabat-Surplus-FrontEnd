@@ -4,13 +4,13 @@ const cuisines = [
   {
     id: 1,
     name: 'Fast Food',
-    image: 'https://example.com/images/fast-food.jpg'
+    image: 'burger.png'
   },
-  { id: 2, name: 'Italian', image: 'https://example.com/images/italian.jpg' },
+  { id: 2, name: 'Italian', image: 'pizza.png' },
   {
     id: 3,
     name: 'Desserts',
-    image: 'https://example.com/images/desserts.jpg'
+    image: 'desserts.png'
   },
   {
     id: 4,
@@ -22,24 +22,24 @@ const cuisines = [
     name: 'Chinese',
     image: 'chinese.png'
   },
-  { id: 6, name: 'Mexican', image: 'https://example.com/images/mexican.jpg' },
-  { id: 7, name: 'Indian', image: 'https://example.com/images/indian.jpg' },
-  { id: 8, name: 'Thai', image: 'https://example.com/images/thai.jpg' },
+  { id: 6, name: 'Mexican', image: 'mexico.png' },
+  { id: 7, name: 'Indian', image: 'indian.png' },
+  { id: 8, name: 'Thai', image: 'thai.png' },
   {
     id: 9,
     name: 'Japanese',
-    image: 'https://example.com/images/japanese.jpg'
+    image: 'japanese.png'
   },
   {
     id: 10,
     name: 'Beverages',
-    image: 'https://example.com/images/mediterranean.jpg'
+    image: 'beverages.png'
   },
-  { id: 11, name: 'Korean', image: 'https://example.com/images/korean.jpg' },
+  { id: 11, name: 'Korean', image: 'korean.png' },
   {
     id: 12,
     name: 'American',
-    image: 'https://example.com/images/american.jpg'
+    image: 'american.png'
   }
 ]
 export { BASE_URL, cuisines }

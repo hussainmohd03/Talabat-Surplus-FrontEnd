@@ -202,3 +202,26 @@ main h1 {
 .food-card-container {
   position: relative;
 }
+
+.cart-button {
+  background-color: #d9d9d9;
+  background-color: red;
+  box-sizing: border-box;
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  left: 17px;
+  top: 69px;
+  border: 1px solid #e7e7e7;
+}
+
+.go-back-button {
+  background-color: red;
+  box-sizing: border-box;
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  left: 17px;
+  top: 69px;
+  border: 1px solid #e7e7e7;
+}

@@ -10,11 +10,7 @@ const Home = () => {
   return (
     <>
       <main>
-        <Link to={'/cart'}>
-          <button>cart</button>
-        </Link>
         <Search filterValue={search} setFilterValue={setSearch} />
-
         {(user && user.role === 'customer' && (
           <CustomerCuisines search={search} />
         )) ||
