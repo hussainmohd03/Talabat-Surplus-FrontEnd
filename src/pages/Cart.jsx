@@ -19,12 +19,9 @@ const Cart = ({
     const onMount = async () => {
       const items = await Client.get(`${BASE_URL}/orders`)
 
-      items.data.map((order) => {
-        if (order.order_status === 'pending') {
-          setItem(order)
-          setCartItems(order.foodItems)
-        }
-      })
+      setItem(items.data)
+      setCartItems(items.data.foodItems)
+
       // console.log('mini', items.data.food_id[0].price)
       // console.log(items.data)
     }
@@ -58,7 +55,7 @@ const Cart = ({
 
       <div>
         <ul>
-          {cartItems.length > 0 &&
+          {cartItems &&
             cartItems.map((item) => (
               <div>
                 <li key={item._id}>

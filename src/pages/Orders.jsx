@@ -6,11 +6,11 @@ import { useLocation } from 'react-router-dom'
 import Order from '../components/Order'
 const Orders = ({ role }) => {
   const location = useLocation()
-  const { setUser, user } = useContext(UserContext)
   const [dbApprovedOrders, setDbApprovedOrders] = useState(null)
+  const { setUser, user } = useContext(UserContext)
 
   useEffect(() => {
-    if (role === 'customer') {
+    if (user.role === 'customer') {
       if (location.pathname === '/orders') {
         const getOrders = async () => {
           // console.log('hello from order')
@@ -18,28 +18,29 @@ const Orders = ({ role }) => {
             `${BASE_URL}/orders/approved/${user.id}`
           )
           setDbApprovedOrders(approvedOrders.data)
+
           console.log(approvedOrders.data)
         }
         getOrders()
       }
-    } else {
+    } else if (user.role === 'restaurant') {
       if (location.pathname === '/orders') {
         const getOrders = async () => {
-          console.log('hello from order')
           const approvedOrders = await Client.get(
             `${BASE_URL}/orders/approved/${user.id}`
           )
+          console.log(approvedOrders)
           approvedOrders && setDbApprovedOrders(approvedOrders.data)
         }
         getOrders()
       }
     }
-  }, [location.pathname])
+  }, [user, location.pathname])
 
   return (
     <>
       <div>
-        {role === 'customer' ? (
+        {user.role === 'customer' ? (
           <div>
             <h1>Your orders</h1>
 

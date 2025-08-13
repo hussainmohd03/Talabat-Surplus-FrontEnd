@@ -43,6 +43,7 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
       const updated = await Client.put(
         `${BASE_URL}/orders/${selectOrder._id}?action=add&status=pending&foodId=${selectedFood._id}`
       )
+      console.log(updated)
       setSelectOrder(updated.data)
       navigate('/cart')
     }
