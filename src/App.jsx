@@ -16,7 +16,7 @@ import { useState } from 'react'
 import Cart from './pages/Cart'
 import Client from '../services/api'
 import { BASE_URL } from '../globals'
-import Order from './pages/Order'
+import Orders from './pages/Orders'
 import ChangePassword from './pages/ChangePassword'
 
 const App = () => {
@@ -27,11 +27,12 @@ const App = () => {
   const [cartItems, setCartItems] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
-  const { setUser } = useContext(UserContext)
+  const { setUser, user } = useContext(UserContext)
   const [selectOrder, setSelectOrder] = useState(null)
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
+    // console.log(user)
   }
 
   useEffect(() => {
@@ -43,15 +44,17 @@ const App = () => {
     }
   }, [])
 
-  // useEffect(() => {
-  //   const getPendingOrder = async () => {
-  //     const res = await Client.get(`${BASE_URL}/orders/`)
-  //     if (res.data) {
-  //       setSelectOrder(res.data)
-  //     }
-  //   }
-  //   getPendingOrder()
-  // }, [])
+  useEffect(() => {
+    if (user.role === 'customer') {
+      const getPendingOrder = async () => {
+        const res = await Client.get(`${BASE_URL}/orders/`)
+        if (res.data) {
+          setSelectOrder(res.data)
+        }
+      }
+      getPendingOrder()
+    }
+  }, [])
 
   const handleLogOut = () => {
     setUser(null)
@@ -106,7 +109,7 @@ const App = () => {
               />
             }
           />
-          <Route path="orders" element={<Order />} />
+          <Route path="orders" element={<Orders role={role}/>} />
           <Route path="/account/password" element={<ChangePassword />} />
         </Routes>
       </main>
