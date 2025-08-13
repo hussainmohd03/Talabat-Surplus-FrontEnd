@@ -94,7 +94,6 @@ const App = () => {
             element={<Account handleLogOut={handleLogOut} />}
           />
 
-
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
           <Route
             path="cart"
