@@ -44,7 +44,8 @@ const App = () => {
   const getAccount = async () => {
     try {
       // const token = localStorage.getItem('token') //storing
-      const res = await Client.get(`${BASE_URL}/auth/profile`)
+      const res = await Client.get(`${BASE_URL}/auth/session`)
+
       setAccount(res.data)
       setUser(res.data)
     } catch (err) {
@@ -62,7 +63,7 @@ const App = () => {
     }
   }, [])
 
-  useEffect(()=> {
+  useEffect(() => {
     getAccount()
   }, [trigger])
 
@@ -115,15 +116,33 @@ const App = () => {
 
           <Route
             path="/account"
-            element={<Account handleLogOut={handleLogOut} account={account} setAccount={setAccount} />}
+            element={
+              <Account
+                handleLogOut={handleLogOut}
+                account={account}
+                setAccount={setAccount}
+              />
+            }
           />
 
           <Route path="orders/placed" element={<OrderPlaced />} />
-          <Route path="/account/edit" element={<EditAccount account={account} setAccount={setAccount} setTrigger={setTrigger} trigger={trigger} ha/>}/>
+          <Route
+            path="/account/edit"
+            element={
+              <EditAccount
+                account={account}
+                setAccount={setAccount}
+                setTrigger={setTrigger}
+                trigger={trigger}
+                ha
+              />
+            }
+          />
 
-<Route path="/account/settings" element={<Settings handleLogOut={handleLogOut} 
-  
-  />} />
+          <Route
+            path="/account/settings"
+            element={<Settings handleLogOut={handleLogOut} />}
+          />
 
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
           <Route

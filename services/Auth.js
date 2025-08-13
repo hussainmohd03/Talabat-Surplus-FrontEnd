@@ -3,6 +3,7 @@ import Client from './api'
 export const RegisterUser = async (data, role) => {
   try {
     const res = await Client.post(`/auth/register?role=${role}`, data)
+    console.log(res)
     return res.data
   } catch (error) {
     throw error
