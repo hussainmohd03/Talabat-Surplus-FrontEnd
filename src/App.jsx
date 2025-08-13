@@ -16,9 +16,12 @@ import { useState } from 'react'
 import Cart from './pages/Cart'
 import Client from '../services/api'
 import { BASE_URL } from '../globals'
+import EditAccount from './pages/EditAccount'
 import Order from './pages/Order'
+import ChangePassword from './pages/ChangePassword'
 
 const App = () => {
+  const [price, setPrice] = useState(0)
   const [item, setItem] = useState('')
   const [role, setRole] = useState(null)
   const [choice, setChoice] = useState(null)
@@ -41,23 +44,20 @@ const App = () => {
     }
   }, [])
 
-  useEffect(() => {
-    const getPendingOrder = async () => {
-      const res = await Client.get(`${BASE_URL}/orders/`)
-      if (res.data) {
-        setSelectOrder(res.data)
-      }
-      // console.log('select order ', selectOrder)
-    }
-    getPendingOrder()
-  }, [])
-  // userOrder && console.log(userOrder)
-  // const [selectOrder, setSelectOrder] = useState(ubserOrder ? userOrder : null)
-  // console.log(selectOrder)
+  // useEffect(() => {
+  //   const getPendingOrder = async () => {
+  //     const res = await Client.get(`${BASE_URL}/orders/`)
+  //     if (res.data) {
+  //       setSelectOrder(res.data)
+  //     }
+  //   }
+  //   getPendingOrder()
+  // }, [])
 
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
+    navigate('/welcome')
   }
   return (
     <>
@@ -83,13 +83,17 @@ const App = () => {
               <FoodCard
                 selectOrder={selectOrder}
                 setSelectOrder={setSelectOrder}
+                price={price}
+                setPrice={setPrice}
               />
             }
           />
+
           <Route
             path="/account"
             element={<Account handleLogOut={handleLogOut} />}
           />
+
 
           <Route path="/auth/register" element={<RegisterForm role={role} />} />
           <Route
@@ -106,6 +110,7 @@ const App = () => {
             }
           />
           <Route path="orders" element={<Order />} />
+          <Route path="/account/password" element={<ChangePassword />} />
         </Routes>
       </main>
       {location.pathname !== '/welcome' &&

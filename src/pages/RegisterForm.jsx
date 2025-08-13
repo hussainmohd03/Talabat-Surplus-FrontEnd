@@ -7,6 +7,8 @@ import '../../public/styleSheets/RegisterStyle.css'
 const RegisterForm = ({ role }) => {
   const navigate = useNavigate()
 
+const RegisterForm = ({ role }) => {
+  const navigate = useNavigate()
   const custInitialState = {
     first_name: '',
     last_name: '',
@@ -14,44 +16,55 @@ const RegisterForm = ({ role }) => {
     password: '',
     address: ''
   }
-
   const resInitialState = {
     rest_name: '',
-    res_tel: '',
+    rest_tel: '',
     rest_address: '',
     email: '',
     CR: '',
     password: ''
   }
-
   const credInitial = {
     confirm_password: ''
   }
-
   const [customerValues, setCustomerValues] = useState(custInitialState)
   const [resValues, setResValues] = useState(resInitialState)
   const [credentials, setCredentials] = useState(credInitial)
   const [filled, setFilled] = useState(false)
-  
-const handleChange = (e) => {
-    if (
-      customerValues.password === credentials.confirm_password &&
-      customerValues.password.length >=8 && customerValues.password.includes('@')
-    ) {
-      setFilled(true)
+
+  const handleChange = (e) => {
+    if (role === 'customer') {
+      if (
+        customerValues.password === credentials.confirm_password &&
+        customerValues.password.length >= 8 &&
+        customerValues.password.includes('@')
+      ) {
+        setFilled(true)
+      }
+    } else if (role === 'restaurant') {
+      // console.log(credentials.confirm_password)
+      // console.log(resValues.password)
+      if (
+        resValues.password === credentials.confirm_password &&
+        resValues.password.length >= 8 &&
+        resValues.password.includes('@')
+      ) {
+        setFilled(true)
+      }
     }
     setCustomerValues({ ...customerValues, [e.target.name]: e.target.value })
     setResValues({ ...resValues, [e.target.name]: e.target.value })
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
-
   const handleSubmit = async (e) => {
     if (role === 'customer') {
       e.preventDefault()
       await RegisterUser(customerValues, role)
       setCustomerValues(custInitialState)
       navigate('/auth/login')
-    } else {
+    }
+
+    if (role === 'restaurant') {
       e.preventDefault()
       await RegisterUser(resValues, role)
       setResValues(resInitialState)
@@ -129,7 +142,7 @@ const handleChange = (e) => {
           </button>
         </form>
       ) : (
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="rest_name">Restaurant Name</label>
           <input
             type="text"
@@ -139,13 +152,13 @@ const handleChange = (e) => {
             value={resValues.rest_name}
             required
           />
-          <label htmlFor="res_tel">Restaurant Telephone</label>
+          <label htmlFor="rest_tel">Restaurant Telephone</label>
           <input
             type="text"
-            name="res_tel"
+            name="rest_tel"
             placeholder="Restaurant Telephone"
             onChange={handleChange}
-            value={resValues.res_tel}
+            value={resValues.rest_tel}
             required
           />
           <label htmlFor="rest_address">Restaurant Address</label>
@@ -206,6 +219,7 @@ const handleChange = (e) => {
       )}
     </div>
   )
+}
 }
 
 export default RegisterForm

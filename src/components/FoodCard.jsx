@@ -5,15 +5,14 @@ import { UserContext } from '../context/UserContext'
 import EditFoodForm from './EditFoodForm'
 import { useParams, useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
+import BackButton from './BackButton'
 
-const FoodCard = ({ selectOrder, setSelectOrder }) => {
+const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
   const navigate = useNavigate()
   let { id } = useParams()
   const { user } = useContext(UserContext)
   const [selectedFood, setSelectedFood] = useState(null)
   const [editing, setEditing] = useState(false)
-
-  console.log(selectOrder, 'this is it in food')
 
   useEffect(() => {
     const onMount = async () => {
@@ -22,7 +21,7 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
     }
     onMount()
   }, [id])
-
+  // if select order has food id then disable bytton
   const handleClick = async () => {
     if (!selectOrder) {
       const order = await Client.post(`${BASE_URL}/orders`, {
@@ -34,16 +33,23 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
       setSelectOrder(order)
       navigate('/cart')
     } else {
-      const updated = await Client.put(`${BASE_URL}/orders/${selectOrder._id}`, {
-      food_id: [...selectOrder.food_id.map(food => food._id), selectedFood._id]})
+      const updated = await Client.put(
+
+        `${BASE_URL}/orders/${selectOrder._id}?action=add&status=pending&foodId=${id}`
+      )
       setSelectOrder(updated.data)
       navigate('/cart')
     }
   }
+  console.log(price)
 
+  const handleAdding = () => {
+    console.log(selectOrder.food_id)
+  }
   return (
     <>
       <div className="food-card-container">
+        <BackButton />
         <div id="food-card">
           <div id="food-picture">
             <img id="food-picture" src={selectedFood?.image_url} alt="" />
@@ -59,7 +65,7 @@ const FoodCard = ({ selectOrder, setSelectOrder }) => {
           {user && user.role !== 'restaurant' && (
             <button id="button-cart" onClick={handleClick}>
               <div id="add-to-cart">
-                <div>Add item </div>
+                <div onClick={() => handleAdding}>Add item </div>
                 <div>BHD {selectedFood?.price?.toFixed(3)}</div>
               </div>
             </button>

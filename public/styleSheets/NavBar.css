@@ -39,7 +39,6 @@ text-decoration: none;
 .Links-container a:hover {
   background: rgba(255, 255, 255, 0.15);
   color: #ff6100;
-  transform: translateY(-2px);
   backdrop-filter: blur(10px);
 }
 
@@ -48,12 +47,12 @@ text-decoration: none;
   transition: transform 0.1s;
 }
 
-/* Active link styling */
+
 .Links-container a.active {
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
   nav {
     padding: 0.75rem 1rem;
