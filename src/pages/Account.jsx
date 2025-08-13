@@ -134,6 +134,9 @@ const Account = ({ handleLogOut }) => {
                 <div className='edit-btn'>
             <button onClick={() => setEdit(true)}>Edit Profile</button>
           </div>
+          <div className='delete-btn'>
+                <button onClick={handleDeleteAccount}>Delete Account</button>
+              </div>
         </>
       )}
     </div>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Client from '../../services/api' 
+import Client from '../../services/api'
 
 const EditAccount = ({ account, onUpdateSuccess }) => {
-  console.log("here")
+  console.log('here')
   const isCustomer = 'first_name' in account
   const [customerDetails, setCustomerDetails] = useState(
     isCustomer
@@ -24,7 +24,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
           rest_address: account.rest_address || '',
           email: account.email || '',
           CR: account.CR || '',
-          logo_url: account.logo_url || '' 
+          logo_url: account.logo_url || ''
         }
       : null
   )
@@ -47,8 +47,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault() 
-
+    e.preventDefault()
     try {
       const dataToUpdate = isCustomer ? customerDetails : resDetails
       const res = await Client.put(`/auth/profile`, dataToUpdate)
@@ -56,23 +55,19 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
       if (onUpdateSuccess) {
         onUpdateSuccess(res.data)
       }
-     navigate('/account') 
-
-      
+      navigate('/account')
     } catch (error) {
       console.error('Failed to update profile:', error)
-
     }
   }
 
   return (
     <div className="account-container">
-     
       <div className="back-btn">
-        <button onClick={() => navigate(-1)}>Back</button> {/* the navigate(-1) returns the user to the previous page*/}
+        <button onClick={() => navigate(-1)}>Back</button>{' '}
+        {/* the navigate(-1) returns the user to the previous page*/}
       </div>
       <h1>Account info</h1>
-   
 
       {isCustomer ? (
         <form onSubmit={handleSubmit}>
@@ -81,7 +76,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
             <input
               type="text"
               name="first_name"
-              value={customerDetails.first_name} 
+              value={customerDetails.first_name}
               onChange={handleChange}
             />
           </label>
@@ -91,7 +86,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
             <input
               type="text"
               name="last_name"
-              value={customerDetails.last_name} 
+              value={customerDetails.last_name}
               onChange={handleChange}
             />
           </label>
@@ -101,7 +96,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
             <input
               type="email"
               name="email"
-              value={customerDetails.email} 
+              value={customerDetails.email}
               onChange={handleChange}
             />
           </label>
@@ -111,7 +106,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
             <input
               type="text"
               name="address"
-              value={customerDetails.address} 
+              value={customerDetails.address}
               onChange={handleChange}
             />
           </label>
@@ -126,7 +121,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
             <input
               type="text"
               name="rest_name"
-              value={resDetails.rest_name} 
+              value={resDetails.rest_name}
               onChange={handleChange}
             />
           </label>
@@ -136,7 +131,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
             <input
               type="email"
               name="email"
-              value={resDetails.email} 
+              value={resDetails.email}
               onChange={handleChange}
             />
           </label>
@@ -146,7 +141,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
             <input
               type="tel"
               name="rest_tel"
-              value={resDetails.rest_tel} 
+              value={resDetails.rest_tel}
               onChange={handleChange}
             />
           </label>
@@ -156,7 +151,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
             <input
               type="text"
               name="rest_address"
-              value={resDetails.rest_address} 
+              value={resDetails.rest_address}
               onChange={handleChange}
             />
           </label>
@@ -166,7 +161,7 @@ const EditAccount = ({ account, onUpdateSuccess }) => {
             <input
               type="text"
               name="CR"
-              value={resDetails.CR} 
+              value={resDetails.CR}
               onChange={handleChange}
             />
           </label>
