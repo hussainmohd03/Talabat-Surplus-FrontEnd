@@ -34,17 +34,15 @@ const RegisterForm = ({ role }) => {
       if (
         customerValues.password === credentials.confirm_password &&
         customerValues.password.length >= 8 &&
-        customerValues.password.includes('@')
+        customerValues.email.includes('@')
       ) {
         setFilled(true)
       }
     } else if (role === 'restaurant') {
-      // console.log(credentials.confirm_password)
-      // console.log(resValues.password)
       if (
         resValues.password === credentials.confirm_password &&
         resValues.password.length >= 8 &&
-        resValues.password.includes('@')
+        resValues.email.includes('@')
       ) {
         setFilled(true)
       }
@@ -217,5 +215,4 @@ const RegisterForm = ({ role }) => {
     </div>
   )
 }
-  
 export default RegisterForm

@@ -79,7 +79,6 @@ const Account = ({ handleLogOut }) => {
             <span>Last Name:</span>
             <input type="text" value={account.last_name} readOnly />
           </label>
-
           <label>
             <span>Email:</span>
             <input type="email" value={account.email} readOnly />
