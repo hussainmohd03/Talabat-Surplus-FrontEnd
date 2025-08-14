@@ -13,7 +13,6 @@ const Orders = ({ role }) => {
     if (user.role === 'customer') {
       if (location.pathname === '/orders') {
         const getOrders = async () => {
-          // console.log('hello from order')
           const approvedOrders = await Client.get(
             `${BASE_URL}/orders/approved/${user.id}`
           )

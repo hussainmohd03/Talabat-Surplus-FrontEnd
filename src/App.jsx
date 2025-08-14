@@ -43,7 +43,6 @@ const App = () => {
 
   const getAccount = async () => {
     try {
-      // const token = localStorage.getItem('token') //storing
       const res = await Client.get(`${BASE_URL}/auth/session`)
 
       setAccount(res.data)

@@ -95,7 +95,7 @@ const Account = ({ handleLogOut, account, setAccount }) => {
               <button>Change password</button>
             </Link>
             <button onClick={handleLogOut}>Log out</button>
-            {/* {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />} */}
+
           </>
         ) : (
           <>
@@ -125,9 +125,7 @@ const Account = ({ handleLogOut, account, setAccount }) => {
             </label>
           </>
 
-          // {account.logo_url && (
-          //   <img src={account.logo_url} alt="Restaurant Logo" />
-          // )}
+
         )}
         <Link to={'/account/password'}>
           <button>Change password</button>
