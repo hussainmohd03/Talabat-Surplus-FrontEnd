@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import '../../public/styleSheets/EditAccount.css'
 
-
-
 const EditAccount = ({
   account,
   onUpdateSuccess,
@@ -13,17 +11,13 @@ const EditAccount = ({
   trigger,
   handleDeleteAccount
 }) => {
-  console.log('here')
-
-const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger, handleDeleteAccount }) => {
-
-
-
-if (!account) {
-    console.log('Account data is null in EditAccount, rendering loading message.');
+  if (!account) {
+    console.log(
+      'Account data is null in EditAccount, rendering loading message.'
+    )
     // Display a loading message while account data is being fetched
     return <p>Loading account details for editing...</p>
-}
+  }
 
   const isCustomer = 'first_name' in account
   const [customerDetails, setCustomerDetails] = useState(
@@ -87,7 +81,6 @@ if (!account) {
     }
   }
 
-  
   return (
     <div className="edit-account-container">
       <div className="back-btn">
@@ -140,9 +133,9 @@ if (!account) {
           <div className="update-btn">
             <button type="submit">Update Account Details</button>
           </div>
-           <div className="delete-btn">
-          <button onClick={handleDeleteAccount}>Delete Account</button>
-        </div>
+          <div className="delete-btn">
+            <button onClick={handleDeleteAccount}>Delete Account</button>
+          </div>
         </form>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -200,9 +193,9 @@ if (!account) {
             <img src={resDetails.logo_url} alt="Restaurant Logo" />
           )}
           <button type="submit">Update Account Details</button>
-           <div className="delete-btn">
-          <button onClick={handleDeleteAccount}>Delete Account</button>
-        </div>
+          <div className="delete-btn">
+            <button onClick={handleDeleteAccount}>Delete Account</button>
+          </div>
         </form>
       )}
     </div>

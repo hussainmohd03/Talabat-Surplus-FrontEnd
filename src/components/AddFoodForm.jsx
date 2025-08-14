@@ -63,7 +63,7 @@ const AddFoodForm = ({ cuisine, setCuisineFoods, cuisineFoods }) => {
           </option>
         ))}
       </select>
-      <button type="submit">Add Food</button>
+      <button type="submit" className='add-food-btn'>Add Food</button>
     </form>
   )
 }

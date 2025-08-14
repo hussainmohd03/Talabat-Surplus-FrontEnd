@@ -203,4 +203,7 @@ main h1 {
 .food-card-container {
   position: relative;
 }
-
+.cuisine-img {
+  width: 10%;
+  height: 60%;
+}
