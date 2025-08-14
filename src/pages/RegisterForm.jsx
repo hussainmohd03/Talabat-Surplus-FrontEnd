@@ -33,16 +33,16 @@ const RegisterForm = ({ role }) => {
     if (role === 'customer') {
       if (
         customerValues.password === credentials.confirm_password &&
-        customerValues.password.length >= 8 &&
-        customerValues.email.includes('@')
+        customerValues.password.length >= 8
+        // customerValues.email.includes('@')
       ) {
         setFilled(true)
       }
     } else if (role === 'restaurant') {
       if (
         resValues.password === credentials.confirm_password &&
-        resValues.password.length >= 8 &&
-        resValues.email.includes('@')
+        resValues.password.length >= 8
+        // resValues.email.includes('@')
       ) {
         setFilled(true)
       }
@@ -72,6 +72,7 @@ const RegisterForm = ({ role }) => {
       <h1>Create a {role} account</h1>
 
       {role === 'customer' ? (
+                <div className='Customer-Register'>
         <form onSubmit={handleSubmit}>
           <label htmlFor="first_name">First Name</label>
           <input
@@ -129,15 +130,23 @@ const RegisterForm = ({ role }) => {
           <br />
           <p>Passwords must match.</p>
           <p>
-            By creating an account you agree to the Privacy Policy and to the
-            Terms of Use{' '}
+            By creating an account you agree to the 
+            <br />
+             <a className="privacy" href="/privacy">
+              Privacy Policy
+            </a>.
+            and{" "}
+             <a className="terms" href="/terms">
+              terms of use
+            </a>{" "}
           </p>
-          <button disabled={!filled} type="submit">
+          <button className="register-submit" disabled={!filled} type="submit">
             Create Your Account
           </button>
         </form>
+        </div>
       ) : (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='Res-Register'>
           <label htmlFor="rest_name">Restaurant Name</label>
           <input
             type="text"
@@ -189,7 +198,7 @@ const RegisterForm = ({ role }) => {
             name="password"
             placeholder="Password"
             onChange={handleChange}
-            value={customerValues.password}
+            value={resValues.password}
             required
           />
           <label htmlFor="confirm_password">Confirm Password</label>
@@ -203,11 +212,18 @@ const RegisterForm = ({ role }) => {
           />
           <br />
           <p>
-            By creating an account you agree to the Privacy Policy and to the
-            Terms of Use{' '}
+              By creating an account you agree to the 
+            <br />
+             <a className="privacy" href="/privacy">
+              Privacy Policy
+            </a>.
+            and{" "}
+             <a className="terms" href="/terms">
+              terms of use
+            </a>{" "}
           </p>
 
-          <button disabled={!filled} type="submit">
+          <button disabled={!filled} type="submit" className="register-submit">
             Create Your Account
           </button>
         </form>

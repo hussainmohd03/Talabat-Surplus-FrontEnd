@@ -1,8 +1,29 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
+import '../../public/styleSheets/EditAccount.css'
 
-const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger }) => {
+
+
+const EditAccount = ({
+  account,
+  onUpdateSuccess,
+  setAccount,
+  setTrigger,
+  trigger,
+  handleDeleteAccount
+}) => {
+  console.log('here')
+
+const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger, handleDeleteAccount }) => {
+
+
+
+if (!account) {
+    console.log('Account data is null in EditAccount, rendering loading message.');
+    // Display a loading message while account data is being fetched
+    return <p>Loading account details for editing...</p>
+}
 
   const isCustomer = 'first_name' in account
   const [customerDetails, setCustomerDetails] = useState(
@@ -57,7 +78,7 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
         onUpdateSuccess(res.data)
       }
 
-      setAccount({...account, dataToUpdate})
+      setAccount({ ...account, dataToUpdate })
       setTrigger(!trigger)
 
       navigate('/account')
@@ -66,8 +87,9 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
     }
   }
 
+  
   return (
-    <div className="account-container">
+    <div className="edit-account-container">
       <div className="back-btn">
         <button onClick={() => navigate(-1)}>Back</button>{' '}
         {/* the navigate(-1) returns the user to the previous page*/}
@@ -118,6 +140,9 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
           <div className="update-btn">
             <button type="submit">Update Account Details</button>
           </div>
+           <div className="delete-btn">
+          <button onClick={handleDeleteAccount}>Delete Account</button>
+        </div>
         </form>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -175,7 +200,9 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
             <img src={resDetails.logo_url} alt="Restaurant Logo" />
           )}
           <button type="submit">Update Account Details</button>
-          
+           <div className="delete-btn">
+          <button onClick={handleDeleteAccount}>Delete Account</button>
+        </div>
         </form>
       )}
     </div>

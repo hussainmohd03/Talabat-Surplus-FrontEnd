@@ -17,6 +17,7 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
   useEffect(() => {
     const onMount = async () => {
       let food = await Client.get(`${BASE_URL}/foods/${id}`)
+
       setSelectedFood(food.data)
 
       if (user && user.role !== 'restaurant') {
@@ -37,6 +38,7 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
         order_status: 'pending',
         total_price: selectedFood.price
       })
+      console.log(order)
       setSelectOrder(order.data)
       navigate('/cart')
     } else {
@@ -47,7 +49,6 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
       navigate('/cart')
     }
   }
-
 
   const handleAdding = () => {
     console.log(selectOrder.food_id)

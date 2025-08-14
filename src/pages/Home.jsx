@@ -1,9 +1,12 @@
 import Search from '../components/Search'
-
+import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import CustomerCuisines from '../components/CustomerCuisines'
 import { UserContext } from '../context/UserContext'
 import RestaurantFood from '../components/RestaurantFoods'
+// import '../orders.css'
+
+
 const Home = () => {
   const [search, setSearch] = useState('')
   const { user } = useContext(UserContext)
@@ -11,9 +14,12 @@ const Home = () => {
     <>
       <main>
         <Search filterValue={search} setFilterValue={setSearch} />
-
-        {(user && user.role === 'customer' && <CustomerCuisines search={search} />) ||
-          (user && user.role === 'restaurant' && <RestaurantFood search={search} />)}
+        {(user && user.role === 'customer' && (
+          <CustomerCuisines search={search} />
+        )) ||
+          (user && user.role === 'restaurant' && (
+            <RestaurantFood search={search} />
+          ))}
       </main>
     </>
   )

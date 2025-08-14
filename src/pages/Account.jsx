@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import EditAccount from './EditAccount'
 import { UserContext } from '../context/UserContext'
-
 import BackButton from '../components/BackButton'
 
 const Account = ({ handleLogOut, account, setAccount }) => {
@@ -22,7 +21,7 @@ const Account = ({ handleLogOut, account, setAccount }) => {
 
   const getAccount = async () => {
     try {
-      const res = await Client.get(`${BASE_URL}/auth/session`)
+      const res = await Client.get(`${BASE_URL}/auth/profile`)
       setAccount(res.data)
       setUser(res.data)
     } catch (err) {
@@ -69,6 +68,11 @@ const Account = ({ handleLogOut, account, setAccount }) => {
   return (
     <div className="account-container">
       <>
+      <div className="settings-btn">
+          <Link to="/account/settings">
+            <button>Settings</button>
+          </Link>
+          </div>
         <h2>Account Info</h2>
         {'first_name' in account ? (
           <>
@@ -91,6 +95,11 @@ const Account = ({ handleLogOut, account, setAccount }) => {
               <span>Address:</span>
               <input type="text" value={account.address} readOnly />
             </label>
+
+            
+            
+            {/* {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />} */}
+
             <Link to={'/account/password'}>
               <button>Change password</button>
             </Link>
@@ -127,22 +136,13 @@ const Account = ({ handleLogOut, account, setAccount }) => {
 
 
         )}
-        <Link to={'/account/password'}>
-          <button>Change password</button>
-        </Link>
-        <button onClick={handleLogOut}>Log out</button>
+        
 
         <div className="edit-btn">
           <button onClick={() => handleEditToggle()}>Edit Profile</button>
         </div>
-        <div className="delete-btn">
-          <button onClick={handleDeleteAccount}>Delete Account</button>
-        </div>
-        <div className="settings-btn">
-          <Link to="/account/settings">
-            <button>Settings</button>
-          </Link>
-        </div>
+       
+        
       </>
     </div>
   )
