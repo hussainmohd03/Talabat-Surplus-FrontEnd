@@ -4,6 +4,7 @@ import { BASE_URL } from '../../globals'
 import { UserContext } from '../context/UserContext'
 import { useLocation } from 'react-router-dom'
 import Order from '../components/Order'
+import '../../public/styleSheets/OrderStyle.css'
 
 const Orders = ({ role }) => {
   const location = useLocation()
@@ -39,24 +40,24 @@ const Orders = ({ role }) => {
 
   return (
     <>
-      <div>
+      <div className='orders-container'>
         {user.role === 'customer' ? (
           <div>
             <h1 className='orders-title'>Your orders</h1>
 
             {dbApprovedOrders?.map((order) => (
               <div>
-                <li>
+                <li className='order-id'>
                   {order._id}
-                  <li>{order.order_status}</li>
-                  <li>BHD{order.total_price}</li>
+                  <li className='order-status'>{order.order_status}</li>
+                  <li className='order-price'>BHD{order.total_price}</li>
                 </li>
               </div>
             ))}
           </div>
         ) : (
           <div>
-            <h1>Your orders</h1>
+            <h1 className='order-summary'>Your orders</h1>
             {dbApprovedOrders?.map((order, idx) => (
               <Order
                 dbApprovedOrders={dbApprovedOrders}
