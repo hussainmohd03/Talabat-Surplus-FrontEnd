@@ -72,81 +72,85 @@ const RegisterForm = ({ role }) => {
       <h1>Create a {role} account</h1>
 
       {role === 'customer' ? (
-                <div className='Customer-Register'>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="first_name">First Name</label>
-          <input
-            type="text"
-            name="first_name"
-            placeholder="First Name"
-            onChange={handleChange}
-            value={customerValues.first_name}
-            required
-          />
-          <label htmlFor="last_name">Last Name</label>
-          <input
-            type="text"
-            name="last_name"
-            placeholder="Last Name"
-            onChange={handleChange}
-            value={customerValues.last_name}
-            required
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-            value={customerValues.email}
-            required
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-            value={customerValues.password}
-            required
-          />
-          <label htmlFor="confirm_password">Confirm Password</label>
-          <input
-            type="password"
-            name="confirm_password"
-            placeholder="Password"
-            onChange={handleChange}
-            value={credentials.confirm_password}
-            required
-          />
-          <label htmlFor="address">Address</label>
-          <input
-            type="text"
-            name="address"
-            placeholder="street 123"
-            onChange={handleChange}
-            value={customerValues.address}
-          />
-          <br />
-          <p>Passwords must match.</p>
-          <p>
-            By creating an account you agree to the 
+        <div className="Customer-Register">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="first_name">First Name</label>
+            <input
+              type="text"
+              name="first_name"
+              placeholder="First Name"
+              onChange={handleChange}
+              value={customerValues.first_name}
+              required
+            />
+            <label htmlFor="last_name">Last Name</label>
+            <input
+              type="text"
+              name="last_name"
+              placeholder="Last Name"
+              onChange={handleChange}
+              value={customerValues.last_name}
+              required
+            />
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+              value={customerValues.email}
+              required
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              value={customerValues.password}
+              required
+            />
+            <label htmlFor="confirm_password">Confirm Password</label>
+            <input
+              type="password"
+              name="confirm_password"
+              placeholder="Password"
+              onChange={handleChange}
+              value={credentials.confirm_password}
+              required
+            />
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              name="address"
+              placeholder="street 123"
+              onChange={handleChange}
+              value={customerValues.address}
+            />
             <br />
-             <a className="privacy" href="/privacy">
-              Privacy Policy
-            </a>.
-            and{" "}
-             <a className="terms" href="/terms">
-              terms of use
-            </a>{" "}
-          </p>
-          <button className="register-submit" disabled={!filled} type="submit">
-            Create Your Account
-          </button>
-        </form>
+            <p>Passwords must match.</p>
+            <p>
+              By creating an account you agree to the
+              <br />
+              <a className="privacy" href="/privacy">
+                Privacy Policy
+              </a>
+              . and{' '}
+              <a className="terms" href="/terms">
+                terms of use
+              </a>{' '}
+            </p>
+            <button
+              className="register-submit"
+              disabled={!filled}
+              type="submit"
+            >
+              Create Your Account
+            </button>
+          </form>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className='Res-Register'>
+        <form onSubmit={handleSubmit} className="Res-Register">
           <label htmlFor="rest_name">Restaurant Name</label>
           <input
             type="text"
@@ -212,15 +216,15 @@ const RegisterForm = ({ role }) => {
           />
           <br />
           <p>
-              By creating an account you agree to the 
+            By creating an account you agree to the
             <br />
-             <a className="privacy" href="/privacy">
+            <a className="privacy" href="/privacy">
               Privacy Policy
-            </a>.
-            and{" "}
-             <a className="terms" href="/terms">
+            </a>
+            . and{' '}
+            <a className="terms" href="/terms">
               terms of use
-            </a>{" "}
+            </a>{' '}
           </p>
 
           <button disabled={!filled} type="submit" className="register-submit">

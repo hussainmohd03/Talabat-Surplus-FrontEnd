@@ -73,11 +73,13 @@ main h1 {
 
 .food-item {
   display: flex;
+  justify-content: space-between;
   gap: 15px;
   margin: 20px;
 }
 
 .food-item-info {
+  margin-right: auto;
   display: flex;
   flex-direction: column;
 }
@@ -155,7 +157,6 @@ main h1 {
   height: 10px;
   background-size: contain;
   margin-top: 60px;
-  margin-left: 20px;
 }
 
 .edit-food-form {
@@ -202,5 +203,7 @@ main h1 {
 .food-card-container {
   position: relative;
 }
-
-
+.cuisine-img {
+  width: 10%;
+  height: 60%;
+}

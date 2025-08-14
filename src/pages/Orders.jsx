@@ -29,7 +29,6 @@ const Orders = ({ role }) => {
           const approvedOrders = await Client.get(
             `${BASE_URL}/orders/approved/${user.id}`
           )
-          console.log(approvedOrders)
           approvedOrders && setDbApprovedOrders(approvedOrders.data)
         }
         getOrders()
@@ -42,7 +41,7 @@ const Orders = ({ role }) => {
       <div>
         {user.role === 'customer' ? (
           <div>
-            <h1 className='orders-title'>Your orders</h1>
+            <h1 className="orders-title">Your orders</h1>
 
             {dbApprovedOrders?.map((order) => (
               <div>
