@@ -1,4 +1,4 @@
-![header](/Talabat-Surplus-FrontEnd/img/header.png)
+![header](/img/header.png)
 
 # TALABAT PLUS
 
