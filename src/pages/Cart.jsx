@@ -23,8 +23,6 @@ const Cart = ({
       setItem(items.data)
       setCartItems(items.data.foodItems)
 
-      // console.log('mini', items.data.food_id[0].price)
-      // console.log(items.data)
     }
     onMount()
   }, [])
@@ -33,7 +31,6 @@ const Cart = ({
     const updated = await Client.put(
       `${BASE_URL}/orders/${item._id}?action=remove&status=pending&foodId=${foodId}`
     )
-    console.log(updated)
     setCartItems(updated.data.foodItems)
   }
 
@@ -44,10 +41,8 @@ const Cart = ({
         payment_status: 'approved'
       }
     )
-    console.log(placedOrder)
     navigate('/orders/placed')
   }
-  // console.log('cart items', cartItems)
   return (
     <>
       <h3 id="cart-title">Cart</h3>

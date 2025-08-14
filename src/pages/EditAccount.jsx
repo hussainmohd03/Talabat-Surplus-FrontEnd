@@ -2,14 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 
-const EditAccount = ({
-  account,
-  onUpdateSuccess,
-  setAccount,
-  setTrigger,
-  trigger
-}) => {
-  console.log('here')
+const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger }) => {
+
 
   const isCustomer = 'first_name' in account
   const [customerDetails, setCustomerDetails] = useState(
