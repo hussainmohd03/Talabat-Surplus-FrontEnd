@@ -4,6 +4,7 @@ import Client from '../../services/api'
 
 const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger }) => {
 
+
   const isCustomer = 'first_name' in account
   const [customerDetails, setCustomerDetails] = useState(
     isCustomer
@@ -57,7 +58,7 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
         onUpdateSuccess(res.data)
       }
 
-      setAccount({...account, dataToUpdate})
+      setAccount({ ...account, dataToUpdate })
       setTrigger(!trigger)
 
       navigate('/account')
@@ -175,7 +176,6 @@ const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger
             <img src={resDetails.logo_url} alt="Restaurant Logo" />
           )}
           <button type="submit">Update Account Details</button>
-          
         </form>
       )}
     </div>

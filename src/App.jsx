@@ -124,7 +124,10 @@ const App = () => {
             }
           />
 
-          <Route path="orders/placed" element={<OrderPlaced />} />
+          <Route
+            path="orders/placed"
+            element={<OrderPlaced setCartItems={setCartItems} item={item} />}
+          />
           <Route
             path="/account/edit"
             element={
