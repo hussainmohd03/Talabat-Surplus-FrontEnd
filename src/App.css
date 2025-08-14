@@ -191,15 +191,22 @@ main h1 {
 }
 .add-food-btn {
   all: unset;
-  width: 342px;
+  width: 240px;
   height: 53px;
   border-radius: 26.5px;
   color: white;
   text-align: center;
-  margin: 25px 45px;
+  margin: 25px 96px;
   background-color: #f55905;
 }
-
+.add-food-btn2 {
+  all: unset;
+  color: white;
+  text-align: center;
+  border-radius: 26.5px;
+  padding: 15px;
+  background-color: #f55905;
+}
 .food-card-container {
   position: relative;
 }
