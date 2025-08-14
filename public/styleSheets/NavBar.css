@@ -17,13 +17,17 @@ color: black;
 text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.3rem 1.5rem;
   border-radius: 25px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   text-transform: capitalize;
   letter-spacing: 0.5px;
+  display: flex; /* Make the link a flex container */
+  flex-direction: column; /* Changed to column to stack image above text */
+  align-items: center; /* Center items horizontally within the column */
+  gap: 0.2rem; /* Reduced gap for closer vertical spacing */
 }
 
 .Links-container a::before {
@@ -79,4 +83,18 @@ text-decoration: none;
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
   }
+}
+
+.Links-container a img {
+    width: 18px; 
+    height: 20px;
+  }
+
+
+@media (max-width: 480px) {
+  .Links-container {
+    gap: 1rem;
+  }
+  
+
 }
