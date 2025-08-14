@@ -95,9 +95,16 @@ const Account = ({ handleLogOut, account, setAccount }) => {
               <span>Address:</span>
               <input type="text" value={account.address} readOnly />
             </label>
+
             
             
             {/* {account.avatar_url && <img src={account.avatar_url} alt="Avatar" />} */}
+
+            <Link to={'/account/password'}>
+              <button>Change password</button>
+            </Link>
+            <button onClick={handleLogOut}>Log out</button>
+
           </>
         ) : (
           <>
@@ -127,9 +134,7 @@ const Account = ({ handleLogOut, account, setAccount }) => {
             </label>
           </>
 
-          // {account.logo_url && (
-          //   <img src={account.logo_url} alt="Restaurant Logo" />
-          // )}
+
         )}
         
 

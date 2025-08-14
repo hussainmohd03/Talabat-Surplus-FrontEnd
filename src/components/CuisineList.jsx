@@ -25,4 +25,5 @@ const CuisineList = ({ search }) => {
     </>
   )
 }
+
 export default CuisineList

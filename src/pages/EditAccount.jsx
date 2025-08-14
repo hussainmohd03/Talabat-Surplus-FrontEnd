@@ -4,6 +4,7 @@ import Client from '../../services/api'
 import '../../public/styleSheets/EditAccount.css'
 
 
+
 const EditAccount = ({
   account,
   onUpdateSuccess,
@@ -13,6 +14,10 @@ const EditAccount = ({
   handleDeleteAccount
 }) => {
   console.log('here')
+
+const EditAccount = ({ account, onUpdateSuccess, setAccount, setTrigger, trigger, handleDeleteAccount }) => {
+
+
 
 if (!account) {
     console.log('Account data is null in EditAccount, rendering loading message.');
