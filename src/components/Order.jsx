@@ -8,11 +8,9 @@ const Order = ({ order, idx, setDbApprovedOrders, dbApprovedOrders }) => {
     )
     let orders = [...dbApprovedOrders]
     orders.splice(idx, 1, res.data)
-    console.log(res.data)
     setDbApprovedOrders(orders)
   }
 
-  console.log(order)
   return (
     <>
       <div key={order._id}>
