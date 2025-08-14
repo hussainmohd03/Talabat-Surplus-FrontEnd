@@ -1,0 +1,78 @@
+
+.settings-section {
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.back-btn button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
+.settings-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-left: 3rem !important;
+  margin-bottom: 1.5rem;
+  padding-left: 2rem !important;
+  text-indent: 2rem;
+}
+
+
+.settings-section h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+
+.settings-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1px; 
+}
+
+
+.settings-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.settings-button:hover {
+  background-color: #f5f5f5;
+}
+
+.settings-button::after {
+  content: '>';
+  font-weight: 500;
+  color: #999;
+}
+
+
+.settings-button.logout {
+  color: #e85c00; 
+}

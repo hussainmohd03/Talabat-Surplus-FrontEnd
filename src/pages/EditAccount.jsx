@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
+import '../../public/styleSheets/EditAccount.css'
+
 
 const EditAccount = ({
   account,
@@ -82,7 +84,7 @@ if (!account) {
 
   
   return (
-    <div className="account-container">
+    <div className="edit-account-container">
       <div className="back-btn">
         <button onClick={() => navigate(-1)}>Back</button>{' '}
         {/* the navigate(-1) returns the user to the previous page*/}

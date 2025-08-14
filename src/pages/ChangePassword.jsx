@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
+import '../../public/styleSheets/PasswordForm.css'
+
 
 const ChangePassword = () => {
   const navigate = useNavigate()
@@ -25,6 +27,7 @@ const ChangePassword = () => {
   }
   return (
     <>
+    <div className='password-box'>
       <h1>Change password</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="old_password">Current password</label>
@@ -48,6 +51,7 @@ const ChangePassword = () => {
         <button type="submit">Change password</button>
         <p>Enter your current password and your new password.</p>
       </form>
+      </div>
     </>
   )
 }

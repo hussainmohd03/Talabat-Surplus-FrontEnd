@@ -68,6 +68,11 @@ const Account = ({ handleLogOut, account, setAccount }) => {
   return (
     <div className="account-container">
       <>
+      <div className="settings-btn">
+          <Link to="/account/settings">
+            <button>Settings</button>
+          </Link>
+          </div>
         <h2>Account Info</h2>
         {'first_name' in account ? (
           <>
@@ -132,11 +137,7 @@ const Account = ({ handleLogOut, account, setAccount }) => {
           <button onClick={() => handleEditToggle()}>Edit Profile</button>
         </div>
        
-        <div className="settings-btn">
-          <Link to="/account/settings">
-            <button>Settings</button>
-          </Link>
-        </div>
+        
       </>
     </div>
   )

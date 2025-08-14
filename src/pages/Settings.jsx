@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import '../../public/styleSheets/Settings.css'
 
 const Settings = ({ handleLogOut }) => {
   const navigate = useNavigate()
   return (
     <>
       <div className="back-btn">
-        <button onClick={() => navigate(-1)}>Back</button>
+        <button onClick={() => navigate(-1)}>back</button>
       </div>
-      <h1>Settings</h1>
+      <h1 className='settings-heading'>Settings</h1>
 
       <div className="settings-section">
         <h2>Account Options</h2>
