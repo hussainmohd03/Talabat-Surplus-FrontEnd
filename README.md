@@ -17,11 +17,11 @@ When a restaurant or vendor prepares extra portions—whether from large group o
 
 ## **Planning & Inspiration**
 
-![planning & inspo board](/Talabat-Surplus-FrontEnd/src/img/branding.png)
+![planning & inspo board](/src/img/branding.png)
 
 The color palette, logo, and overall styling of the application was heavily inspired by TALABAT’s latest app version.
 
-![component hierarchy diagram](/Talabat-Surplus-FrontEnd/src/img/planning.png)
+![component hierarchy diagram](/src/img/planning.png)
 
 The original scope of the project encompassed five entities in total. Order, customer, restaurant, food, and review. The current scope only covers four of the original five.
 
