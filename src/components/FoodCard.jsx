@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { BASE_URL } from '../../globals'
 import { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../context/UserContext'
@@ -7,7 +6,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import BackButton from './BackButton'
 
-const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
+const FoodCard = ({ selectOrder, setSelectOrder, price, setPric }) => {
   const navigate = useNavigate()
   let { id } = useParams()
   const { user } = useContext(UserContext)
@@ -38,7 +37,6 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
         order_status: 'pending',
         total_price: selectedFood.price
       })
-      console.log(order)
       setSelectOrder(order.data)
       navigate('/cart')
     } else {
@@ -50,9 +48,7 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
     }
   }
 
-  const handleAdding = () => {
-    console.log(selectOrder.food_id)
-  }
+
   return (
     <>
       <div className="food-card-container">
@@ -72,7 +68,7 @@ const FoodCard = ({ selectOrder, setSelectOrder, price, setPrice }) => {
           {user && user.role !== 'restaurant' && (
             <button id="button-cart" onClick={handleClick}>
               <div id="add-to-cart">
-                <div onClick={() => handleAdding}>Add item </div>
+                <div>Add item </div>
                 <div>BHD {selectedFood?.price?.toFixed(3)}</div>
               </div>
             </button>

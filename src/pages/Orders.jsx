@@ -19,7 +19,6 @@ const Orders = ({ role }) => {
           )
           setDbApprovedOrders(approvedOrders.data)
 
-          console.log(approvedOrders.data)
         }
         getOrders()
       }

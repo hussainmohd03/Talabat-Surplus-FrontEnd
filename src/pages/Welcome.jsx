@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import RegisterForm from './RegisterForm'
-import LoginForm from './LoginForm'
 import { Link } from 'react-router-dom'
 import '../../public/styleSheets/Welcome.css'
 

@@ -1,20 +1,14 @@
-import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import { useEffect, useState } from 'react'
 import { BASE_URL } from '../../globals'
-// import '../App.css'
 const OrderPlaced = ({ item, setCartItems }) => {
   const [resName, setResName] = useState(null)
   const [address, setAddress] = useState(null)
-  const navigate = useNavigate()
-  const handleClick = () => {
-    navigate('/orders')
-  }
+
 
   useEffect(() => {
     const onMount = async () => {
       let restaurantId = item.foodItems.map((item) => item.foodId.restaurant_id)
-      console.log(restaurantId[0])
       const res = await Client.get(
         `${BASE_URL}/auth/profile/${restaurantId[0]}`
       )

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import '../../public/styleSheets/EditAccount.css'
@@ -12,9 +12,6 @@ const EditAccount = ({
   handleDeleteAccount
 }) => {
   if (!account) {
-    console.log(
-      'Account data is null in EditAccount, rendering loading message.'
-    )
     // Display a loading message while account data is being fetched
     return <p>Loading account details for editing...</p>
   }
@@ -67,7 +64,6 @@ const EditAccount = ({
     try {
       const dataToUpdate = isCustomer ? customerDetails : resDetails
       const res = await Client.put(`/auth/profile`, dataToUpdate)
-      console.log('Update successful:', res.data)
       if (onUpdateSuccess) {
         onUpdateSuccess(res.data)
       }

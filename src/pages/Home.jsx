@@ -1,10 +1,8 @@
 import Search from '../components/Search'
-import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import CustomerCuisines from '../components/CustomerCuisines'
 import { UserContext } from '../context/UserContext'
 import RestaurantFood from '../components/RestaurantFoods'
-// import '../orders.css'
 
 
 const Home = () => {

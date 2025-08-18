@@ -1,5 +1,4 @@
 const OrderFood = ({ foodItems }) => {
-  console.log(foodItems)
   return (
     <>
       {foodItems &&
