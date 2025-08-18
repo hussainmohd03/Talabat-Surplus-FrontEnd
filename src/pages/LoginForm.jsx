@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react'
-import {  SignInUser } from '../../services/Auth'
+import { SignInUser } from '../../services/Auth'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
-import "../../public/styleSheets/LoginStyle.css"
+import '../styleSheets/LoginStyle.css'
 
 const LoginForm = ({ role }) => {
   const initialState = { email: '', password: '' }
@@ -25,31 +25,39 @@ const LoginForm = ({ role }) => {
 
   return (
     <>
-    <div className='login-container'>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="email@gmail.com"
-          onChange={handleChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          onChange={handleChange}
-        />
-  <p> By creating an account you agree to the 
-  <a href="#" className="privacy"> Privacy Policy </a> 
-  and to the 
-  <a href="#" className="terms"> terms of use</a>
-</p>
-        <button type="submit">Log in</button>
-        <br />
-      </form>
+      <div className="login-container">
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="email@gmail.com"
+            onChange={handleChange}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            onChange={handleChange}
+          />
+          <p>
+            {' '}
+            By creating an account you agree to the
+            <a href="#" className="privacy">
+              {' '}
+              Privacy Policy{' '}
+            </a>
+            and to the
+            <a href="#" className="terms">
+              {' '}
+              terms of use
+            </a>
+          </p>
+          <button type="submit">Log in</button>
+          <br />
+        </form>
       </div>
     </>
   )

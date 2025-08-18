@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import '../../public/styleSheets/Settings.css'
+import '../styleSheets/Settings.css'
 
 const Settings = ({ handleLogOut }) => {
   const navigate = useNavigate()

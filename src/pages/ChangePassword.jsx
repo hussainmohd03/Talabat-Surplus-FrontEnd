@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
 import { BASE_URL } from '../../globals'
-import '../../public/styleSheets/PasswordForm.css'
+import '../styleSheets/PasswordForm.css'
 
 const ChangePassword = () => {
   const navigate = useNavigate()

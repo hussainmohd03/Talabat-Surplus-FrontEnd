@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import '../../public/styleSheets/Welcome.css'
+import '../styleSheets/Welcome.css'
 
 const Register = ({ role, choice, setRole, setChoice }) => {
   return (
