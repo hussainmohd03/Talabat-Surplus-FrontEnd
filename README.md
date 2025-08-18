@@ -1,10 +1,11 @@
 ![header](/Talabat-Surplus-FrontEnd/src/img/header.png)
 
+
 # TALABAT PLUS
 
 ## Date: 14/08/2025
 
-### [TALABAT PLUS BACKEND REPO](https://github.com/hussainmohd03/Food-Waste-BackEnd) | [DEPLOYED VERSION]()
+### [TALABAT PLUS BACKEND REPO](https://github.com/hussainmohd03/Food-Waste-BackEnd) | [DEPLOYED VERSION](https://talabatplus.surge.sh/)
 
 ### By: [Hussain Ahmed](https://github.com/hussainmohd03) | [Malak Jasim](https://github.com/Malak1805) | [Maryam Ali Redha](https://github.com/maryamalihasanebrahim)
 
@@ -21,6 +22,7 @@ When a restaurant or vendor prepares extra portions—whether from large group o
 The color palette, logo, and overall styling of the application was heavily inspired by TALABAT’s latest app version.
 
 ![component hierarchy diagram](/Talabat-Surplus-FrontEnd/src/img/planning.png)
+
 The original scope of the project encompassed five entities in total. Order, customer, restaurant, food, and review. The current scope only covers four of the original five.
 
 

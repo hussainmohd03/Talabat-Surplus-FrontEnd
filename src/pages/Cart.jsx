@@ -18,10 +18,9 @@ const Cart = ({
   useEffect(() => {
     const onMount = async () => {
       const items = await Client.get(`${BASE_URL}/orders`)
-      
+
       setItem(items.data)
       setCartItems(items.data.foodItems)
-
     }
     onMount()
   }, [])
@@ -54,7 +53,10 @@ const Cart = ({
                 <li key={item._id}>
                   <h2>{item.foodId.name}</h2>
                   <h2>Quantity: {item.quantity}</h2>
-                  <button onClick={() => handleRemove(item.foodId._id)}>
+                  <button
+                    className="add-food-btn"
+                    onClick={() => handleRemove(item.foodId._id)}
+                  >
                     remove
                   </button>
                 </li>
@@ -62,11 +64,13 @@ const Cart = ({
             ))}
         </ul>
       </div>
-      
+
       <Link to={'/'}>
-        <button>Add items </button>
+        <button className="add-food-btn">Add items </button>
       </Link>
-      <button onClick={handlePlaceOrder}>Place order</button>
+      <button className="add-food-btn" onClick={handlePlaceOrder}>
+        Place order
+      </button>
     </>
   )
 }
