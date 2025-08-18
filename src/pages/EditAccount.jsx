@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Client from '../../services/api'
-import '../../public/styleSheets/EditAccount.css'
+import '../styleSheets/EditAccount.css'
 
 const EditAccount = ({
   account,

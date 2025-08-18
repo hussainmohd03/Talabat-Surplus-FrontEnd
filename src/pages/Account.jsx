@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { BASE_URL } from '../../globals'
 import Client from '../../services/api'
-import '../../public/styleSheets/AccountStyle.css'
+import '../styleSheets/AccountStyle.css'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
