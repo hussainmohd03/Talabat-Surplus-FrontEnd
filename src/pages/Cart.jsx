@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { BASE_URL } from '../../globals'
 import Client from '../../services/api'
 import { Link } from 'react-router-dom'
 import '../App.css'
 import { useNavigate } from 'react-router-dom'
-import OrderPlaced from './OrderPlaced'
 
 const Cart = ({
   selectOrder,

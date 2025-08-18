@@ -25,6 +25,7 @@ import OrderPlaced from './pages/OrderPlaced'
 import Settings from './pages/Settings'
 
 const App = () => {
+  const [error, setError] = useState('')
   const [price, setPrice] = useState(0)
   const [item, setItem] = useState('')
   const [role, setRole] = useState(null)
@@ -84,7 +85,7 @@ const App = () => {
     navigate('/welcome')
   }
 
-    const handleDeleteAccount = async () => {
+  const handleDeleteAccount = async () => {
     if (
       window.confirm(
         'Are you sure you want to delete your account? This action cannot be undone.'
@@ -92,7 +93,6 @@ const App = () => {
     ) {
       try {
         await Client.delete(`${BASE_URL}/auth`)
-        console.log('Account deleted successfully')
 
         // clears user data from local storage and context
         localStorage.removeItem('token')
@@ -157,7 +157,10 @@ const App = () => {
                 account={account}
                 setAccount={setAccount}
                 setTrigger={setTrigger}
-                trigger={trigger} handleDeleteAccount={handleDeleteAccount}/>}
+                trigger={trigger}
+                handleDeleteAccount={handleDeleteAccount}
+              />
+            }
           />
 
           <Route

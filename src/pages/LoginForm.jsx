@@ -1,8 +1,7 @@
 import { useState, useContext } from 'react'
-import { RegisterUser, SignInUser } from '../../services/Auth'
+import {  SignInUser } from '../../services/Auth'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
-import { Link } from 'react-router-dom'
 import "../../public/styleSheets/LoginStyle.css"
 
 const LoginForm = ({ role }) => {

@@ -34,7 +34,6 @@ const RegisterForm = ({ role }) => {
       if (
         customerValues.password === credentials.confirm_password &&
         customerValues.password.length >= 8
-        // customerValues.email.includes('@')
       ) {
         setFilled(true)
       }
@@ -42,7 +41,6 @@ const RegisterForm = ({ role }) => {
       if (
         resValues.password === credentials.confirm_password &&
         resValues.password.length >= 8
-        // resValues.email.includes('@')
       ) {
         setFilled(true)
       }

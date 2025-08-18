@@ -12,7 +12,6 @@ Client.interceptors.request.use(
     return config
   },
   async (error) => {
-    console.log({ msg: 'Axios Interceptor Error!', error })
     throw error
   }
 )
